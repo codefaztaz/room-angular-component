@@ -1,0 +1,121 @@
+<div class="addbook">
+    <a class="page-link add-book" [routerLink]="['/admin/listrooms']">Back to room list</a>
+</div>
+<h1> Add a room</h1>
+
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="create(room)">
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">title</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="title" formControlName="title" [class.is-invalid]="titleNoValido">
+                <small *ngIf="titleNoValido" class="text-danger">
+          write the name
+        </small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">description</label>
+            <div class="col">
+
+                <textarea class="form-control" rows="8" cols="80" placeholder="description" formControlName="description" [class.is-invalid]="descriptionNoValido">
+               </textarea>
+
+                <small *ngIf="descriptionNoValido" class="text-danger">
+          write the name
+        </small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">language</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="language" formControlName="language" [class.is-invalid]="languageNoValido">
+                <small *ngIf="languageNoValido" class="text-danger">
+          write the name
+        </small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">roomtype</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="roomtype" formControlName="roomtype" [class.is-invalid]="roomtypeNoValido">
+                <small *ngIf="roomtypeNoValido" class="text-danger">
+                Write the phone number
+        </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">mapgoogle</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="mapgoogle" formControlName="mapgoogle" [class.is-invalid]="mapgoogleNoValido">
+                <small *ngIf="mapgoogleNoValido" class="text-danger">
+                Write the phone number
+        </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">price</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="price" formControlName="price" [class.is-invalid]="priceNoValido">
+                <small *ngIf="priceNoValido" class="text-danger">
+                Write the phone number
+        </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">reference</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="reference" formControlName="reference" [class.is-invalid]="referenceNoValido">
+                <small *ngIf="referenceNoValido" class="text-danger">
+                Write the phone number
+                </small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">location</label>
+            <div class="col">
+
+                <input class="form-control" type="text" placeholder="location" formControlName="location" [class.is-invalid]="locationNoValido">
+                <small *ngIf="locationNoValido" class="text-danger">
+                Write the phone number
+                </small>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+        Send
+      </button>
+        </div>
+    </div>
+
+</form>
+
+
+
+<hr>
+<pre>
+  form state: {{ forma.valid }}
+  <br>
+  Status: {{ forma.status }}
+</pre>
+
+<pre>

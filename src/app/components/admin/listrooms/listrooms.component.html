@@ -1,0 +1,41 @@
+<div class="addbook">
+    <a class="page-link add-book" [routerLink]="['/admin/addroom']">Add room</a>
+</div>
+<div class="col-lag-12">
+
+
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let room of rooms">
+            <div class="" *ngIf="!room.image1 || room.image1 == undefined; else noimage">
+                <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="student">
+            </div>
+            <ng-template #noimage>
+                <img class="img-list" src="{{ url + 'avatar/' + room.image1}}" alt="student">
+            </ng-template>
+
+            <p>Title {{room.title}}</p>
+            <p>Description {{room.description}}</p>
+            <p>Room type {{room.roomtype}}</p>
+            <p>Google map{{room.mapgoogle}}</p>
+            <p>Availability {{room.availability}}</p>
+            <p>Price {{room.price}}</p>
+            <p>Reference {{room.reference}}</p>
+            <p>Location {{room.location}}</p>
+            <a [routerLink]="['/admin/updateroom', room._id]" class="btn btn-primary float-right">update</a>
+
+        </li>
+    </ul>
+</div>
+
+<ul class="pagination">
+    <li class="page-item">
+        <a class="page-link" [routerLink]="['/admin/listrooms', prev_page]">&laquo;</a>
+    </li>
+    <li class="page-item" *ngFor="let num of number_pages">
+        <a class="page-link" [routerLink]="['/admin/listrooms', num]" href="">{{ num }}</a>
+    </li>
+
+    <li class="page-item">
+        <a class="page-link" [routerLink]="['/admin/listrooms', next_page]">&raquo;</a>
+    </li>
+</ul>
