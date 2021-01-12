@@ -538,9 +538,33 @@ var controller = {
 
     // },
     saveImg: function(req, res) {
-        var roomId = req.body._id;
+        console.log("saveimage ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name = req.body.image1;
+        console.log('idroom', roomId);
 
-        console.log('Idd', roomId);
+        console.log('file_name', file_name);
+
+        Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+        //var bookId = req.params.bookId;
+        //console.log('bookid', bookId);
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image1: file_name,
+
+        });
 
 
     },
@@ -548,7 +572,7 @@ var controller = {
         // Configurar el modulo multiparty (md) routes/user.js
 
         // Recoger datos del usuario
-        var params = req.body._id;
+        var params = req.room;
         console.log('params', params);
 
         // Recoger el fichero de la petición
@@ -598,20 +622,21 @@ var controller = {
             });
 
         } else {
-            // Sacar el id del libro
-            // var roomId = req.room.sub;
-            var roomId = req.body._id;
-            console.log('idroom', roomId);
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
 
-            Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-                if (err || !roomUpdate) {
-                    // Devolver respuesta
-                    return res.status(500).send({
-                        status: 'error',
-                        message: 'Error al guardar la habitación'
-                    });
-                }
-            });
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
             //var bookId = req.params.bookId;
             //console.log('bookid', bookId);
 
@@ -622,8 +647,6 @@ var controller = {
                 image1: file_name,
 
             });
-
-            console.log(image1);
         }
 
     },

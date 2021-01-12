@@ -60,7 +60,22 @@ export class UpdateroomComponent implements OnInit {
     this.url = globalroom.url;
     this.getRoom();
 
+    this.avatar();
+    
+  }
 
+
+  avatar()
+  {
+    this.activatedRoute.params.subscribe( params =>
+    {
+      console.log(params);
+      console.log(params.id);
+      
+     let id = params['id'];
+     console.log(id);
+     return id;
+    });
     
   }
 
@@ -106,7 +121,7 @@ export class UpdateroomComponent implements OnInit {
     crearFormulario() 
     {
       this.forma = this.fb.group({
-      _id : [this.room ? this.room.id : '', Validators.required],  
+      _id : [this.room ? this.room._id : '', Validators.required],  
       title  : [this.room ? this.room.title : '', [ Validators.required, Validators.minLength(4) ]  ],
       description : [this.room ? this.room.description : '', Validators.required ],
       language : [this.room ? this.room.language : '', Validators.required ],
@@ -128,27 +143,30 @@ export class UpdateroomComponent implements OnInit {
 
     upload1(data)
     {
-      //let data_obj = JSON.parse(image1.response);
-      //this.room.image1 = data.body;
-      console.log(this.room.id);
+      
 
       this.activatedRoute.params.subscribe( params =>
         {
           console.log(params);
           console.log(params.id);
-          return params.id;
-
+          let id = params['id'];
+ 
+        
   
 
+       
+      
 
-        });
 
-        var roomParams = this.room.id;
-        console.log(roomParams);
-        this.roomservice.saveImg(this.room.id).subscribe(
+       this.room._id = id;
+       console.log(this.room._id);
+        this.room.image1 =  data.body.image1;
+       console.log(this.room.image1);
+        this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
           response =>
             {
-              console.log("estoy en el response");
+              this.room.image1;    
+              
             },
             error =>
             {
@@ -157,68 +175,12 @@ export class UpdateroomComponent implements OnInit {
     
         );
 
-
-      console.log("llegue aki nada mas");
-      console.log('image1',this.room.image1);
-      // comprobar si existe una imagen previa
-     // console.log(this.token);
-     // let name = image1.file0;
-     // console.log(name);
-      //return  this.room.image1 = name;
-      console.log(this.room.image1);
-      // this.activatedRoute.params.subscribe( params =>
-      //   {
-      //     console.log(params);
-      //     //console.log(params.id);
-      //     this.roomservice.saveImg(this.params,this.room.image1).subscribe(
-      //       response =>
-      //       {
-      //         console.log("estoy en el response");
-      //       },
-      //       error =>
-      //       {
-      //         console.log(error);
-      //       }
+      }); 
       
-      //     );
-      //   });
-      // if(this.room.image1)
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image1).subscribe(
-      //     response =>
-      //     {
-      //       console.log("estoy en el response");
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
 
- 
-  }
-  
-  //    //let name = data.body.image;
-  //   console.log("aki");
-  //  // this.book.image = name;
-  //   console.log(this.room.image1);
-  //   this.roomservice.update(this.room).subscribe(
-  //     response =>
-  //     {
-        
-  //       this.getRoom();
-  
-  //     },
-  //     error =>
-  //     {
-  //       console.log(error);
-  //     }
-  //   )      
-    
-    
 
+    };
+  
 
   
 
@@ -261,34 +223,35 @@ export class UpdateroomComponent implements OnInit {
       });
     }
     
-
-    afuConfig: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-     // maxSize: '50' ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar'
+  
+ 
+          afuConfig: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
         
-      
-       // headers:{
-       //'Authorization': this.token,
-       
-       // }
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-     // attachPinText: ' Sube la imagen'
-    };
-
-
+     
    
-
+        
     onSubmit()
     {
     
