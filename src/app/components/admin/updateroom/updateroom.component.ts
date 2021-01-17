@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
@@ -17,26 +17,28 @@ import { Room } from '../../../models/room';
   templateUrl: './updateroom.component.html',
   styleUrls: ['./updateroom.component.scss']
 })
-export class UpdateroomComponent implements OnInit {
+export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   forma   : FormGroup;
   public room: Room;
  // public afuConfig;
  public rooms: Room[];
-  public url;
+  public url :String;
   public token;
   public data;
   public status;
   public id;
+  public _id;
   public idRoom;
   public resetVar;
   public imagePath;
-  public image1;
-  public image2;
+  public image1 :String;
+  public image2 :String;
   public image3;
   public image4;
   public image5;
-  public imgURL;
-  public params;
+  public imgURL: String;
+  public imgURL2 :String;
+  public params :any;
 
 
   constructor(
@@ -65,6 +67,7 @@ export class UpdateroomComponent implements OnInit {
   }
 
 
+
   avatar()
   {
     this.activatedRoute.params.subscribe( params =>
@@ -72,9 +75,9 @@ export class UpdateroomComponent implements OnInit {
       console.log(params);
       console.log(params.id);
       
-     let id = params['id'];
-     console.log(id);
-     return id;
+     let _id = params['id'];
+     console.log(_id);
+     return _id;
     });
     
   }
@@ -82,6 +85,15 @@ export class UpdateroomComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngOnChanges():void
+  {
+    this.getRoom();
+    this.upload2(this.room.image2);
+  }
+  ngDoCheck():void
+  {
+
+  }
   get titleNoValido() {
     return this.forma.get('title').invalid && this.forma.get('title').touched
     }
@@ -150,36 +162,54 @@ export class UpdateroomComponent implements OnInit {
           console.log(params);
           console.log(params.id);
           let id = params['id'];
- 
-        
+          this.room._id = id;
+          console.log(this.room._id);
+          this.room.image1 =  data.body.image1;
+          console.log(this.room.image1);
+          this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
   
-
-       
+        }); 
+    }
+    upload2(data)
+    {
       
 
-
-       this.room._id = id;
-       console.log(this.room._id);
-        this.room.image1 =  data.body.image1;
-       console.log(this.room.image1);
-        this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
-          response =>
-            {
-              this.room.image1;    
-              
-            },
-            error =>
-            {
-              console.log(error);
-            }
-    
-        );
-
-      }); 
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image2 =  data.body.image2;
+          console.log(this.room.image2);
+          this.roomservice.saveImg2(this.room._id,this.room.image2).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
       
-
-
-    };
+          );
+  
+        }); 
+    }
   
 
   
@@ -214,9 +244,11 @@ export class UpdateroomComponent implements OnInit {
               this.forma.controls['image4'].setValue(response.room.image4);
               this.forma.controls['image5'].setValue(response.room.image5);
               this.imgURL = response.room.image1;
+              this.imgURL2 = response.room.image2;
               
               //console.log(this.imgURL);
               console.log(this.room);
+              console.log(this.imgURL2);
             }
           }
         )
@@ -232,6 +264,31 @@ export class UpdateroomComponent implements OnInit {
             // maxSize: '50' ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+        
+     
+          afuConfig2: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar2'
               
             
               // headers:{

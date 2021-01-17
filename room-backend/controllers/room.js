@@ -546,6 +546,8 @@ var controller = {
 
         console.log('file_name', file_name);
 
+
+
         Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
             if (err || !roomUpdate) {
                 // Devolver respuesta
@@ -555,14 +557,48 @@ var controller = {
                 });
             }
         });
-        //var bookId = req.params.bookId;
-        //console.log('bookid', bookId);
+
+
+
+
 
 
         // Devolver respuesta
         return res.status(200).send({
             status: 'success',
             image1: file_name,
+
+
+        });
+
+
+    },
+    saveImg2: function(req, res) {
+        console.log("saveimage ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name2 = req.body.image2;
+        console.log('idroom', roomId);
+
+
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image2: file_name2 }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image2: file_name2,
 
         });
 
@@ -646,6 +682,89 @@ var controller = {
                 status: 'success',
                 image1: file_name,
 
+
+            });
+        }
+
+    },
+    uploadAvatar2: function(req, res) {
+        // Configurar el modulo multiparty (md) routes/user.js
+
+        // Recoger datos del usuario
+        var params = req.room;
+        console.log('params', params);
+
+        // Recoger el fichero de la petición
+        var file_name2 = 'imagen no subida...';
+
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: 'error',
+                message: file_name2
+            });
+        }
+
+        // Conseguir el nombre y la extension del archivo
+        // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+
+
+
+        console.log(file);
+        // var path = file
+        // var file_split = file_path.split('\\');
+
+        // ** Adventencia ** En linux o mac
+        var file_split = file.split('/');
+
+        // Nombre del archivo
+        var file_name2 = file_split[2];
+        console.log(file_name2);
+
+        // Extensión del archivo
+        var ext_split = file_name2.split('\.');
+        console.log(ext_split);
+        var file_ext = ext_split[1];
+        console.log(file_ext);
+
+
+        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+            fs.unlink(file, (err) => {
+
+                return res.status(400).send({
+                    status: 'error',
+                    message: 'La extensión del archivo no es valida.'
+                });
+
+            });
+
+        } else {
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
+
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
+            //var bookId = req.params.bookId;
+            //console.log('bookid', bookId);
+
+
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image2: file_name2,
+
             });
         }
 
@@ -684,6 +803,21 @@ var controller = {
 
     avatar: function(req, res) {
         var fileName = req.params.fileName;
+        var pathFile = './uploads/rooms/' + fileName;
+
+        fs.exists(pathFile, (exists) => {
+            if (exists) {
+                return res.sendFile(path.resolve(pathFile));
+            } else {
+                return res.status(404).send({
+                    message: 'La imagen no existe'
+                });
+            }
+        });
+    },
+
+    avatar2: function(req, res) {
+        var fileName = req.params.image2;
         var pathFile = './uploads/rooms/' + fileName;
 
         fs.exists(pathFile, (exists) => {
