@@ -76,6 +76,15 @@ export class RoomService {
 
     return this.http.post(this.url + 'saveimg2/', {'id': id, 'image2': image2},{headers: headers});
   }
+  saveImg3(id,image3):Observable<any>
+  {
+   // console.log(image1);
+   
+   //let params = JSON.stringify(image1);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+    return this.http.post(this.url + 'saveimg3/', {'id': id, 'image3': image3},{headers: headers});
+  }
 
   deleteAvatar(image1):Observable<any>
   {

@@ -38,6 +38,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   public image5;
   public imgURL: String;
   public imgURL2 :String;
+  public imgURL3 :String;
   public params :any;
 
 
@@ -210,6 +211,34 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         }); 
     }
+    upload3(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image3=  data.body.image3;
+          console.log(this.room.image3);
+          this.roomservice.saveImg3(this.room._id,this.room.image3).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
   
 
   
@@ -245,10 +274,12 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.forma.controls['image5'].setValue(response.room.image5);
               this.imgURL = response.room.image1;
               this.imgURL2 = response.room.image2;
+              this.imgURL3 = response.room.image3;
               
               //console.log(this.imgURL);
               console.log(this.room);
               console.log(this.imgURL2);
+              console.log('imag3',this.imgURL3);
             }
           }
         )
@@ -289,6 +320,30 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             // maxSize: '50' ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar2'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig3: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar3'
               
             
               // headers:{
