@@ -39,6 +39,8 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   public imgURL: String;
   public imgURL2 :String;
   public imgURL3 :String;
+  public imgURL4 :String;
+  public imgURL5 :String;
   public params :any;
 
 
@@ -239,6 +241,63 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         }); 
     }
+    upload4(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image4=  data.body.image4;
+          console.log(this.room.image4);
+          this.roomservice.saveImg4(this.room._id,this.room.image4).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
+  
+    upload5(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image5 =  data.body.image5;
+          console.log(this.room.image4);
+          this.roomservice.saveImg5(this.room._id,this.room.image5).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
   
 
   
@@ -275,11 +334,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.imgURL = response.room.image1;
               this.imgURL2 = response.room.image2;
               this.imgURL3 = response.room.image3;
+              this.imgURL4 = response.room.image4;
+              this.imgURL5 = response.room.image5;
               
               //console.log(this.imgURL);
               console.log(this.room);
               console.log(this.imgURL2);
               console.log('imag3',this.imgURL3);
+              console.log('img4',this.imgURL4);
             }
           }
         )
@@ -344,6 +406,54 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             // maxSize: '50' ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar3'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig4: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar4'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig5: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar5'
               
             
               // headers:{

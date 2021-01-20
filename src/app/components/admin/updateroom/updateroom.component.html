@@ -154,14 +154,25 @@
 
 
             <div class="col-sm-3">
-                <div class="" *ngIf="!imgURL2; else noimage2">
+                <div class="" *ngIf="!imgURL4; else noimage4">
                     <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
                 </div>
-                <ng-template #noimage2>
-                    <img class="img-list" src="{{ url + 'avatar/' + imgURL2 }}" alt=" ">
+                <ng-template #noimage4>
+                    <img class="img-list" src="{{ url + 'avatar/' + imgURL4 }}" alt=" ">
                 </ng-template>
-                <label class="col-2 col-form-label ">Imagen2</label>
-                <angular-file-uploader [config]="afuConfig2 " (ApiResponse)="upload2($event) ">
+                <label class="col-2 col-form-label ">Imagen4</label>
+                <angular-file-uploader [config]="afuConfig4" (ApiResponse)="upload4($event)">
+                </angular-file-uploader>
+            </div>
+            <div class="col-sm-3">
+                <div class="" *ngIf="!imgURL5; else noimage5">
+                    <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                </div>
+                <ng-template #noimage5>
+                    <img class="img-list" src="{{ url + 'avatar/' + imgURL5 }}" alt=" ">
+                </ng-template>
+                <label class="col-2 col-form-label ">Imagen4</label>
+                <angular-file-uploader [config]="afuConfig5" (ApiResponse)="upload5($event)">
                 </angular-file-uploader>
             </div>
 
