@@ -704,9 +704,7 @@ var controller = {
     uploadAvatar: function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
 
-        // Recoger datos del usuario
-        var params = req.room;
-        console.log('params', params);
+
 
         // Recoger el fichero de la petición
         var file_name = 'imagen no subida...';
@@ -1176,8 +1174,10 @@ var controller = {
 
     deleteAvatar: function(req, res) {
         var fileName = req.params.fileName;
-        console.log('file', fileName);
-        var pathFile = './uploads/rooms/' + fileName;
+        var file = fileName.replace(/['"]+/g, '');
+        console.log('file', file);
+        var pathFile = './uploads/rooms/' + file;
+        console.log(pathFile);
         fs.stat(pathFile, function(err, stats) {
             console.log(stats); //here we got all information of file in stats variable
 

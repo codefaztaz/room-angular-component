@@ -90,8 +90,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges():void
   {
-    this.getRoom();
-    this.upload2(this.room.image2);
+  
   }
   ngDoCheck():void
   {
@@ -158,8 +157,22 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     upload1(data)
     {
-      
+      if(this.room.image1)
+      {
+        this.roomservice.deleteAvatar(this.room.image1).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
 
+      console.log("estoy en el response");
       this.activatedRoute.params.subscribe( params =>
         {
           console.log(params);
@@ -168,7 +181,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.room._id = id;
           console.log(this.room._id);
           this.room.image1 =  data.body.image1;
-          console.log(this.room.image1);
+          console.log('import',this.room.image1);
           this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
             response =>
               {
@@ -184,7 +197,40 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           );
   
         }); 
-    }
+
+      }
+
+
+      
+
+
+      
+
+      // this.activatedRoute.params.subscribe( params =>
+      //   {
+      //     console.log(params);
+      //     console.log(params.id);
+      //     let id = params['id'];
+      //     this.room._id = id;
+      //     console.log(this.room._id);
+      //     this.room.image1 =  data.body.image1;
+      //     console.log(this.room.image1);
+      //     this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+      //       response =>
+      //         {
+      //           //this.room.image1;
+      //           this.getRoom();    
+                
+      //         },
+      //         error =>
+      //         {
+      //           console.log(error);
+      //         }
+      
+      //     );
+  
+      //   }); 
+    
     upload2(data)
     {
       
