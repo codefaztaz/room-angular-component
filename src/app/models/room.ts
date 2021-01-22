@@ -1,5 +1,5 @@
 export class Room{
-    id: any;
+    _id: any;
     constructor(
       public title: string,
       public description: string,

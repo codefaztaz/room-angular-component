@@ -538,18 +538,173 @@ var controller = {
 
     // },
     saveImg: function(req, res) {
-        var roomId = req.body._id;
+        console.log("saveimage ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name = req.body.image1;
+        console.log('idroom', roomId);
 
-        console.log('Idd', roomId);
+        console.log('file_name', file_name);
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+
+
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image1: file_name,
+
+
+        });
+
+
+    },
+    saveImg2: function(req, res) {
+        console.log("saveimage ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name2 = req.body.image2;
+        console.log('idroom', roomId);
+
+
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image2: file_name2 }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image2: file_name2,
+
+        });
+
+
+    },
+    saveImg3: function(req, res) {
+        console.log("saveimage3 ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name3 = req.body.image3;
+        console.log('idroom', roomId);
+        console.log('img3', file_name3);
+
+
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image3: file_name3 }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image3: file_name3,
+
+        });
+
+
+    },
+    saveImg4: function(req, res) {
+        console.log("saveimage3 ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name4 = req.body.image4;
+        console.log('idroom', roomId);
+        console.log('img3', file_name4);
+
+
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image4: file_name4 }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image4: file_name4,
+
+        });
+
+
+    },
+
+    saveImg5: function(req, res) {
+        console.log("saveimage3 ejecutandose");
+        var roomId = req.body.id;
+        console.log('id', roomId);
+        var file_name5 = req.body.image5;
+        console.log('idroom', roomId);
+        console.log('img3', file_name5);
+
+
+
+
+
+        Room.findOneAndUpdate({ _id: roomId }, { image5: file_name5 }, { new: true }, (err, roomUpdate) => {
+            if (err || !roomUpdate) {
+                // Devolver respuesta
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al guardar la habitación'
+                });
+            }
+        });
+
+
+        // Devolver respuesta
+        return res.status(200).send({
+            status: 'success',
+            image5: file_name5,
+
+        });
 
 
     },
     uploadAvatar: function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
 
-        // Recoger datos del usuario
-        var params = req.body._id;
-        console.log('params', params);
+
 
         // Recoger el fichero de la petición
         var file_name = 'imagen no subida...';
@@ -598,20 +753,21 @@ var controller = {
             });
 
         } else {
-            // Sacar el id del libro
-            // var roomId = req.room.sub;
-            var roomId = req.body._id;
-            console.log('idroom', roomId);
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
 
-            Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-                if (err || !roomUpdate) {
-                    // Devolver respuesta
-                    return res.status(500).send({
-                        status: 'error',
-                        message: 'Error al guardar la habitación'
-                    });
-                }
-            });
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
             //var bookId = req.params.bookId;
             //console.log('bookid', bookId);
 
@@ -621,9 +777,336 @@ var controller = {
                 status: 'success',
                 image1: file_name,
 
+
+            });
+        }
+
+    },
+    uploadAvatar2: function(req, res) {
+        // Configurar el modulo multiparty (md) routes/user.js
+
+        // Recoger datos del usuario
+        var params = req.room;
+        console.log('params', params);
+
+        // Recoger el fichero de la petición
+        var file_name2 = 'imagen no subida...';
+
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: 'error',
+                message: file_name2
+            });
+        }
+
+        // Conseguir el nombre y la extension del archivo
+        // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+
+
+
+        console.log(file);
+        // var path = file
+        // var file_split = file_path.split('\\');
+
+        // ** Adventencia ** En linux o mac
+        var file_split = file.split('/');
+
+        // Nombre del archivo
+        var file_name2 = file_split[2];
+        console.log(file_name2);
+
+        // Extensión del archivo
+        var ext_split = file_name2.split('\.');
+        console.log(ext_split);
+        var file_ext = ext_split[1];
+        console.log(file_ext);
+
+
+        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+            fs.unlink(file, (err) => {
+
+                return res.status(400).send({
+                    status: 'error',
+                    message: 'La extensión del archivo no es valida.'
+                });
+
             });
 
-            console.log(image1);
+        } else {
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
+
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
+            //var bookId = req.params.bookId;
+            //console.log('bookid', bookId);
+
+
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image2: file_name2,
+
+            });
+        }
+
+    },
+    uploadAvatar3: function(req, res) {
+        // Configurar el modulo multiparty (md) routes/user.js
+
+        // Recoger datos del usuario
+        var params = req.room;
+        console.log('params', params);
+
+        // Recoger el fichero de la petición
+        var file_name3 = 'imagen no subida...';
+
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: 'error',
+                message: file_name3
+            });
+        }
+
+        // Conseguir el nombre y la extension del archivo
+        // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+
+
+
+        console.log(file);
+        // var path = file
+        // var file_split = file_path.split('\\');
+
+        // ** Adventencia ** En linux o mac
+        var file_split = file.split('/');
+
+        // Nombre del archivo
+        var file_name3 = file_split[2];
+
+
+        // Extensión del archivo
+        var ext_split = file_name3.split('\.');
+        console.log(ext_split);
+        var file_ext = ext_split[1];
+        console.log(file_ext);
+
+
+        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+            fs.unlink(file, (err) => {
+
+                return res.status(400).send({
+                    status: 'error',
+                    message: 'La extensión del archivo no es valida.'
+                });
+
+            });
+
+        } else {
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
+
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
+            //var bookId = req.params.bookId;
+            //console.log('bookid', bookId);
+
+
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image3: file_name3,
+
+            });
+        }
+
+    },
+    uploadAvatar4: function(req, res) {
+        // Configurar el modulo multiparty (md) routes/user.js
+
+        // Recoger datos del usuario
+        var params = req.room;
+        console.log('params', params);
+
+        // Recoger el fichero de la petición
+        var file_name4 = 'imagen no subida...';
+
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: 'error',
+                message: file_name4
+            });
+        }
+
+        // Conseguir el nombre y la extension del archivo
+        // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+
+
+
+        console.log(file);
+        // var path = file
+        // var file_split = file_path.split('\\');
+
+        // ** Adventencia ** En linux o mac
+        var file_split = file.split('/');
+
+        // Nombre del archivo
+        var file_name4 = file_split[2];
+
+
+        // Extensión del archivo
+        var ext_split = file_name4.split('\.');
+        console.log(ext_split);
+        var file_ext = ext_split[1];
+        console.log(file_ext);
+
+
+        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+            fs.unlink(file, (err) => {
+
+                return res.status(400).send({
+                    status: 'error',
+                    message: 'La extensión del archivo no es valida.'
+                });
+
+            });
+
+        } else {
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
+
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
+            //var bookId = req.params.bookId;
+            //console.log('bookid', bookId);
+
+
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image4: file_name4,
+
+            });
+        }
+
+    },
+    uploadAvatar5: function(req, res) {
+        // Configurar el modulo multiparty (md) routes/user.js
+
+        // Recoger datos del usuario
+        var params = req.room;
+        console.log('params', params);
+
+        // Recoger el fichero de la petición
+        var file_name4 = 'imagen no subida...';
+
+
+        if (!req.files) {
+            return res.status(404).send({
+                status: 'error',
+                message: file_name5
+            });
+        }
+
+        // Conseguir el nombre y la extension del archivo
+        // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+
+
+
+        console.log(file);
+        // var path = file
+        // var file_split = file_path.split('\\');
+
+        // ** Adventencia ** En linux o mac
+        var file_split = file.split('/');
+
+        // Nombre del archivo
+        var file_name5 = file_split[2];
+
+
+        // Extensión del archivo
+        var ext_split = file_name5.split('\.');
+        console.log(ext_split);
+        var file_ext = ext_split[1];
+        console.log(file_ext);
+
+
+        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
+            fs.unlink(file, (err) => {
+
+                return res.status(400).send({
+                    status: 'error',
+                    message: 'La extensión del archivo no es valida.'
+                });
+
+            });
+
+        } else {
+            // //  Sacar el id del libro
+            // // var roomId = req.params.id;
+            // //var roomId = '5fcd1ecbced26017c19cbe34';
+            // var roomId = req.params._id;
+            // console.log('idroom', roomId);
+
+            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+            //     if (err || !roomUpdate) {
+            //         // Devolver respuesta
+            //         return res.status(500).send({
+            //             status: 'error',
+            //             message: 'Error al guardar la habitación'
+            //         });
+            //     }
+            // });
+            //var bookId = req.params.bookId;
+            //console.log('bookid', bookId);
+
+
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image5: file_name5,
+
+            });
         }
 
     },
@@ -674,10 +1157,27 @@ var controller = {
         });
     },
 
+    avatar2: function(req, res) {
+        var fileName = req.params.image2;
+        var pathFile = './uploads/rooms/' + fileName;
+
+        fs.exists(pathFile, (exists) => {
+            if (exists) {
+                return res.sendFile(path.resolve(pathFile));
+            } else {
+                return res.status(404).send({
+                    message: 'La imagen no existe'
+                });
+            }
+        });
+    },
+
     deleteAvatar: function(req, res) {
         var fileName = req.params.fileName;
-        console.log('file', fileName);
-        var pathFile = './uploads/rooms/' + fileName;
+        var file = fileName.replace(/['"]+/g, '');
+        console.log('file', file);
+        var pathFile = './uploads/rooms/' + file;
+        console.log(pathFile);
         fs.stat(pathFile, function(err, stats) {
             console.log(stats); //here we got all information of file in stats variable
 

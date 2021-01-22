@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
@@ -17,26 +17,31 @@ import { Room } from '../../../models/room';
   templateUrl: './updateroom.component.html',
   styleUrls: ['./updateroom.component.scss']
 })
-export class UpdateroomComponent implements OnInit {
+export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   forma   : FormGroup;
   public room: Room;
  // public afuConfig;
  public rooms: Room[];
-  public url;
+  public url :String;
   public token;
   public data;
   public status;
   public id;
+  public _id;
   public idRoom;
   public resetVar;
   public imagePath;
-  public image1;
-  public image2;
+  public image1 :String;
+  public image2 :String;
   public image3;
   public image4;
   public image5;
-  public imgURL;
-  public params;
+  public imgURL: String;
+  public imgURL2 :String;
+  public imgURL3 :String;
+  public imgURL4 :String;
+  public imgURL5 :String;
+  public params :any;
 
 
   constructor(
@@ -60,13 +65,37 @@ export class UpdateroomComponent implements OnInit {
     this.url = globalroom.url;
     this.getRoom();
 
+    this.avatar();
+    
+  }
 
+
+
+  avatar()
+  {
+    this.activatedRoute.params.subscribe( params =>
+    {
+      console.log(params);
+      console.log(params.id);
+      
+     let _id = params['id'];
+     console.log(_id);
+     return _id;
+    });
     
   }
 
   ngOnInit(): void {
   }
 
+  ngOnChanges():void
+  {
+  
+  }
+  ngDoCheck():void
+  {
+
+  }
   get titleNoValido() {
     return this.forma.get('title').invalid && this.forma.get('title').touched
     }
@@ -106,13 +135,14 @@ export class UpdateroomComponent implements OnInit {
     crearFormulario() 
     {
       this.forma = this.fb.group({
-      _id : [this.room ? this.room.id : '', Validators.required],  
+      _id : [this.room ? this.room._id : '', Validators.required],  
       title  : [this.room ? this.room.title : '', [ Validators.required, Validators.minLength(4) ]  ],
       description : [this.room ? this.room.description : '', Validators.required ],
       language : [this.room ? this.room.language : '', Validators.required ],
       roomtype : [this.room ? this.room.roomtype : '', Validators.required ],
       mapgoogle : [this.room ? this.room.mapgoogle : '', Validators.required ],
       price : [this.room ? this.room.price : '', Validators.required ],
+      availability : [this.room ? this.room.availability : '', Validators.required ],
       reference : [this.room ? this.room.reference : '', Validators.required ],
       location : [this.room ? this.room.location : '', Validators.required ],
       image1 : [this.room ? this.room.image1 : '', Validators.required ],
@@ -128,66 +158,12 @@ export class UpdateroomComponent implements OnInit {
 
     upload1(data)
     {
-      //let data_obj = JSON.parse(image1.response);
-      //this.room.image1 = data.body;
-      console.log(this.room.id);
-
-      this.activatedRoute.params.subscribe( params =>
-        {
-          console.log(params);
-          console.log(params.id);
-          return params.id;
-
-  
-
-
-        });
-
-        var roomParams = this.room.id;
-        console.log(roomParams);
-        this.roomservice.saveImg(this.room.id).subscribe(
-          response =>
-            {
-              console.log("estoy en el response");
-            },
-            error =>
-            {
-              console.log(error);
-            }
-    
-        );
-
-
-      console.log("llegue aki nada mas");
-      console.log('image1',this.room.image1);
-      // comprobar si existe una imagen previa
-     // console.log(this.token);
-     // let name = image1.file0;
-     // console.log(name);
-      //return  this.room.image1 = name;
-      console.log(this.room.image1);
-      // this.activatedRoute.params.subscribe( params =>
-      //   {
-      //     console.log(params);
-      //     //console.log(params.id);
-      //     this.roomservice.saveImg(this.params,this.room.image1).subscribe(
-      //       response =>
-      //       {
-      //         console.log("estoy en el response");
-      //       },
-      //       error =>
-      //       {
-      //         console.log(error);
-      //       }
-      
-      //     );
-      //   });
       // if(this.room.image1)
       // {
       //   this.roomservice.deleteAvatar(this.room.image1).subscribe(
       //     response =>
       //     {
-      //       console.log("estoy en el response");
+              
       //     },
       //     error =>
       //     {
@@ -197,28 +173,179 @@ export class UpdateroomComponent implements OnInit {
       //   );
       // }
 
- 
-  }
+      console.log("estoy en el response");
+      this.activatedRoute.params.subscribe( params =>
+        {
+          console.log(params);
+          console.log(params.id);
+          let id = params['id'];
+          this.room._id = id;
+          console.log(this.room._id);
+          this.room.image1 =  data.body.image1;
+          console.log('import',this.room.image1);
+          this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
   
-  //    //let name = data.body.image;
-  //   console.log("aki");
-  //  // this.book.image = name;
-  //   console.log(this.room.image1);
-  //   this.roomservice.update(this.room).subscribe(
-  //     response =>
-  //     {
-        
-  //       this.getRoom();
-  
-  //     },
-  //     error =>
-  //     {
-  //       console.log(error);
-  //     }
-  //   )      
-    
-    
+        }); 
 
+      }
+
+
+      
+
+
+      
+
+      // this.activatedRoute.params.subscribe( params =>
+      //   {
+      //     console.log(params);
+      //     console.log(params.id);
+      //     let id = params['id'];
+      //     this.room._id = id;
+      //     console.log(this.room._id);
+      //     this.room.image1 =  data.body.image1;
+      //     console.log(this.room.image1);
+      //     this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+      //       response =>
+      //         {
+      //           //this.room.image1;
+      //           this.getRoom();    
+                
+      //         },
+      //         error =>
+      //         {
+      //           console.log(error);
+      //         }
+      
+      //     );
+  
+      //   }); 
+    
+    upload2(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image2 =  data.body.image2;
+          console.log(this.room.image2);
+          this.roomservice.saveImg2(this.room._id,this.room.image2).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
+    upload3(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image3=  data.body.image3;
+          console.log(this.room.image3);
+          this.roomservice.saveImg3(this.room._id,this.room.image3).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
+    upload4(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image4=  data.body.image4;
+          console.log(this.room.image4);
+          this.roomservice.saveImg4(this.room._id,this.room.image4).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
+  
+    upload5(data)
+    {
+      
+
+      this.activatedRoute.params.subscribe( params =>
+        {
+        
+          let id = params['id'];
+          
+          this.room._id = id;
+          this.room.image5 =  data.body.image5;
+          console.log(this.room.image4);
+          this.roomservice.saveImg5(this.room._id,this.room.image5).subscribe(
+            response =>
+              {
+                //this.room.image1;
+                this.getRoom();    
+                
+              },
+              error =>
+              {
+                console.log(error);
+              }
+      
+          );
+  
+        }); 
+    }
+  
 
   
 
@@ -244,6 +371,7 @@ export class UpdateroomComponent implements OnInit {
               this.forma.controls['roomtype'].setValue(response.room.roomtype);
               this.forma.controls['mapgoogle'].setValue(response.room.mapgoogle);
               this.forma.controls['price'].setValue(response.room.price);
+              this.forma.controls['availability'].setValue(response.room.availability);
               this.forma.controls['reference'].setValue(response.room.reference);
               this.forma.controls['location'].setValue(response.room.location);
               this.forma.controls['image1'].setValue(response.room.image1);
@@ -252,43 +380,148 @@ export class UpdateroomComponent implements OnInit {
               this.forma.controls['image4'].setValue(response.room.image4);
               this.forma.controls['image5'].setValue(response.room.image5);
               this.imgURL = response.room.image1;
+              this.imgURL2 = response.room.image2;
+              this.imgURL3 = response.room.image3;
+              this.imgURL4 = response.room.image4;
+              this.imgURL5 = response.room.image5;
               
               //console.log(this.imgURL);
               console.log(this.room);
+              console.log(this.imgURL2);
+              console.log('imag3',this.imgURL3);
+              console.log('img4',this.imgURL4);
             }
           }
         )
       });
     }
     
-
-    afuConfig: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-     // maxSize: '50' ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar'
+  
+ 
+          afuConfig: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
         
-      
-       // headers:{
-       //'Authorization': this.token,
-       
-       // }
+     
+          afuConfig2: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar2'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig3: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar3'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig4: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar4'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig5: AngularFileUploaderConfig = {
+            
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            // maxSize: '50' ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar5'
+              
+            
+              // headers:{
+              //'Authorization': this.token,
+              
+              // }
+              
+            },
+          
+          
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
         
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-     // attachPinText: ' Sube la imagen'
-    };
-
-
+     
    
-
+        
     onSubmit()
     {
     
