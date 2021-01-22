@@ -142,6 +142,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       roomtype : [this.room ? this.room.roomtype : '', Validators.required ],
       mapgoogle : [this.room ? this.room.mapgoogle : '', Validators.required ],
       price : [this.room ? this.room.price : '', Validators.required ],
+      availability : [this.room ? this.room.availability : '', Validators.required ],
       reference : [this.room ? this.room.reference : '', Validators.required ],
       location : [this.room ? this.room.location : '', Validators.required ],
       image1 : [this.room ? this.room.image1 : '', Validators.required ],
@@ -157,20 +158,20 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     upload1(data)
     {
-      if(this.room.image1)
-      {
-        this.roomservice.deleteAvatar(this.room.image1).subscribe(
-          response =>
-          {
+      // if(this.room.image1)
+      // {
+      //   this.roomservice.deleteAvatar(this.room.image1).subscribe(
+      //     response =>
+      //     {
               
-          },
-          error =>
-          {
-            console.log(error);
-          }
+      //     },
+      //     error =>
+      //     {
+      //       console.log(error);
+      //     }
   
-        );
-      }
+      //   );
+      // }
 
       console.log("estoy en el response");
       this.activatedRoute.params.subscribe( params =>
@@ -370,6 +371,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.forma.controls['roomtype'].setValue(response.room.roomtype);
               this.forma.controls['mapgoogle'].setValue(response.room.mapgoogle);
               this.forma.controls['price'].setValue(response.room.price);
+              this.forma.controls['availability'].setValue(response.room.availability);
               this.forma.controls['reference'].setValue(response.room.reference);
               this.forma.controls['location'].setValue(response.room.location);
               this.forma.controls['image1'].setValue(response.room.image1);
