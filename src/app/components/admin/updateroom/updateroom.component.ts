@@ -158,21 +158,6 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     upload1(data)
     {
-      // if(this.room.image1)
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image1).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
-
       console.log("estoy en el response");
       this.activatedRoute.params.subscribe( params =>
         {
@@ -182,7 +167,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.room._id = id;
           console.log(this.room._id);
           this.room.image1 =  data.body.image1;
+          this.room.image2 =  data.body.image2;
+          this.room.image3 =  data.body.image3;
+          this.room.image4 =  data.body.image4;
+          this.room.image5 =  data.body.image5;
           console.log('import',this.room.image1);
+     
+          if(data.body.image1)
+          {
           this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
             response =>
               {
@@ -196,159 +188,76 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               }
       
           );
-  
-        }); 
+            }
+            if(data.body.image2)
+            {
+            this.roomservice.saveImg2(this.room._id,this.room.image2).subscribe(
+              response =>
+                {
+                  //this.room.image1;
+                  this.getRoom();    
+                  
+                },
+                error =>
+                {
+                  console.log(error);
+                }
+        
+            );
+              }
 
+              if(data.body.image3)
+              {
+              this.roomservice.saveImg3(this.room._id,this.room.image3).subscribe(
+                response =>
+                  {
+                    //this.room.image1;
+                    this.getRoom();    
+                    
+                  },
+                  error =>
+                  {
+                    console.log(error);
+                  }
+          
+              );
+                }
+                if(data.body.image4)
+                {
+                this.roomservice.saveImg4(this.room._id,this.room.image4).subscribe(
+                  response =>
+                    {
+                      //this.room.image1;
+                      this.getRoom();    
+                      
+                    },
+                    error =>
+                    {
+                      console.log(error);
+                    }
+            
+                );
+                  }
+                  if(data.body.image5)
+                  {
+                  this.roomservice.saveImg5(this.room._id,this.room.image5).subscribe(
+                    response =>
+                      {
+                        //this.room.image1;
+                        this.getRoom();    
+                        
+                      },
+                      error =>
+                      {
+                        console.log(error);
+                      }
+              
+                  );
+                    }
+        }); 
+      
+        
       }
-
-
-      
-
-
-      
-
-      // this.activatedRoute.params.subscribe( params =>
-      //   {
-      //     console.log(params);
-      //     console.log(params.id);
-      //     let id = params['id'];
-      //     this.room._id = id;
-      //     console.log(this.room._id);
-      //     this.room.image1 =  data.body.image1;
-      //     console.log(this.room.image1);
-      //     this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
-      //       response =>
-      //         {
-      //           //this.room.image1;
-      //           this.getRoom();    
-                
-      //         },
-      //         error =>
-      //         {
-      //           console.log(error);
-      //         }
-      
-      //     );
-  
-      //   }); 
-    
-    upload2(data)
-    {
-      
-
-      this.activatedRoute.params.subscribe( params =>
-        {
-        
-          let id = params['id'];
-          
-          this.room._id = id;
-          this.room.image2 =  data.body.image2;
-          console.log(this.room.image2);
-          this.roomservice.saveImg2(this.room._id,this.room.image2).subscribe(
-            response =>
-              {
-                //this.room.image1;
-                this.getRoom();    
-                
-              },
-              error =>
-              {
-                console.log(error);
-              }
-      
-          );
-  
-        }); 
-    }
-    upload3(data)
-    {
-      
-
-      this.activatedRoute.params.subscribe( params =>
-        {
-        
-          let id = params['id'];
-          
-          this.room._id = id;
-          this.room.image3=  data.body.image3;
-          console.log(this.room.image3);
-          this.roomservice.saveImg3(this.room._id,this.room.image3).subscribe(
-            response =>
-              {
-                //this.room.image1;
-                this.getRoom();    
-                
-              },
-              error =>
-              {
-                console.log(error);
-              }
-      
-          );
-  
-        }); 
-    }
-    upload4(data)
-    {
-      
-
-      this.activatedRoute.params.subscribe( params =>
-        {
-        
-          let id = params['id'];
-          
-          this.room._id = id;
-          this.room.image4=  data.body.image4;
-          console.log(this.room.image4);
-          this.roomservice.saveImg4(this.room._id,this.room.image4).subscribe(
-            response =>
-              {
-                //this.room.image1;
-                this.getRoom();    
-                
-              },
-              error =>
-              {
-                console.log(error);
-              }
-      
-          );
-  
-        }); 
-    }
-  
-    upload5(data)
-    {
-      
-
-      this.activatedRoute.params.subscribe( params =>
-        {
-        
-          let id = params['id'];
-          
-          this.room._id = id;
-          this.room.image5 =  data.body.image5;
-          console.log(this.room.image4);
-          this.roomservice.saveImg5(this.room._id,this.room.image5).subscribe(
-            response =>
-              {
-                //this.room.image1;
-                this.getRoom();    
-                
-              },
-              error =>
-              {
-                console.log(error);
-              }
-      
-          );
-  
-        }); 
-    }
-  
-
-  
-
     getRoom()
     {
       this.route.params.subscribe(params =>{

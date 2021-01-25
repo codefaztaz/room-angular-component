@@ -372,73 +372,6 @@ var controller = {
         // Recoger datos del usuario
         var params = req.body;
         console.log('params', params);
-
-
-        // Validar datos
-        // try {
-        //     var validate_title = !validator.isEmpty(params.title);
-        //     var validate_description = !validator.isEmpty(params.description);
-        //     var validate_author = !validator.isEmpty(params.author);
-        //     var validate_price = !validator.isEmpty(params.price);
-        //     var validate_stock = !validator.isEmpty(params.stock);
-        // } catch (err) {
-        //     return res.status(200).send({
-        //         message: "Faltan datos por enviar"
-        //     });
-        // }
-
-        // Eliminar propiedades innecesarias
-        //delete params.password;
-
-        //var bookId = req.book.sub;
-
-        //console.log(userId)
-
-        // Comprobar si el email es unico
-        // if(req.user.email != params.email){
-        //
-        // 	User.findOne({email: params.email.toLowerCase()}, (err, user) => {
-        //
-        // 		if(err){
-        // 			return res.status(500).send({
-        // 				message: "Error al intentar identificarse"
-        // 			});
-        // 		}
-        //
-        // 		if(user && user.email == params.email){
-        // 			return res.status(200).send({
-        // 				message: "El email no puede ser modificado"
-        // 			});
-        // 		}else{
-        // 			// Buscar y actualizar documento
-        // 			Book.findOneAndUpdate({_id: userId}, params, {new:true}, (err, bookUpdated) => {
-        //
-        // 				if(err){
-        // 					return res.status(500).send({
-        // 						status: 'error',
-        // 						message: 'Error al actualizar libro'
-        // 					});
-        // 				}
-        //
-        // 				if(!userUpdated){
-        // 					return res.status(200).send({
-        // 						status: 'error',
-        // 						message: 'No se a actualizado el libro'
-        // 					});
-        // 				}
-        //
-        // 				// Devolver respuesta
-        // 				return res.status(200).send({
-        // 						status: 'success',
-        // 						user: bookUpdated
-        // 					});
-        //
-        // 			});
-        // 		}
-        //
-        // 	});
-        //
-        // }else{
         var roomId = req.body._id;
         console.log('id', roomId);
         // Buscar y actualizar documento
@@ -470,237 +403,114 @@ var controller = {
     },
 
 
-    // uploadAvatar: function(req, res) {
-    //     // Configurar el modulo multiparty (md) routes/user.js
-
-    //     // Recoger el fichero de la petición
-    //     var file_name = 'imagen no subida...';
-
-
-    //     if (!req.files) {
-    //         return res.status(404).send({
-    //             status: 'error',
-    //             message: file_name
-    //         });
-    //     }
-
-    //     // Conseguir el nombre y la extension del archivo
-    //     // var file_path = req.params.file0.path;
-    //     var file = req.files.file0.path;
-
-
-    //     console.log(file);
-    //     // var path = file
-    //     // var file_split = file_path.split('\\');
-
-    //     // ** Adventencia ** En linux o mac
-    //     var file_split = file.split('/');
-
-    //     // Nombre del archivo
-    //     var file_name = file_split[2];
-    //     console.log(file_name);
-
-    //     // Extensión del archivo
-    //     var ext_split = file_name.split('\.');
-    //     console.log(ext_split);
-    //     var file_ext = ext_split[1];
-    //     console.log(file_ext);
-
-
-    //     // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
-    //     if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
-    //         fs.unlink(file, (err) => {
-
-    //             return res.status(200).send({
-    //                 status: 'error',
-    //                 message: 'La extensión del archivo no es valida.'
-    //             });
-
-    //         });
-
-    //     } else {
-    //         // Sacar el id del libro
-    //         var params = req.files.file0.id;
-    //         console.log(file_name);
-    //         var bookId = req.params.bookId;
-    //         console.log('bookid', bookId);
-
-
-    //         // Devolver respuesta
-    //         return res.status(200).send({
-    //             status: 'success',
-    //             image: file_name,
-
-    //         });
-
-    //         console.log(image);
-    //     }
-
-    // },
     saveImg: function(req, res) {
         console.log("saveimage ejecutandose");
         var roomId = req.body.id;
         console.log('id', roomId);
         var file_name = req.body.image1;
-        console.log('idroom', roomId);
+        var file_name2 = req.body.image2;
+        console.log('file2', file_name2);
+        console.log('file', file_name);
+
+
 
         console.log('file_name', file_name);
+        console.log('file_name2', file_name2);
+
+        if (file_name) {
+            Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
+                if (err || !roomUpdate) {
+                    // Devolver respuesta
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al guardar la habitación'
+                    });
+                }
+            });
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image1: file_name,
 
 
-
-        Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            if (err || !roomUpdate) {
-                // Devolver respuesta
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al guardar la habitación'
-                });
-            }
-        });
-
-
-
-
-
-
-        // Devolver respuesta
-        return res.status(200).send({
-            status: 'success',
-            image1: file_name,
+            });
+        } else if (file_name2) {
+            Room.findOneAndUpdate({ _id: roomId }, { image2: file_name2 }, { new: true }, (err, roomUpdate) => {
+                if (err || !roomUpdate) {
+                    // Devolver respuesta
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al guardar la habitación'
+                    });
+                }
+            });
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image2: file_name2,
 
 
-        });
+            });
+        } else if (file_name3) {
+            Room.findOneAndUpdate({ _id: roomId }, { image3: file_name3 }, { new: true }, (err, roomUpdate) => {
+                if (err || !roomUpdate) {
+                    // Devolver respuesta
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al guardar la habitación'
+                    });
+                }
+            });
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image3: file_name3,
 
 
-    },
-    saveImg2: function(req, res) {
-        console.log("saveimage ejecutandose");
-        var roomId = req.body.id;
-        console.log('id', roomId);
-        var file_name2 = req.body.image2;
-        console.log('idroom', roomId);
+            });
+        } else if (file_name4) {
+            Room.findOneAndUpdate({ _id: roomId }, { image4: file_name4 }, { new: true }, (err, roomUpdate) => {
+                if (err || !roomUpdate) {
+                    // Devolver respuesta
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al guardar la habitación'
+                    });
+                }
+            });
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image4: file_name4,
 
 
+            });
+        } else if (file_name5) {
+            Room.findOneAndUpdate({ _id: roomId }, { image5: file_name5 }, { new: true }, (err, roomUpdate) => {
+                if (err || !roomUpdate) {
+                    // Devolver respuesta
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al guardar la habitación'
+                    });
+                }
+            });
+            // Devolver respuesta
+            return res.status(200).send({
+                status: 'success',
+                image5: file_name5,
 
 
-
-        Room.findOneAndUpdate({ _id: roomId }, { image2: file_name2 }, { new: true }, (err, roomUpdate) => {
-            if (err || !roomUpdate) {
-                // Devolver respuesta
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al guardar la habitación'
-                });
-            }
-        });
-
-
-        // Devolver respuesta
-        return res.status(200).send({
-            status: 'success',
-            image2: file_name2,
-
-        });
-
-
-    },
-    saveImg3: function(req, res) {
-        console.log("saveimage3 ejecutandose");
-        var roomId = req.body.id;
-        console.log('id', roomId);
-        var file_name3 = req.body.image3;
-        console.log('idroom', roomId);
-        console.log('img3', file_name3);
-
-
-
-
-
-        Room.findOneAndUpdate({ _id: roomId }, { image3: file_name3 }, { new: true }, (err, roomUpdate) => {
-            if (err || !roomUpdate) {
-                // Devolver respuesta
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al guardar la habitación'
-                });
-            }
-        });
-
-
-        // Devolver respuesta
-        return res.status(200).send({
-            status: 'success',
-            image3: file_name3,
-
-        });
-
-
-    },
-    saveImg4: function(req, res) {
-        console.log("saveimage3 ejecutandose");
-        var roomId = req.body.id;
-        console.log('id', roomId);
-        var file_name4 = req.body.image4;
-        console.log('idroom', roomId);
-        console.log('img3', file_name4);
+            });
+        }
 
 
 
 
-
-        Room.findOneAndUpdate({ _id: roomId }, { image4: file_name4 }, { new: true }, (err, roomUpdate) => {
-            if (err || !roomUpdate) {
-                // Devolver respuesta
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al guardar la habitación'
-                });
-            }
-        });
-
-
-        // Devolver respuesta
-        return res.status(200).send({
-            status: 'success',
-            image4: file_name4,
-
-        });
-
-
-    },
-
-    saveImg5: function(req, res) {
-        console.log("saveimage3 ejecutandose");
-        var roomId = req.body.id;
-        console.log('id', roomId);
-        var file_name5 = req.body.image5;
-        console.log('idroom', roomId);
-        console.log('img3', file_name5);
-
-
-
-
-
-        Room.findOneAndUpdate({ _id: roomId }, { image5: file_name5 }, { new: true }, (err, roomUpdate) => {
-            if (err || !roomUpdate) {
-                // Devolver respuesta
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al guardar la habitación'
-                });
-            }
-        });
-
-
-        // Devolver respuesta
-        return res.status(200).send({
-            status: 'success',
-            image5: file_name5,
-
-        });
 
 
     },
+
     uploadAvatar: function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
 
@@ -756,23 +566,6 @@ var controller = {
             });
 
         } else {
-            // //  Sacar el id del libro
-            // // var roomId = req.params.id;
-            // //var roomId = '5fcd1ecbced26017c19cbe34';
-            // var roomId = req.params._id;
-            // console.log('idroom', roomId);
-
-            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            //     if (err || !roomUpdate) {
-            //         // Devolver respuesta
-            //         return res.status(500).send({
-            //             status: 'error',
-            //             message: 'Error al guardar la habitación'
-            //         });
-            //     }
-            // });
-            //var bookId = req.params.bookId;
-            //console.log('bookid', bookId);
 
             var afuimage = req.query.image;
             console.log('afu', afuimage);
@@ -804,7 +597,7 @@ var controller = {
             }
 
 
-            // Devolver respuesta
+
 
         }
 

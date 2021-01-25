@@ -132,7 +132,7 @@
                         <img class="img-list" src="{{ url + 'avatar/' + imgURL2 }}" alt=" ">
                     </ng-template>
                     <label class="col-2 col-form-label ">Imagen2</label>
-                    <angular-file-uploader [config]="afuConfig2 " (ApiResponse)="upload2($event) ">
+                    <angular-file-uploader [config]="afuConfig2 " (ApiResponse)="upload1($event) ">
                     </angular-file-uploader>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                     <img class="img-list" src="{{ url + 'avatar/' + imgURL3 }}" alt="">
                 </ng-template>
                 <label class="col-2 col-form-label">Imagen3</label>
-                <angular-file-uploader [config]="afuConfig3" (ApiResponse)="upload3($event)">
+                <angular-file-uploader [config]="afuConfig3" (ApiResponse)="upload1($event)">
                 </angular-file-uploader>
             </div>
 
@@ -160,7 +160,7 @@
                     <img class="img-list" src="{{ url + 'avatar/' + imgURL4 }}" alt=" ">
                 </ng-template>
                 <label class="col-2 col-form-label ">Imagen4</label>
-                <angular-file-uploader [config]="afuConfig4" (ApiResponse)="upload4($event)">
+                <angular-file-uploader [config]="afuConfig4" (ApiResponse)="upload1($event)">
                 </angular-file-uploader>
             </div>
             <div class="col-sm-3">
@@ -171,7 +171,7 @@
                     <img class="img-list" src="{{ url + 'avatar/' + imgURL5 }}" alt=" ">
                 </ng-template>
                 <label class="col-2 col-form-label ">Imagen5</label>
-                <angular-file-uploader [config]="afuConfig5" (ApiResponse)="upload5($event)">
+                <angular-file-uploader [config]="afuConfig5" (ApiResponse)="upload1($event)">
                 </angular-file-uploader>
             </div>
 

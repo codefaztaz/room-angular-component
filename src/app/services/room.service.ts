@@ -74,7 +74,7 @@ export class RoomService {
    //let params = JSON.stringify(image1);
     let headers = new HttpHeaders().set('Content-Type','application/json');
 
-    return this.http.post(this.url + 'saveimg2/', {'id': id, 'image2': image2},{headers: headers});
+    return this.http.post(this.url + 'saveimg/', {'id': id, 'image2': image2},{headers: headers});
   }
   saveImg3(id,image3):Observable<any>
   {
