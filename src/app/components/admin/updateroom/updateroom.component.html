@@ -41,24 +41,20 @@
 
         <div class="form-group row">
             <label class="col-2 col-form-label">language</label>
-            <div class="col">
-
-                <input class="form-control" type="text" placeholder="language" formControlName="language" [class.is-invalid]="languageNoValido">
-                <small *ngIf="languageNoValido" class="text-danger">
-          write the name
-        </small>
-            </div>
+            <select class="form-control" formControlName="language" id="language">
+                <option>english</option>
+                <option>spanish</option>
+              
+            </select>
         </div>
 
         <div class="form-group row">
             <label class="col-2 col-form-label">roomtype</label>
-            <div class="col">
-
-                <input class="form-control" type="text" placeholder="roomtype" formControlName="roomtype" [class.is-invalid]="roomtypeNoValido">
-                <small *ngIf="roomtypeNoValido" class="text-danger">
-                Write the phone number
-        </small>
-            </div>
+            <select class="form-control" formControlName="roomtype" id="language">
+                <option>double</option>
+                <option>single</option>
+              
+            </select>
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Availability</label>

@@ -23,7 +23,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
  // public afuConfig;
  public rooms: Room[];
   public url :String;
-  public token;
+  public token :any;
   public data;
   public status;
   public id;
@@ -33,9 +33,9 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   public imagePath;
   public image1 :String;
   public image2 :String;
-  public image3;
-  public image4;
-  public image5;
+  public image3 :String;
+  public image4 :String;
+  public image5 :String;
   public imgURL: String;
   public imgURL2 :String;
   public imgURL3 :String;
