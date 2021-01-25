@@ -721,6 +721,9 @@ var controller = {
         // var file = req.params.file0.path;
         var file = req.files.file0.path;
 
+        var identifier = req.params.image;
+        console.log('identifier', identifier);
+
 
 
         console.log(file);
@@ -771,345 +774,42 @@ var controller = {
             //var bookId = req.params.bookId;
             //console.log('bookid', bookId);
 
-
-            // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image1: file_name,
-
-
-            });
-        }
-
-    },
-    uploadAvatar2: function(req, res) {
-        // Configurar el modulo multiparty (md) routes/user.js
-
-        // Recoger datos del usuario
-        var params = req.room;
-        console.log('params', params);
-
-        // Recoger el fichero de la petición
-        var file_name2 = 'imagen no subida...';
-
-
-        if (!req.files) {
-            return res.status(404).send({
-                status: 'error',
-                message: file_name2
-            });
-        }
-
-        // Conseguir el nombre y la extension del archivo
-        // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-
-
-
-        console.log(file);
-        // var path = file
-        // var file_split = file_path.split('\\');
-
-        // ** Adventencia ** En linux o mac
-        var file_split = file.split('/');
-
-        // Nombre del archivo
-        var file_name2 = file_split[2];
-        console.log(file_name2);
-
-        // Extensión del archivo
-        var ext_split = file_name2.split('\.');
-        console.log(ext_split);
-        var file_ext = ext_split[1];
-        console.log(file_ext);
-
-
-        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
-        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
-            fs.unlink(file, (err) => {
-
-                return res.status(400).send({
-                    status: 'error',
-                    message: 'La extensión del archivo no es valida.'
+            var afuimage = req.query.image;
+            console.log('afu', afuimage);
+            if (afuimage == 1) {
+                return res.status(200).send({
+                    status: 'success',
+                    image1: file_name,
                 });
-
-            });
-
-        } else {
-            // //  Sacar el id del libro
-            // // var roomId = req.params.id;
-            // //var roomId = '5fcd1ecbced26017c19cbe34';
-            // var roomId = req.params._id;
-            // console.log('idroom', roomId);
-
-            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            //     if (err || !roomUpdate) {
-            //         // Devolver respuesta
-            //         return res.status(500).send({
-            //             status: 'error',
-            //             message: 'Error al guardar la habitación'
-            //         });
-            //     }
-            // });
-            //var bookId = req.params.bookId;
-            //console.log('bookid', bookId);
-
-
-            // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image2: file_name2,
-
-            });
-        }
-
-    },
-    uploadAvatar3: function(req, res) {
-        // Configurar el modulo multiparty (md) routes/user.js
-
-        // Recoger datos del usuario
-        var params = req.room;
-        console.log('params', params);
-
-        // Recoger el fichero de la petición
-        var file_name3 = 'imagen no subida...';
-
-
-        if (!req.files) {
-            return res.status(404).send({
-                status: 'error',
-                message: file_name3
-            });
-        }
-
-        // Conseguir el nombre y la extension del archivo
-        // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-
-
-
-        console.log(file);
-        // var path = file
-        // var file_split = file_path.split('\\');
-
-        // ** Adventencia ** En linux o mac
-        var file_split = file.split('/');
-
-        // Nombre del archivo
-        var file_name3 = file_split[2];
-
-
-        // Extensión del archivo
-        var ext_split = file_name3.split('\.');
-        console.log(ext_split);
-        var file_ext = ext_split[1];
-        console.log(file_ext);
-
-
-        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
-        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
-            fs.unlink(file, (err) => {
-
-                return res.status(400).send({
-                    status: 'error',
-                    message: 'La extensión del archivo no es valida.'
+            } else if (afuimage == 2) {
+                return res.status(200).send({
+                    status: 'success',
+                    image2: file_name,
                 });
-
-            });
-
-        } else {
-            // //  Sacar el id del libro
-            // // var roomId = req.params.id;
-            // //var roomId = '5fcd1ecbced26017c19cbe34';
-            // var roomId = req.params._id;
-            // console.log('idroom', roomId);
-
-            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            //     if (err || !roomUpdate) {
-            //         // Devolver respuesta
-            //         return res.status(500).send({
-            //             status: 'error',
-            //             message: 'Error al guardar la habitación'
-            //         });
-            //     }
-            // });
-            //var bookId = req.params.bookId;
-            //console.log('bookid', bookId);
-
-
-            // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image3: file_name3,
-
-            });
-        }
-
-    },
-    uploadAvatar4: function(req, res) {
-        // Configurar el modulo multiparty (md) routes/user.js
-
-        // Recoger datos del usuario
-        var params = req.room;
-        console.log('params', params);
-
-        // Recoger el fichero de la petición
-        var file_name4 = 'imagen no subida...';
-
-
-        if (!req.files) {
-            return res.status(404).send({
-                status: 'error',
-                message: file_name4
-            });
-        }
-
-        // Conseguir el nombre y la extension del archivo
-        // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-
-
-
-        console.log(file);
-        // var path = file
-        // var file_split = file_path.split('\\');
-
-        // ** Adventencia ** En linux o mac
-        var file_split = file.split('/');
-
-        // Nombre del archivo
-        var file_name4 = file_split[2];
-
-
-        // Extensión del archivo
-        var ext_split = file_name4.split('\.');
-        console.log(ext_split);
-        var file_ext = ext_split[1];
-        console.log(file_ext);
-
-
-        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
-        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
-            fs.unlink(file, (err) => {
-
-                return res.status(400).send({
-                    status: 'error',
-                    message: 'La extensión del archivo no es valida.'
+            } else if (afuimage == 3) {
+                return res.status(200).send({
+                    status: 'success',
+                    image3: file_name,
                 });
-
-            });
-
-        } else {
-            // //  Sacar el id del libro
-            // // var roomId = req.params.id;
-            // //var roomId = '5fcd1ecbced26017c19cbe34';
-            // var roomId = req.params._id;
-            // console.log('idroom', roomId);
-
-            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            //     if (err || !roomUpdate) {
-            //         // Devolver respuesta
-            //         return res.status(500).send({
-            //             status: 'error',
-            //             message: 'Error al guardar la habitación'
-            //         });
-            //     }
-            // });
-            //var bookId = req.params.bookId;
-            //console.log('bookid', bookId);
-
-
-            // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image4: file_name4,
-
-            });
-        }
-
-    },
-    uploadAvatar5: function(req, res) {
-        // Configurar el modulo multiparty (md) routes/user.js
-
-        // Recoger datos del usuario
-        var params = req.room;
-        console.log('params', params);
-
-        // Recoger el fichero de la petición
-        var file_name4 = 'imagen no subida...';
-
-
-        if (!req.files) {
-            return res.status(404).send({
-                status: 'error',
-                message: file_name5
-            });
-        }
-
-        // Conseguir el nombre y la extension del archivo
-        // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-
-
-
-        console.log(file);
-        // var path = file
-        // var file_split = file_path.split('\\');
-
-        // ** Adventencia ** En linux o mac
-        var file_split = file.split('/');
-
-        // Nombre del archivo
-        var file_name5 = file_split[2];
-
-
-        // Extensión del archivo
-        var ext_split = file_name5.split('\.');
-        console.log(ext_split);
-        var file_ext = ext_split[1];
-        console.log(file_ext);
-
-
-        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
-        if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
-            fs.unlink(file, (err) => {
-
-                return res.status(400).send({
-                    status: 'error',
-                    message: 'La extensión del archivo no es valida.'
+            } else if (afuimage == 4) {
+                return res.status(200).send({
+                    status: 'success',
+                    image4: file_name,
                 });
-
-            });
-
-        } else {
-            // //  Sacar el id del libro
-            // // var roomId = req.params.id;
-            // //var roomId = '5fcd1ecbced26017c19cbe34';
-            // var roomId = req.params._id;
-            // console.log('idroom', roomId);
-
-            // Room.findOneAndUpdate({ _id: roomId }, { image1: file_name }, { new: true }, (err, roomUpdate) => {
-            //     if (err || !roomUpdate) {
-            //         // Devolver respuesta
-            //         return res.status(500).send({
-            //             status: 'error',
-            //             message: 'Error al guardar la habitación'
-            //         });
-            //     }
-            // });
-            //var bookId = req.params.bookId;
-            //console.log('bookid', bookId);
+            } else if (afuimage == 5) {
+                return res.status(200).send({
+                    status: 'success',
+                    image5: file_name,
+                });
+            }
 
 
             // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image5: file_name5,
 
-            });
         }
 
     },
+
     delete: function(req, res) {
 
         // Sacar el id del topic de la url

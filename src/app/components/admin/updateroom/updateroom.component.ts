@@ -404,9 +404,11 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
             // maxSize: '50' ,
             uploadAPI:{
-              url: 'http://localhost:3999/admin/' + 'upload-avatar'
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
               
-            
+              params: {
+                'image': '1'
+              }
               // headers:{
               //'Authorization': this.token,
               
@@ -429,7 +431,10 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
             // maxSize: '50' ,
             uploadAPI:{
-              url: 'http://localhost:3999/admin/' + 'upload-avatar2'
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '2'
+              }
               
             
               // headers:{
@@ -453,7 +458,11 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
             // maxSize: '50' ,
             uploadAPI:{
-              url: 'http://localhost:3999/admin/' + 'upload-avatar3'
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+
+              params: {
+                'image': '3'
+              }
               
             
               // headers:{
@@ -477,7 +486,10 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
             // maxSize: '50' ,
             uploadAPI:{
-              url: 'http://localhost:3999/admin/' + 'upload-avatar4'
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '4'
+              }
               
             
               // headers:{
@@ -501,7 +513,10 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
             // maxSize: '50' ,
             uploadAPI:{
-              url: 'http://localhost:3999/admin/' + 'upload-avatar5'
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '5'
+              }
               
             
               // headers:{
