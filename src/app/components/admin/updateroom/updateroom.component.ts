@@ -158,6 +158,77 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     upload1(data)
     {
+      if(data.body.image1)
+      {
+        this.roomservice.deleteAvatar(this.room.image1).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+      else if(data.body.image2)
+      {
+        this.roomservice.deleteAvatar(this.room.image2).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+      else if(data.body.image3)
+      {
+        this.roomservice.deleteAvatar(this.room.image3).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+      else if(data.body.image4)
+      {
+        this.roomservice.deleteAvatar(this.room.image4).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+      else if(data.body.image5)
+      {
+        this.roomservice.deleteAvatar(this.room.image5).subscribe(
+          response =>
+          {
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+
       console.log("estoy en el response");
       this.activatedRoute.params.subscribe( params =>
         {
@@ -175,7 +246,20 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
      
           if(data.body.image1)
           {
-          this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+
+            // this.roomservice.deleteAvatar(this.room.image1).subscribe(
+            //   response =>
+            //     {
+            //       //this.room.image1;
+            //       this.getRoom();    
+                  
+            //     },
+            //     error =>
+            //     {
+            //       console.log(error);
+            //     }
+            // );
+            this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
             response =>
               {
                 //this.room.image1;

@@ -409,6 +409,9 @@ var controller = {
         console.log('id', roomId);
         var file_name = req.body.image1;
         var file_name2 = req.body.image2;
+        var file_name3 = req.body.image3;
+        var file_name4 = req.body.image4;
+        var file_name5 = req.body.image5;
         console.log('file2', file_name2);
         console.log('file', file_name);
 
@@ -513,6 +516,18 @@ var controller = {
 
     uploadAvatar: function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
+        // var fileName = req.params.fileName;
+        // var file = fileName.replace(/['"]+/g, '');
+        // console.log('file', file);
+        // var path = './uploads/rooms/' + file;
+        // fs.unlink(path, (err) => {
+        //     if (err) {
+        //         console.error(err)
+        //         return
+        //     }
+
+        //     //file removed
+        // })
 
 
 
@@ -671,18 +686,18 @@ var controller = {
         console.log('file', file);
         var pathFile = './uploads/rooms/' + file;
         console.log(pathFile);
-        fs.stat(pathFile, function(err, stats) {
-            console.log(stats); //here we got all information of file in stats variable
+        // fs.stat(pathFile, function(err, stats) {
+        //     console.log(stats); //here we got all information of file in stats variable
 
-            if (err) {
-                return console.error(err);
-            }
+        //     if (err) {
+        //         return console.error(err);
+        //     }
 
-            fs.unlink(pathFile, function(err) {
-                if (err) return console.log(err);
-                console.log('file deleted successfully');
-            });
+        fs.unlink(pathFile, function(err) {
+            if (err) return console.log(err);
+            console.log('file deleted successfully');
         });
+        //  });
 
     },
 
