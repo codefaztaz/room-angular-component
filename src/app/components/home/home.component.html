@@ -1,24 +1,30 @@
-<div class="col-lag-12">
-
-
+<div class="row">
     <ul class="list-group">
+
         <li class="list-group-item" *ngFor="let room of rooms">
-            <div class="" *ngIf="!room.image1 || room.image1 == undefined; else noimage">
-                <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="student">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="" *ngIf="!room.image1 || room.image1 == undefined; else noimage">
+                        <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="student">
+                    </div>
+                    <ng-template #noimage>
+                        <img class="img-list" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
+                    </ng-template>
+                </div>
+                <div class="col-sm-10">
+
+
+                    <p class="title-room">Title {{room.title}}</p>
+                    <p class="data-room"> {{room.location}}</p>
+                    <p class="data-room"> {{ room.description | less:[150, '...'] }}</p>
+                    <p class="data-room"> Room type {{room.roomtype}}</p>
+
+                    <p>&#163; {{room.price}} pm</p>
+
+
+
+                </div>
             </div>
-            <ng-template #noimage>
-                <img class="img-list" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
-            </ng-template>
-
-            <p>Title {{room.title}}</p>
-            <p>Description {{room.description}}</p>
-            <p>Room type {{room.roomtype}}</p>
-            <p>Google map{{room.mapgoogle}}</p>
-            <p>Price {{room.price}} pm</p>
-            <p>Reference {{room.reference}}</p>
-            <p>Location {{room.location}}</p>
-
-
         </li>
     </ul>
 </div>

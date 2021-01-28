@@ -14,6 +14,7 @@ import { PanelComponent } from './components/panel/panel.component';
 import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { ListroomsComponent } from './components/admin/listrooms/listrooms.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
+import { LessPipe } from './pipes/less.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UpdateroomComponent } from './components/admin/updateroom/updateroom.co
     PanelComponent,
     AddroomComponent,
     ListroomsComponent,
-    UpdateroomComponent
+    UpdateroomComponent,
+    LessPipe
   ],
   imports: [
     BrowserModule,
