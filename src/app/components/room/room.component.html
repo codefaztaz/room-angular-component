@@ -2,6 +2,10 @@
     <div class="row">
         <div class="col-sm-7">
             <h4>{{ room.title }}</h4>
+            <ul class="ul-room">
+                <li class="li-room">{{ room.location }} </li>
+                <li class="li-room float-right">&#163; {{ room.price }} pm</li>
+            </ul>
 
             <ngb-carousel>
                 <ng-template ngbSlide>
@@ -24,6 +28,11 @@
                     <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="Mumbai Metro">
                 </ng-template>
             </ngb-carousel>
+
+            <p class="margin-carousel"><span class="bold-data">Room type</span> {{ room.roomtype }}</p>
+            <p class=""><span class="bold-data">Reference</span> {{ room.reference }}</p>
+            <label class="bold-data" for="">Description</label>
+            <p class="">{{ room.description }}</p>
         </div>
         <div class="col-sm-5">
             <h4 class="">Contact Student</h4>
