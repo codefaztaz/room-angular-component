@@ -20,8 +20,8 @@ import { Room } from '../../../models/room';
 export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   forma   : FormGroup;
   public room: Room;
- // public afuConfig;
- public rooms: Room[];
+  // public afuConfig;
+  public rooms: Room[];
   public url :String;
   public token :any;
   public data;
@@ -65,25 +65,25 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     this.url = globalroom.url;
     this.getRoom();
 
-    this.avatar();
+   // this.avatar();
     
   }
 
 
 
-  avatar()
-  {
-    this.activatedRoute.params.subscribe( params =>
-    {
-      console.log(params);
-      console.log(params.id);
+  // avatar()
+  // {
+  //   this.activatedRoute.params.subscribe( params =>
+  //   {
+  //     console.log(params);
+  //     console.log(params.id);
       
-     let _id = params['id'];
-     console.log(_id);
-     return _id;
-    });
+  //    let _id = params['id'];
+  //    console.log(_id);
+  //    return _id;
+  //   });
     
-  }
+  // }
 
   ngOnInit(): void {
   }

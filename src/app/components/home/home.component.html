@@ -1,6 +1,7 @@
 <div class="row">
     <ul class="list-group">
 
+
         <li class="list-group-item" *ngFor="let room of rooms">
             <div class="row">
                 <div class="col-sm-2">
@@ -12,23 +13,18 @@
                     </ng-template>
                 </div>
                 <div class="col-sm-10">
-
-
-                    <p class="title-room">Title {{room.title}}</p>
-                    <p class="data-room"> {{room.location}}</p>
+                    <p class="title-room">Title {{ room.title }}</p>
+                    <p class="data-room"> {{ room.location }}</p>
                     <p class="data-room"> {{ room.description | less:[150, '...'] }}</p>
                     <p class="data-room"> Room type {{room.roomtype}}</p>
-
-                    <p>&#163; {{room.price}} pm</p>
-
-
-
+                    <p>&#163; {{ room.price }} pm</p>
+                    <a [routerLink]="['/room', room._id]" class="link-room">See</a>
                 </div>
             </div>
         </li>
+
     </ul>
 </div>
-
 <ul class="pagination">
     <li class="page-item">
         <a class="page-link" [routerLink]="['/admin/listrooms', prev_page]">&laquo;</a>
@@ -36,7 +32,6 @@
     <li class="page-item" *ngFor="let num of number_pages">
         <a class="page-link" [routerLink]="['/admin/listrooms', num]" href="">{{ num }}</a>
     </li>
-
     <li class="page-item">
         <a class="page-link" [routerLink]="['/admin/listrooms', next_page]">&raquo;</a>
     </li>

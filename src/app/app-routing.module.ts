@@ -5,6 +5,7 @@ import { PanelComponent } from './components/panel/panel.component';
 import { ListroomsComponent } from './components/admin/listrooms/listrooms.component';
 import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
+import { RoomComponent } from './components/room/room.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'admin/listrooms/:page', component: ListroomsComponent },
   { path: 'admin/addroom', component: AddroomComponent },
   { path: 'admin/updateroom/:id', component: UpdateroomComponent },
+  { path: 'room/:id', component: RoomComponent },
 ];
 
 @NgModule({

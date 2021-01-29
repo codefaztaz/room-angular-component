@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
 
 
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { ListroomsComponent } from './components/admin/listrooms/listrooms.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
 import { LessPipe } from './pipes/less.pipe';
+import { RoomComponent } from './components/room/room.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { LessPipe } from './pipes/less.pipe';
     AddroomComponent,
     ListroomsComponent,
     UpdateroomComponent,
-    LessPipe
+    LessPipe,
+    RoomComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { LessPipe } from './pipes/less.pipe';
     ReactiveFormsModule,
     HttpClientModule,
     AngularFileUploaderModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
