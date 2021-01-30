@@ -1,6 +1,7 @@
 <div class="margin-carousel">
     <div class="row">
         <div class="col-sm-7">
+            <h2> <a class="add-book" [routerLink]="['/home']">Back</a></h2>
             <h4>{{ room.title }}</h4>
             <ul class="ul-room">
                 <li class="li-room">{{ room.location }} </li>
@@ -9,23 +10,23 @@
 
             <ngb-carousel>
                 <ng-template ngbSlide>
-                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="Delhi Metro">
+                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
 
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image2 }}" alt="Bangalore Metro">
+                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image2 }}" alt="student">
 
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image3 }}" alt="Channai Metro">
+                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image3 }}" alt="student">
 
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image4 }}" alt="Jaipur Metro">
+                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image4 }}" alt="student">
 
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="Mumbai Metro">
+                    <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="student">
                 </ng-template>
             </ngb-carousel>
 

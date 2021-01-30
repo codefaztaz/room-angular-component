@@ -18,7 +18,7 @@
                     <p class="data-room"> {{ room.description | less:[150, '...'] }}</p>
                     <p class="data-room"> Room type {{room.roomtype}}</p>
                     <p>&#163; {{ room.price }} pm</p>
-                    <a [routerLink]="['/room', room._id]" class="link-room">See</a>
+                    <a [routerLink]="['/room', room._id]" class="btn btn-danger">View</a>
                 </div>
             </div>
         </li>
