@@ -17,6 +17,7 @@ import { ListroomsComponent } from './components/admin/listrooms/listrooms.compo
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
 import { LessPipe } from './pipes/less.pipe';
 import { RoomComponent } from './components/room/room.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RoomComponent } from './components/room/room.component';
     ListroomsComponent,
     UpdateroomComponent,
     LessPipe,
-    RoomComponent
+    RoomComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

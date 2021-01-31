@@ -715,11 +715,18 @@ var controller = {
             sort: { date: -1 },
             populate: 'room',
             limit: 5,
-            page: page
+            page: page,
+            read: {
+                tags: [{
+                        availability: 'true'
+                    }
+
+                ],
+            }
         };
 
         // Find paginado
-        Room.paginate({}, options, (err, rooms) => {
+        Room.paginate({ availability: true }, options, (err, rooms) => {
 
             if (err) {
                 return res.status(500).send({
@@ -735,6 +742,7 @@ var controller = {
                 });
             }
 
+
             // Devoler resultado (topics, total de topic, total de paginas)
             return res.status(200).send({
                 status: 'success',
@@ -749,8 +757,10 @@ var controller = {
 
     getRoom: function(req, res) {
         var roomId = req.params.roomId;
+        var availability = true;
 
         Room.findById(roomId).exec((err, room) => {
+            // Room.find({ availability: true }).exec((err, room) => {
             if (err || !room) {
                 return res.status(404).send({
                     status: 'error',

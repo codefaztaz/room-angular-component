@@ -41,6 +41,7 @@ export class RoomComponent implements OnInit {
   public imgURL4 :String;
   public imgURL5 :String;
   public params :any;
+  public filtercond;
 
   constructor(
     private fb: FormBuilder,
@@ -132,7 +133,7 @@ export class RoomComponent implements OnInit {
             this.imgURL3 = response.room.image3;
             this.imgURL4 = response.room.image4;
             this.imgURL5 = response.room.image5;
-            
+
             //console.log(this.imgURL);
             console.log(this.room);
             console.log(this.imgURL2);
