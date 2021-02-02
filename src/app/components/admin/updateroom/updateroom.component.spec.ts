@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+
 
 import { UpdateroomComponent } from './updateroom.component';
 
@@ -8,7 +11,8 @@ describe('UpdateroomComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateroomComponent ]
+      declarations: [ UpdateroomComponent ],
+      imports: [FormsModule, ReactiveFormsModule,HttpClientTestingModule ]
     })
     .compileComponents();
   }));

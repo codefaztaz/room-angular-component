@@ -11,6 +11,7 @@ export class AppComponent {
   public identity;
   public token;
   public url;
+  public title : String = "room app";
 
 
   constructor(
@@ -21,6 +22,8 @@ export class AppComponent {
 
     this.loadUser();
     this.url = global.url;
+    this.title;
+
 
   }
 

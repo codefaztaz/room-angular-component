@@ -42,6 +42,8 @@ export class RoomComponent implements OnInit {
   public imgURL5 :String;
   public params :any;
   public filtercond;
+  public div1:boolean=true;
+  public div2:boolean=true;
 
   constructor(
     private fb: FormBuilder,
@@ -174,5 +176,27 @@ export class RoomComponent implements OnInit {
   
   
   }
+
+
+
+
+  showPictures(){
+      this.div1=true;
+      this.div2=false;
+      console.log(this.div1);
+
+      return this.div1;
+ 
+
+  }
+
+  showMap(){
+      this.div2=true;
+      this.div1=false;
+      console.log(this.div2);
+      return this.div2;
+
+  }
+  
 
 }

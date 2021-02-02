@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,10 +15,12 @@ import { HomeComponent } from './components/home/home.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { ListroomsComponent } from './components/admin/listrooms/listrooms.component';
+import { ListroomsnotComponent } from './components/admin/listroomsnot/listroomsnot.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
 import { LessPipe } from './pipes/less.pipe';
 import { RoomComponent } from './components/room/room.component';
 import { FilterPipe } from './pipes/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -29,16 +32,19 @@ import { FilterPipe } from './pipes/filter.pipe';
     UpdateroomComponent,
     LessPipe,
     RoomComponent,
-    FilterPipe
+    FilterPipe,
+    ListroomsnotComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularFileUploaderModule,
-    NgbModule
+    NgbModule,
+    RouterModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

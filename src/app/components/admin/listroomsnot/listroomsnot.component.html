@@ -1,7 +1,7 @@
-<h1>list rooms available</h1>
-<a [routerLink]="['/admin/listroomsnot']" class="btn btn-danger">view rooms unavailable</a>
+<h1>list rooms unavailable</h1>
 <div class="">
 
+    <a [routerLink]="['/admin/listrooms']" class="btn btn-danger">view rooms available</a>
     <ul class="list-group">
         <!-- <li class="list-group-item" *ngFor="let room of rooms | filter:room.availability"> -->
         <li class="list-group-item" *ngFor="let room of rooms">
@@ -29,12 +29,12 @@
 </div>
 <ul class="pagination">
     <li class="page-item">
-        <a class="page-link" [routerLink]="['/admin/listrooms', prev_page]">&laquo;</a>
+        <a class="page-link" [routerLink]="['/admin/listroomsnot', prev_page]">&laquo;</a>
     </li>
     <li class="page-item" *ngFor="let num of number_pages">
-        <a class="page-link" [routerLink]="['/admin/listrooms', num]" href="">{{ num }}</a>
+        <a class="page-link" [routerLink]="['/admin/listroomsnot', num]" href="">{{ num }}</a>
     </li>
     <li class="page-item">
-        <a class="page-link" [routerLink]="['/admin/listrooms', next_page]">&raquo;</a>
+        <a class="page-link" [routerLink]="['/admin/listroomsnot', next_page]">&raquo;</a>
     </li>
 </ul>

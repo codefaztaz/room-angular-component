@@ -1,21 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 
-import { AddroomComponent } from './addroom.component';
+import { ListroomsnotComponent } from './listroomsnot.component';
 
-describe('AddroomComponent', () => {
-  let component: AddroomComponent;
-  let fixture: ComponentFixture<AddroomComponent>;
+describe('ListroomsnotComponent', () => {
+  let component: ListroomsnotComponent;
+  let fixture: ComponentFixture<ListroomsnotComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddroomComponent ]
+      declarations: [ ListroomsnotComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddroomComponent);
+    fixture = TestBed.createComponent(ListroomsnotComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,8 +22,4 @@ describe('AddroomComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-
-
-  
 });

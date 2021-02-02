@@ -36,6 +36,12 @@ export class RoomService {
     console.log(page);
   }
 
+  getRoomsFull(page = 1):Observable<any>
+  {
+    return this.http.get(this.url + 'roomsfull/' + page);
+    console.log(page);
+  }
+
 
   getRoom(roomId):Observable<any>
   {

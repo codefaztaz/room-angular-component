@@ -754,6 +754,59 @@ var controller = {
         });
 
     },
+    getRoomsFull: function(req, res) {
+
+        // Recoger la pagina actual
+        if (!req.params.page || req.params.page == 0 || req.params.page == "0" || req.params.page == null || req.params.page == undefined) {
+            var page = 1;
+        } else {
+            var page = parseInt(req.params.page);
+        }
+
+        // Indicar las opciones de paginacion
+        var options = {
+            sort: { date: -1 },
+            populate: 'room',
+            limit: 5,
+            page: page,
+            read: {
+                tags: [{
+                        availability: 'true'
+                    }
+
+                ],
+            }
+        };
+
+        // Find paginado
+        Room.paginate({ availability: false }, options, (err, rooms) => {
+
+            if (err) {
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al hacer la consulta'
+                });
+            }
+
+            if (!rooms) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay libros'
+                });
+            }
+
+
+            // Devoler resultado (topics, total de topic, total de paginas)
+            return res.status(200).send({
+                status: 'success',
+                rooms: rooms.docs,
+                totalDocs: rooms.totalDocs,
+                totalPages: rooms.totalPages
+            });
+
+        });
+
+    },
 
     getRoom: function(req, res) {
         var roomId = req.params.roomId;

@@ -24,6 +24,7 @@ router.get('/avatar2/:image2', RoomController.avatar2);
 // router.delete('/book/:id', md_auth.authenticated, AdminController.delete);
 router.delete('/delete-avatar/:fileName', RoomController.deleteAvatar);
 router.get('/rooms/:page', RoomController.getRooms);
+router.get('/roomsfull/:page', RoomController.getRoomsFull);
 // //router.get('/books/', AdminController.getBooks);
 router.get('/room/:roomId', RoomController.getRoom);
 // router.get('/search/:search', AdminController.search);
