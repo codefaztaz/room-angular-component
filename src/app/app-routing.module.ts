@@ -20,6 +20,9 @@ const routes: Routes = [
   { path: 'admin/addroom', component: AddroomComponent },
   { path: 'admin/updateroom/:id', component: UpdateroomComponent },
   { path: 'room/:id', component: RoomComponent },
+  { path: 'logout/1', component: PanelComponent },
+  { path: 'login', component: PanelComponent },
+  
 ];
 
 @NgModule({

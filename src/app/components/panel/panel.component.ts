@@ -129,8 +129,10 @@ onSubmit(form){
 
 logout()
 {
+  console.log("se ejecuto el metodo logout");
   this.route.params.subscribe(params =>{
-    let logout = +params['sure'];
+    //let logout = +params['sure'];
+    let logout = +params['user'];
     if(logout == 1)
     {
       localStorage.removeItem('identity');
