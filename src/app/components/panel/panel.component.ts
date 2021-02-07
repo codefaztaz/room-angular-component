@@ -129,7 +129,9 @@ onSubmit(form){
 
 logout()
 {
+  console.log("se ejecuto el metodo logout");
   this.route.params.subscribe(params =>{
+    //let logout = +params['sure'];
     let logout = +params['sure'];
     if(logout == 1)
     {

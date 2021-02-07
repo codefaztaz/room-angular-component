@@ -8,18 +8,25 @@ import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
 import { RoomComponent } from './components/room/room.component';
 
+// Services
+import { UserGuard } from './services/user.guard';
+import { NoIdentityGuard } from './services/no.identity.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'panel', component: PanelComponent },
-  { path: 'admin/listrooms', component: ListroomsComponent },
-  { path: 'admin/listrooms/:page', component: ListroomsComponent },
-  { path: 'admin/listroomsnot', component: ListroomsnotComponent },
-  { path: 'admin/listroomsnot/:page', component: ListroomsnotComponent },
-  { path: 'admin/addroom', component: AddroomComponent },
-  { path: 'admin/updateroom/:id', component: UpdateroomComponent },
+  { path: 'panel', canActivate: [NoIdentityGuard], component: PanelComponent },
+  { path: 'admin/listrooms', canActivate: [UserGuard], component: ListroomsComponent },
+  { path: 'admin/listrooms/:page',canActivate: [UserGuard], component: ListroomsComponent },
+  { path: 'admin/listroomsnot',canActivate: [UserGuard], component: ListroomsnotComponent },
+  { path: 'admin/listroomsnot/:page', canActivate: [UserGuard],component: ListroomsnotComponent },
+  { path: 'admin/addroom', canActivate: [UserGuard],component: AddroomComponent },
+  { path: 'admin/updateroom/:id',canActivate: [UserGuard], component: UpdateroomComponent },
   { path: 'room/:id', component: RoomComponent },
+  { path: 'logout/:sure', component: PanelComponent },
+  { path: 'login', component: PanelComponent },
+  
 ];
 
 @NgModule({
