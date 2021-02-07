@@ -7,7 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserGuard } from './services/user.guard';
+import { NoIdentityGuard } from './services/no.identity.guard'; 
+import { UserService } from './services/user.service';
+import { RoomService } from './services/room.service';
 
 
 import { AppComponent } from './app.component';
@@ -46,7 +50,12 @@ import { FilterPipe } from './pipes/filter.pipe';
     RouterModule
   
   ],
-  providers: [],
+  providers: [
+    UserService,
+    RoomService,
+    UserGuard,
+    NoIdentityGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
