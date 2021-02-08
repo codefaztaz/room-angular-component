@@ -11,6 +11,7 @@ var RoomSchema = Schema({
     roomtype: String,
     mapgoogle: String,
     availability: String,
+    availabilityfrom: String,
     price: Number,
     reference: String,
     location: String,

@@ -1,5 +1,6 @@
 <h1>list rooms available</h1>
 <a [routerLink]="['/admin/listroomsnot']" class="btn btn-danger">view rooms unavailable</a>
+<a [routerLink]="['/admin/addroom']" class="btn btn-danger">Add room</a>
 <div class="">
 
     <ul class="list-group">
@@ -21,6 +22,7 @@
                     <p class="data-room"> Room type {{room.roomtype}}</p>
                     <p>&#163; {{ room.price }} pm</p>
                     <a [routerLink]="['/admin/updateroom', room._id]" class="btn btn-danger">Update</a>
+                    <a (click)="delete(room._id)" class="btn btn-danger float-right">Delete</a>
                 </div>
             </div>
         </li>

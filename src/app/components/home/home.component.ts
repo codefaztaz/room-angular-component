@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     private roomservice: RoomService
   ) {
      this.url = globalroom.url;
-     this.room = new Room('', '', '', '', 1,  '', 1, '', '', '', '', '', '', '' );
+     this.room = new Room('', '', '', '', 1,  '','', 1, '', '', '', '', '', '', '' );
      this.loadUser();
  
 

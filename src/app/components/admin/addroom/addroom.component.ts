@@ -90,7 +90,8 @@ crearFormulario()
   mapgoogle : [ '', Validators.required ],
   price : [ '', Validators.required ],
   reference : [ '', Validators.required ],
-  location : ['', Validators.required ]
+  location : ['', Validators.required ],
+  availabilityfrom : ['', Validators.required ],
   });
 
 

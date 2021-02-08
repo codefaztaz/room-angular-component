@@ -40,7 +40,7 @@ export class ListroomsnotComponent implements OnInit {
     private roomservice: RoomService
   ) {
      this.url = globalroom.url;
-     this.room = new Room('', '', '', '', 1,  '', 1, '', '', '', '', '', '', '' );
+     this.room = new Room('', '', '', '', 1,  '', '',1, '', '', '', '', '', '', '' );
      this.loadUser();
  
 
@@ -135,10 +135,8 @@ export class ListroomsnotComponent implements OnInit {
   delete(id)
   {
     console.log(id);
-
-    
     console.log(this.token);
-    this.roomservice.delete(this.token, id).subscribe(
+    this.roomservice.delete(id).subscribe(
       response =>
       {
           this.getRoomsFull();

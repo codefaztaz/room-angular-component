@@ -2,6 +2,7 @@
 <div class="">
 
     <a [routerLink]="['/admin/listrooms']" class="btn btn-danger">view rooms available</a>
+    <a [routerLink]="['/admin/addroom']" class="btn btn-danger">Add room</a>
     <ul class="list-group">
         <!-- <li class="list-group-item" *ngFor="let room of rooms | filter:room.availability"> -->
         <li class="list-group-item" *ngFor="let room of rooms">
@@ -21,6 +22,7 @@
                     <p class="data-room"> Room type {{room.roomtype}}</p>
                     <p>&#163; {{ room.price }} pm</p>
                     <a [routerLink]="['/admin/updateroom', room._id]" class="btn btn-danger">Update</a>
+                    <a (click)="delete(room._id)" class="btn btn-danger float-right">Delete</a>
                 </div>
             </div>
         </li>

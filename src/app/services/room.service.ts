@@ -131,15 +131,15 @@ export class RoomService {
 
     return this.http.post(this.url + 'upload-avatar/'+params, { headers: headers });
   }
-  delete(token,id):Observable<any>
+  delete(id):Observable<any>
   {
     //let tokenid = JSON.stringify(token);
     //console.log(tokenid);
    
-        console.log(token);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json')
-                                   .set('Authorization', token);
+       // console.log(token);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+                                  // .set('Authorization', token);
 
-    return this.http.delete(this.url + 'book/' + id,  { headers: headers } );
+    return this.http.delete(this.url + 'delete/' + id,  { headers: headers } );
   }
 }

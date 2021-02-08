@@ -143,6 +143,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       mapgoogle : [this.room ? this.room.mapgoogle : '', Validators.required ],
       price : [this.room ? this.room.price : '', Validators.required ],
       availability : [this.room ? this.room.availability : '', Validators.required ],
+      availabilityfrom : [this.room ? this.room.availabilityfrom  : '', Validators.required ],
       reference : [this.room ? this.room.reference : '', Validators.required ],
       location : [this.room ? this.room.location : '', Validators.required ],
       image1 : [this.room ? this.room.image1 : '', Validators.required ],
@@ -158,7 +159,8 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     upload1(data)
     {
-      if(data.body.image1)
+
+      if(data.body.image1 && this.room.image1 != undefined)
       {
         this.roomservice.deleteAvatar(this.room.image1).subscribe(
           response =>
@@ -172,7 +174,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image2)
+      else if(data.body.image2 && this.room.image2 != undefined)
       {
         this.roomservice.deleteAvatar(this.room.image2).subscribe(
           response =>
@@ -186,7 +188,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image3)
+      else if(data.body.image3 && this.room.image3 != undefined)
       {
         this.roomservice.deleteAvatar(this.room.image3).subscribe(
           response =>
@@ -200,7 +202,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image4)
+      else if(data.body.image4 && this.room.image4 != undefined)
       {
         this.roomservice.deleteAvatar(this.room.image4).subscribe(
           response =>
@@ -214,7 +216,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image5)
+      else if(data.body.image5 && this.room.image5 != undefined)
       {
         this.roomservice.deleteAvatar(this.room.image5).subscribe(
           response =>
@@ -365,6 +367,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.forma.controls['mapgoogle'].setValue(response.room.mapgoogle);
               this.forma.controls['price'].setValue(response.room.price);
               this.forma.controls['availability'].setValue(response.room.availability);
+              this.forma.controls['availabilityfrom'].setValue(response.room.availabilityfrom);
               this.forma.controls['reference'].setValue(response.room.reference);
               this.forma.controls['location'].setValue(response.room.location);
               this.forma.controls['image1'].setValue(response.room.image1);
@@ -372,7 +375,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.forma.controls['image3'].setValue(response.room.image3);
               this.forma.controls['image4'].setValue(response.room.image4);
               this.forma.controls['image5'].setValue(response.room.image5);
-              this.imgURL = response.room.image1;
+              this.imgURL  = response.room.image1;
               this.imgURL2 = response.room.image2;
               this.imgURL3 = response.room.image3;
               this.imgURL4 = response.room.image4;

@@ -69,7 +69,7 @@ export class RoomComponent implements OnInit {
     this.crearFormulario();
 
 
-    this.room = new Room('', '', '', '', 1,  '', 1, '', '', '', '', '', '', '' );   
+    this.room = new Room('', '', '', '', 1,  '', '', 1, '', '','','', '', '', '' );   
     config.interval = 0;  
     config.wrap = true;  
     config.keyboard = false;  
@@ -123,6 +123,7 @@ export class RoomComponent implements OnInit {
             this.room.mapgoogle = response.room.mapgoogle;
             this.room.price = response.room.price;
             this.room.availability = response.room.availability;
+            this.room.availabilityfrom = response.room.availabilityfrom;
             this.room.reference = response.room.reference;
             this.room.location = response.room.location;
             this.room.image1 = response.room.image1;

@@ -59,6 +59,7 @@ var controller = {
             room.mapgoogle = params.mapgoogle;
             room.reference = params.reference;
             room.availability = "false";
+            room.availabilityfrom = params.availabilityfrom;
             room.image1 = null;
             room.image2 = null;
             room.image3 = null;
@@ -621,11 +622,11 @@ var controller = {
     delete: function(req, res) {
 
         // Sacar el id del topic de la url
-        var bookId = req.params.id;
-        console.log(bookId);
+        var roomId = req.params.roomid;
+        console.log('roomdelete', roomId);
 
         // Find and delete por topicID y por userID 
-        Book.findOneAndDelete({ _id: bookId }, (err, bookRemoved) => {
+        Room.findOneAndDelete({ _id: roomId }, (err, roomRemoved) => {
 
             if (err) {
                 return res.status(500).send({
@@ -634,17 +635,17 @@ var controller = {
                 });
             }
 
-            if (!bookRemoved) {
+            if (!roomRemoved) {
                 return res.status(404).send({
                     status: 'error',
-                    message: 'No se ha borrado el tema'
+                    message: 'No se ha borrado la habitación'
                 });
             }
 
             // Devolver respuesta
             return res.status(200).send({
                 status: 'success',
-                topic: bookRemoved
+                room: roomRemoved
             });
         });
     },
@@ -665,20 +666,20 @@ var controller = {
         });
     },
 
-    avatar2: function(req, res) {
-        var fileName = req.params.image2;
-        var pathFile = './uploads/rooms/' + fileName;
+    // avatar2: function(req, res) {
+    //     var fileName = req.params.image2;
+    //     var pathFile = './uploads/rooms/' + fileName;
 
-        fs.exists(pathFile, (exists) => {
-            if (exists) {
-                return res.sendFile(path.resolve(pathFile));
-            } else {
-                return res.status(404).send({
-                    message: 'La imagen no existe'
-                });
-            }
-        });
-    },
+    //     fs.exists(pathFile, (exists) => {
+    //         if (exists) {
+    //             return res.sendFile(path.resolve(pathFile));
+    //         } else {
+    //             return res.status(404).send({
+    //                 message: 'La imagen no existe'
+    //             });
+    //         }
+    //     });
+    // },
 
     deleteAvatar: function(req, res) {
         var fileName = req.params.fileName;

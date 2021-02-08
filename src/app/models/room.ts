@@ -7,6 +7,7 @@ export class Room{
       public roomtype: string,
       public mapgoogle: number,
       public availability: string,
+      public availabilityfrom: string,
       public price: number,
       public reference: string,
       public location: string,
