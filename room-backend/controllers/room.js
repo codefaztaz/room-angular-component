@@ -653,6 +653,7 @@ var controller = {
 
     avatar: function(req, res) {
         var fileName = req.params.fileName;
+        console.log('filename', fileName);
         var pathFile = './uploads/rooms/' + fileName;
 
         fs.exists(pathFile, (exists) => {

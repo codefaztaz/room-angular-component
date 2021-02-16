@@ -160,7 +160,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     upload1(data)
     {
 
-      if(data.body.image1 && this.room.image1 != undefined)
+      if(data.body.image1 && this.room.image1 != undefined && this.room.image1 != 'no-image.png')
       {
         this.roomservice.deleteAvatar(this.room.image1).subscribe(
           response =>
@@ -398,7 +398,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             
             multiple: false,
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
-            // maxSize: '50' ,
+            maxSize: 0.5 ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
               
@@ -425,7 +425,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             
             multiple: false,
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
-            // maxSize: '50' ,
+            maxSize: 0.5,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
               params: {
@@ -452,7 +452,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             
             multiple: false,
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
-            // maxSize: '50' ,
+            maxSize: 0.5 ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
 
@@ -480,7 +480,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             
             multiple: false,
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
-            // maxSize: '50' ,
+            maxSize: 0.5 ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
               params: {
@@ -507,7 +507,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             
             multiple: false,
             formatsAllowed: '.jpg, .jpeg, .png, .gif',
-            // maxSize: '50' ,
+            maxSize: 0.5 ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
               params: {
