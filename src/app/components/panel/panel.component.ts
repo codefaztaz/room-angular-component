@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { UserAdmin } from '../../models/useradmin';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class PanelComponent implements OnInit {
     private fb: FormBuilder,
     private userservice: UserService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {
     this.crearFormulario();
 
@@ -119,6 +121,8 @@ onSubmit(form){
       {
         this.status = 'error';
         console.log(error);
+        console.log("no");
+        this.snackBar.open('password incorrect ', 'Close',{duration:3000});
 
       }
     );

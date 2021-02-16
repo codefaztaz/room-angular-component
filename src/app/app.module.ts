@@ -24,7 +24,8 @@ import { UpdateroomComponent } from './components/admin/updateroom/updateroom.co
 import { LessPipe } from './pipes/less.pipe';
 import { RoomComponent } from './components/room/room.component';
 import { FilterPipe } from './pipes/filter.pipe';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     HttpClientModule,
     AngularFileUploaderModule,
     NgbModule,
-    RouterModule
+    RouterModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   
   ],
   providers: [
@@ -55,6 +58,7 @@ import { FilterPipe } from './pipes/filter.pipe';
     RoomService,
     UserGuard,
     NoIdentityGuard,
+    
   ],
   bootstrap: [AppComponent]
 })
