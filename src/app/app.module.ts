@@ -26,6 +26,7 @@ import { RoomComponent } from './components/room/room.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LessPipe,
     RoomComponent,
     FilterPipe,
-    ListroomsnotComponent
+    ListroomsnotComponent,
+    SafeHtmlPipe
   ],
   imports: [
     AppRoutingModule,
