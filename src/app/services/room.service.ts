@@ -63,6 +63,14 @@ export class RoomService {
 
     return this.http.put(this.url + 'update', params, {headers: headers});
   }
+  updateImage1(id, image1):Observable<any>
+  {
+  
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+
+    return this.http.put(this.url + 'updateimage1',{'id':id, 'image1': image1}, {headers: headers});
+  }
   saveImg(id,image1):Observable<any>
   {
    // console.log(image1);

@@ -527,8 +527,46 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             hideProgressBar: false,
             hideResetBtn: true,
             hideSelectBtn: false,
+            replaceTexts: {
+              selectFileBtn: 'Select Files',
+            //  afterUploadMsg_success: 'Successfully Uploaded !',
+              afterUploadMsg_error: 'Upload Failed !',
+              sizeLimit: 'less 500 kb'
+            }
             // attachPinText: ' Sube la imagen'
           };
+
+
+    deleteImage()
+    {
+      this.room.image1 = "no-image.png";
+      console.log('image1-delete',this.room.image1);
+      this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
+        response =>
+        {
+
+        }
+      )
+      if( this.room.image1 != undefined && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image1).subscribe(
+          response =>
+          {
+            this.room.image1 = null;
+            
+            console.log('img1a', this.room.image1);
+              
+          },
+          error =>
+          {
+            console.log(error);
+          }
+  
+        );
+      }
+
+
+    }      
         
      
    

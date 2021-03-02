@@ -34,14 +34,12 @@
             <div class="tab-content">
                 <div
                 class="tab-pane fade show active"
+                [ngClass]="{'hiden': flag, 'active': !flag}"
                 id="div1"
                 *ngIf="div1"
                 role="tabpanel"
                 aria-labelledby="ex2-tab-1"
                 >
-                
-              
-
                 <ngb-carousel>
                     <ng-template ngbSlide>
                         <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
@@ -69,13 +67,14 @@
 
                 </div>
                 <div
-                class="tab-pane fade"
+                class="tab-pane fade show"
+                [ngClass]="{'active':flag, 'pepe':!flag}"
                 *ngIf="div2"
                 role="tabpanel"
                 aria-labelledby="ex2-tab-2"
                 id="div2"
                 >
-                <p class=""> google maps no se muestra</p>
+                <p class="prueba"> google maps no se muestra</p>
                 {{room.mapgoogle}}
                 </div>
             
