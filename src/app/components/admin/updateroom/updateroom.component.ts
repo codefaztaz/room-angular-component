@@ -539,30 +539,30 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
     deleteImage()
     {
-      this.room.image1 = "no-image.png";
+   
       console.log('image1-delete',this.room.image1);
       this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
         response =>
         {
-
+          this.getRoom();
         }
       )
       if( this.room.image1 != undefined && this.room.image1 != 'no-image.png')
       {
-        this.roomservice.deleteAvatar(this.room.image1).subscribe(
-          response =>
-          {
-            this.room.image1 = null;
+        // this.roomservice.deleteAvatar(this.room.image1).subscribe(
+        //   response =>
+        //   {
+        //     this.room.image1 = null;
             
-            console.log('img1a', this.room.image1);
+        //     console.log('img1a', this.room.image1);
               
-          },
-          error =>
-          {
-            console.log(error);
-          }
+        //   },
+        //   error =>
+        //   {
+        //     console.log(error);
+        //   }
   
-        );
+        // );
       }
 
 

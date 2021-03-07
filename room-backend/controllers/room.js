@@ -404,35 +404,38 @@ var controller = {
     },
 
     updateImage1: function(req, res) {
-        var image33 = req.body;
+        var image1 = req.body;
         console.log(image1);
-        var roomId = req.body._id;
-        var image1 = "";
-        console.log('id', roomId);
+        var roomId = req.body.id;
+
+        console.log('idddd', roomId);
         // Buscar y actualizar documento
-        Room.findOneAndUpdate({ _id: roomId }, { image33: image33 }, { new: true }, (err, roomUpdated) => {
+        Room.findOneAndUpdate({ _id: roomId }, {
+                $unset: { image1: null }
+            }, { new: true },
+            (err, roomUpdated) => {
 
-            if (err) {
-                return res.status(500).send({
-                    status: 'error',
-                    message: 'Error al actualizar la habitación'
-                });
-            }
+                if (err) {
+                    return res.status(500).send({
+                        status: 'error',
+                        message: 'Error al actualizar la habitación'
+                    });
+                }
 
-            if (!roomUpdated) {
+                if (!roomUpdated) {
+                    return res.status(200).send({
+                        status: 'error',
+                        message: 'No se a actualizado la habitacion'
+                    });
+                }
+
+                // Devolver respuesta
                 return res.status(200).send({
-                    status: 'error',
-                    message: 'No se a actualizado la habitacion'
+                    status: 'success',
+                    room: roomUpdated
                 });
-            }
 
-            // Devolver respuesta
-            return res.status(200).send({
-                status: 'success',
-                image1: ""
             });
-
-        });
     },
 
 
