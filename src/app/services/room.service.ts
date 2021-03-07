@@ -71,6 +71,38 @@ export class RoomService {
 
     return this.http.put(this.url + 'updateimage1',{'id':id, 'image1': image1}, {headers: headers});
   }
+  updateImage2(id, image2):Observable<any>
+  {
+  
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+
+    return this.http.put(this.url + 'updateimage1',{'id':id, 'image2': image2}, {headers: headers});
+  }
+  updateImage3(id, image3):Observable<any>
+  {
+  
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+
+    return this.http.put(this.url + 'updateimage1',{'id':id, 'image3': image3}, {headers: headers});
+  }
+  updateImage4(id, image4):Observable<any>
+  {
+  
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+
+    return this.http.put(this.url + 'updateimage1',{'id':id, 'image4': image4}, {headers: headers});
+  }
+  updateImage5(id, image5):Observable<any>
+  {
+  
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+
+
+    return this.http.put(this.url + 'updateimage1',{'id':id, 'image5': image5}, {headers: headers});
+  }
   saveImg(id,image1):Observable<any>
   {
    // console.log(image1);

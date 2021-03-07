@@ -537,36 +537,171 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           };
 
 
-    deleteImage()
-    {
+    // deleteImage(image)
+    // {
    
-      console.log('image1-delete',this.room.image1);
-      this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
-        response =>
-        {
-          this.getRoom();
-        }
-      )
-      if( this.room.image1 != undefined && this.room.image1 != 'no-image.png')
-      {
-        // this.roomservice.deleteAvatar(this.room.image1).subscribe(
-        //   response =>
-        //   {
-        //     this.room.image1 = null;
+    //   console.log('image1-delete',this.room.image1);
+    //   this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
+    //     response =>
+    //     {
+    //       this.getRoom();
+    //     }
+    //   )
+    //   if( this.room.image1 != undefined && this.room.image1 != 'no-image.png')
+    //   {
+    //     this.roomservice.deleteAvatar(this.room.image1).subscribe(
+    //       response =>
+    //       {
+    //         this.room.image1 = null;
             
-        //     console.log('img1a', this.room.image1);
+    //         console.log('img1a', this.room.image1);
               
-        //   },
-        //   error =>
-        //   {
-        //     console.log(error);
-        //   }
+    //       },
+    //       error =>
+    //       {
+    //         console.log(error);
+    //       }
   
-        // );
+    //     );
+    //   }
+
+
+    // } 
+    
+
+    deleteImage(image)
+    {
+      if(image == this.room.image1)
+      {
+        this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
+          response =>
+          {
+            this.getRoom();
+          }
+        )
+        if( this.room.image1 != undefined && this.room.image1 != 'no-image.png')
+        {
+          this.roomservice.deleteAvatar(this.room.image1).subscribe(
+            response =>
+            {
+            
+              
+            
+                
+            },
+            error =>
+            {
+              console.log(error);
+            }
+    
+          );
+        }
+
       }
+      if(image == this.room.image2)
+      {
+        this.roomservice.updateImage2(this.room._id, this.room.image2).subscribe(
+          response =>
+          {
+            this.getRoom();
+          }
+        )
+        if( this.room.image2 != undefined && this.room.image2 != 'no-image.png')
+        {
+          this.roomservice.deleteAvatar(this.room.image2).subscribe(
+            response =>
+            {
+            
+                
+            },
+            error =>
+            {
+              console.log(error);
+            }
+    
+          );
+        }
+
+      }
+      if(image == this.room.image3)
+      {
+        this.roomservice.updateImage3(this.room._id, this.room.image3).subscribe(
+          response =>
+          {
+            this.getRoom();
+          }
+        )
+        if( this.room.image3 != undefined && this.room.image3 != 'no-image.png')
+        {
+          this.roomservice.deleteAvatar(this.room.image3).subscribe(
+            response =>
+            {
+            
+                
+            },
+            error =>
+            {
+              console.log(error);
+            }
+    
+          );
+        }
+
+      }
+      if(image == this.room.image4)
+      {
+        this.roomservice.updateImage4(this.room._id, this.room.image4).subscribe(
+          response =>
+          {
+            this.getRoom();
+          }
+        )
+        if( this.room.image4 != undefined && this.room.image4 != 'no-image.png')
+        {
+          this.roomservice.deleteAvatar(this.room.image4).subscribe(
+            response =>
+            {
+            
+                
+            },
+            error =>
+            {
+              console.log(error);
+            }
+    
+          );
+        }
+
+      }
+      if(image == this.room.image5)
+      {
+        this.roomservice.updateImage5(this.room._id, this.room.image5).subscribe(
+          response =>
+          {
+            this.getRoom();
+          }
+        )
+        if( this.room.image5 != undefined && this.room.image5 != 'no-image.png')
+        {
+          this.roomservice.deleteAvatar(this.room.image5).subscribe(
+            response =>
+            {
+            
+                
+            },
+            error =>
+            {
+              console.log(error);
+            }
+    
+          );
+        }
+
+      }
+      
 
 
-    }      
+    }       
         
      
    

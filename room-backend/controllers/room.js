@@ -404,38 +404,158 @@ var controller = {
     },
 
     updateImage1: function(req, res) {
-        var image1 = req.body;
-        console.log(image1);
+        var image = req.body;
+        console.log(image);
+        var image1 = req.body.image1;
+        var image2 = req.body.image2;
+        var image3 = req.body.image3;
+        var image4 = req.body.image4;
+        var image5 = req.body.image5;
+        console.log('image2', image2);
         var roomId = req.body.id;
 
         console.log('idddd', roomId);
-        // Buscar y actualizar documento
-        Room.findOneAndUpdate({ _id: roomId }, {
-                $unset: { image1: null }
-            }, { new: true },
-            (err, roomUpdated) => {
+        if (image1) {
+            Room.findOneAndUpdate({ _id: roomId }, {
+                    $unset: { image1: null }
+                }, { new: true },
+                (err, roomUpdated) => {
 
-                if (err) {
-                    return res.status(500).send({
-                        status: 'error',
-                        message: 'Error al actualizar la habitación'
-                    });
-                }
+                    if (err) {
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'Error al actualizar la habitación'
+                        });
+                    }
 
-                if (!roomUpdated) {
+                    if (!roomUpdated) {
+                        return res.status(200).send({
+                            status: 'error',
+                            message: 'No se a actualizado la habitacion'
+                        });
+                    }
+
+                    // Devolver respuesta
                     return res.status(200).send({
-                        status: 'error',
-                        message: 'No se a actualizado la habitacion'
+                        status: 'success',
+                        room: roomUpdated
                     });
-                }
 
-                // Devolver respuesta
-                return res.status(200).send({
-                    status: 'success',
-                    room: roomUpdated
                 });
+        }
+        if (image2) {
+            Room.findOneAndUpdate({ _id: roomId }, {
+                    $unset: { image2: null }
+                }, { new: true },
+                (err, roomUpdated) => {
 
-            });
+                    if (err) {
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'Error al actualizar la habitación'
+                        });
+                    }
+
+                    if (!roomUpdated) {
+                        return res.status(200).send({
+                            status: 'error',
+                            message: 'No se a actualizado la habitacion'
+                        });
+                    }
+
+                    // Devolver respuesta
+                    return res.status(200).send({
+                        status: 'success',
+                        room: roomUpdated
+                    });
+
+                });
+        }
+        if (image3) {
+            Room.findOneAndUpdate({ _id: roomId }, {
+                    $unset: { image3: null }
+                }, { new: true },
+                (err, roomUpdated) => {
+
+                    if (err) {
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'Error al actualizar la habitación'
+                        });
+                    }
+
+                    if (!roomUpdated) {
+                        return res.status(200).send({
+                            status: 'error',
+                            message: 'No se a actualizado la habitacion'
+                        });
+                    }
+
+                    // Devolver respuesta
+                    return res.status(200).send({
+                        status: 'success',
+                        room: roomUpdated
+                    });
+
+                });
+        }
+        if (image4) {
+            Room.findOneAndUpdate({ _id: roomId }, {
+                    $unset: { image4: null }
+                }, { new: true },
+                (err, roomUpdated) => {
+
+                    if (err) {
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'Error al actualizar la habitación'
+                        });
+                    }
+
+                    if (!roomUpdated) {
+                        return res.status(200).send({
+                            status: 'error',
+                            message: 'No se a actualizado la habitacion'
+                        });
+                    }
+
+                    // Devolver respuesta
+                    return res.status(200).send({
+                        status: 'success',
+                        room: roomUpdated
+                    });
+
+                });
+        }
+        if (image5) {
+            Room.findOneAndUpdate({ _id: roomId }, {
+                    $unset: { image5: null }
+                }, { new: true },
+                (err, roomUpdated) => {
+
+                    if (err) {
+                        return res.status(500).send({
+                            status: 'error',
+                            message: 'Error al actualizar la habitación'
+                        });
+                    }
+
+                    if (!roomUpdated) {
+                        return res.status(200).send({
+                            status: 'error',
+                            message: 'No se a actualizado la habitacion'
+                        });
+                    }
+
+                    // Devolver respuesta
+                    return res.status(200).send({
+                        status: 'success',
+                        room: roomUpdated
+                    });
+
+                });
+        }
+
     },
 
 
