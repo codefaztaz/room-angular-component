@@ -42,23 +42,53 @@
                 >
                 <ngb-carousel>
                     <ng-template ngbSlide>
-                        <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
+                        <div class="" *ngIf="!room.image1; else noimage1">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                        </div>
+                        <ng-template #noimage1>
+                            <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
+                        </ng-template>
+                       
 
                     </ng-template>
                     <ng-template ngbSlide>
-                        <img class="carousel-img" src="{{ url + 'avatar/' + room.image2 }}" alt="student">
+                        <div class="" *ngIf="!room.image2; else noimage2">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                        </div>
+                        <ng-template #noimage2>
+                            <img class="carousel-img" src="{{ url + 'avatar/' + room.image2 }}" alt="student">
+                        </ng-template>
+                      
 
                     </ng-template>
                     <ng-template ngbSlide>
-                        <img class="carousel-img" src="{{ url + 'avatar/' + room.image3 }}" alt="student">
+                        <div class="" *ngIf="!room.image3; else noimage3">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                        </div>
+                        <ng-template #noimage3>
+                            <img class="carousel-img" src="{{ url + 'avatar/' + room.image3 }}" alt="student">
+                        </ng-template>
+                    
 
                     </ng-template>
                     <ng-template ngbSlide>
-                        <img class="carousel-img" src="{{ url + 'avatar/' + room.image4 }}" alt="student">
+                        <div class="" *ngIf="!room.image4; else noimage4">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                        </div>
+                        <ng-template #noimage4>
+                            <img class="carousel-img" src="{{ url + 'avatar/' + room.image4}}" alt="student">
+                        </ng-template>
+                  
 
                     </ng-template>
                     <ng-template ngbSlide>
-                        <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="student">
+                        <div class="" *ngIf="!room.image5; else noimage5">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="">
+                        </div>
+                        <ng-template #noimage5>
+                            <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="student">
+                        </ng-template>
+                      
                     </ng-template>
                 </ngb-carousel>
                 </div>
