@@ -191,7 +191,9 @@ export class RoomComponent implements OnInit {
 
   showMap()
   {
-     this.flag = !this.flag;
+   //  this.flag = !this.flag;
+     this.flag = true;
+
 
   }
   

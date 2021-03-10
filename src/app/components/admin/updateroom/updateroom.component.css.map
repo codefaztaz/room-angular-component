@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAU;EACN,KAAK,EAAE,gBAAgB;EACvB,MAAM,EAAE,KAAK;;AAGjB,WAAY;EACR,MAAM,EAAE,kBAAkB;EAC1B,kBAAkB,EAAE,EAAE;EACtB,qBAAqB,EAAE,EAAE;EACzB,aAAa,EAAE,EAAE;EACjB,OAAO,EAAE,IAAI;;AAGjB,WAAY;EACR,aAAa,EAAE,IAAI",
+"sources": ["updateroom.component.scss"],
+"names": [],
+"file": "updateroom.component.css"
+}

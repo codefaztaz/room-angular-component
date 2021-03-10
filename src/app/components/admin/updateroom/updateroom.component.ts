@@ -1,6 +1,8 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { Observable } from 'rxjs';
+//import { ComponentCanDeactivate } from '../../../services/componentcandeactivate.guard';
 
 
 import { AngularFileUploaderConfig } from 'angular-file-uploader';
@@ -68,6 +70,13 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
    // this.avatar();
     
   }
+
+  // @HostListener('window:beforeunload')
+  // canDeactivate(): Observable<boolean> | boolean {
+  //   // insert logic to check if there are pending changes here;
+  //   // returning true will navigate without confirmation
+  //   // returning false will show a confirm dialog before navigating away
+  // }
 
 
 

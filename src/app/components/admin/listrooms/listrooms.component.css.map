@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,SAAU;EACN,KAAK,EAAE,gBAAgB;EACvB,MAAM,EAAE,KAAK",
+"sources": ["listrooms.component.scss"],
+"names": [],
+"file": "listrooms.component.css"
+}

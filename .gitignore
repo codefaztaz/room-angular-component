@@ -48,3 +48,5 @@ Thumbs.db
 room-backend/uploads/rooms/
 
 *.jpg
+
+src/app/services/componentcandeactivate.guard.ts

@@ -1,0 +1,15 @@
+.img-list {
+  width: 200px !important;
+  height: 200px; }
+
+.border-red {
+  border: 10px solid #494949;
+  -moz-border-radius: 5%;
+  -webkit-border-radius: 5%;
+  border-radius: 5%;
+  padding: 30px; }
+
+.form-group {
+  margin-bottom: 30px; }
+
+/*# sourceMappingURL=updateroom.component.css.map */

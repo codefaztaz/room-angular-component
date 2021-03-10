@@ -1,0 +1,21 @@
+.img-list {
+  width: 170px !important;
+  height: 170px; }
+
+.title-room {
+  color: #00b8ff; }
+
+.data-room {
+  font-size: 14px; }
+
+.list-group-item p {
+  padding: 0 !important;
+  margin: 3px; }
+
+.list-group-item {
+  color: #000000; }
+
+.link-room {
+  text-decoration: none !important; }
+
+/*# sourceMappingURL=home.component.css.map */

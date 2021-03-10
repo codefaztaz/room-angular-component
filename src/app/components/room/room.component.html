@@ -11,19 +11,13 @@
             <!-- Tabs navs -->
             <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" id="ex2-tab-1" (click)="showPictures();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">Pictures</a
-                >
+                    <a class="nav-link active" id="ex2-tab-1" (click)="showPictures();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
+                        <i class="fa fa-picture-o" aria-hidden="true"></i> Pictures
+                    </a>
                 </li>
                 <li class="nav-item" role="presentation">
-                <a
-                    class="nav-link"
-                    id="ex2-tab-2"
-                    (click)="showMap();"
-                    data-mdb-toggle="tab"
-                    role="tab"
-                    aria-controls="ex2-tabs-2"
-                    aria-selected="false"
-                    >google Maps</a
+                    <a class="nav-link" id="ex2-tab-2" (click)="showMap();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                        google Maps</a
                 >
                 </li>
             
@@ -90,14 +84,16 @@
                         </ng-template>
                       
                     </ng-template>
+                       <!-- [ngClass]="{'active':flag, 'hidden':!flag}" -->
                 </ngb-carousel>
                 </div>
                 <div
                 class="tab-pane fade show embed-responsive embed-responsive-4by3"
-                [ngClass]="{'active':flag, 'pepe':!flag}"
+             
+                [ngClass]="{'hiden': !flag, 'active': flag}"
                 *ngIf="div2"
                 role="tabpanel"
-                aria-labelledby="ex2-tab-2"
+                aria-labelledby="ex2-tab-1"
                 id="div2"
                 [innerHtml]="room.mapgoogle | safeHtml" 
                 >

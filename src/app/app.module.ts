@@ -12,6 +12,7 @@ import { UserGuard } from './services/user.guard';
 import { NoIdentityGuard } from './services/no.identity.guard'; 
 import { UserService } from './services/user.service';
 import { RoomService } from './services/room.service';
+import { ComponentCanDeactivate } from './services/componentcandeactivate.guard';
 
 
 import { AppComponent } from './app.component';
@@ -60,6 +61,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     RoomService,
     UserGuard,
     NoIdentityGuard,
+   
     
   ],
   bootstrap: [AppComponent]
