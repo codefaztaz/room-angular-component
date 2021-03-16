@@ -194,11 +194,11 @@ var controller = {
 
     },
 
-    jwt: function(req, res) {
-        let privateKey = fs.readFileSync('./private.pem', 'utf8');
-        let token = jwt.sign({ "body": "stuff" }, "MySuperSecretPassPhrase", { algorithm: 'HS256' });
-        res.send(token);
-    },
+    // jwt: function(req, res) {
+    //     let privateKey = fs.readFileSync('./private.pem', 'utf8');
+    //     let token = jwt.sign({ "body": "stuff" }, "MySuperSecretPassPhrase", { algorithm: 'HS256' });
+    //     res.send(token);
+    // },
 
 
     login: function(req, res) {
@@ -260,13 +260,13 @@ var controller = {
                             // Devolver los datos
                             return res.status(200).send({
                                 status: "success",
-                                user
+                                user: user
                             });
 
                         }
 
                     } else {
-                        return res.status(200).send({
+                        return res.status(400).send({
                             message: "Las credenciales no son correctas"
                         });
                     }

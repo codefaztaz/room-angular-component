@@ -4,10 +4,10 @@
 // const fs = require('fs');
 var jwt = require('jwt-simple');
 var moment = require('moment');
-var secret = 'MIIEpAIBAAKCAQEAATZV5SUVri5XnRb5qYQSyoB8sGdfR4SQ9q1XPRIpBP8RYXCP';
+//var secret = 'MIIEpAIBAAKCAQEAATZV5SUVri5XnRb5qYQSyoB8sGdfR4SQ9q1XPRIpBP8RYXCP';
 
-var base64 = 'clave-secreta-para-generar-el-token-9999';
-console.log(base64);
+var secret = 'clave-secreta-para-generar-el-token-9999';
+
 
 exports.authenticated = function(req, res, next) {
 
@@ -22,10 +22,10 @@ exports.authenticated = function(req, res, next) {
     var token = req.headers.authorization.replace(/['"]+/g, '');
 
 
-    console.log(token);
-    console.log(secret);
-    var payload = jwt.decode(token, base64);
-    console.log('payload', payload);
+    // console.log(token);
+    // console.log(secret);
+    // var payload = jwt.decode(token, base64);
+    // console.log('payload', payload);
 
 
     try {

@@ -136,7 +136,7 @@ export class ListroomsnotComponent implements OnInit {
   {
     console.log(id);
     console.log(this.token);
-    this.roomservice.delete(id).subscribe(
+    this.roomservice.delete(this.token,id).subscribe(
       response =>
       {
           this.getRoomsFull();

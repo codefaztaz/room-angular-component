@@ -56,10 +56,12 @@ export class RoomService {
     console.log(image);
   }
 
-  update(room):Observable<any>
+  update(token,room):Observable<any>
   {
     let params = JSON.stringify(room);
-    let headers = new HttpHeaders().set('Content-Type','application/json');
+    let tokenid = JSON.stringify(token);
+    let headers = new HttpHeaders().set('Content-Type','application/json')
+                                  .set('Authorization', tokenid);
 
     return this.http.put(this.url + 'update', params, {headers: headers});
   }
@@ -171,14 +173,14 @@ export class RoomService {
 
     return this.http.post(this.url + 'upload-avatar/'+params, { headers: headers });
   }
-  delete(id):Observable<any>
+  delete(token,id):Observable<any>
   {
-    //let tokenid = JSON.stringify(token);
+    let tokenid = JSON.stringify(token);
     //console.log(tokenid);
    
        // console.log(token);
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
-                                  // .set('Authorization', token);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                   .set('Authorization', tokenid);
 
     return this.http.delete(this.url + 'delete/' + id,  { headers: headers } );
   }

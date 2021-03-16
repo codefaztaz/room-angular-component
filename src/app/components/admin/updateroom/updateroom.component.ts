@@ -406,7 +406,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           afuConfig: AngularFileUploaderConfig = {
             
             multiple: false,
-            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            formatsAllowed: '.jpg, .jpeg, .png',
             maxSize: 0.5 ,
             uploadAPI:{
               url: 'http://localhost:3999/admin/' + 'upload-avatar',
@@ -426,7 +426,16 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             hideProgressBar: false,
             hideResetBtn: true,
             hideSelectBtn: false,
-            // attachPinText: ' Sube la imagen'
+            replaceTexts: {
+              selectFileBtn: 'Select Files',
+              resetBtn: 'Reset',
+              uploadBtn: 'Upload',
+              dragNDropBox: 'Drag N Drop',
+              attachPinBtn: 'Attach Files...',
+              afterUploadMsg_success: 'Successfully Uploaded !',
+              afterUploadMsg_error: 'Upload Failed !',
+              sizeLimit: 'Size Limit'
+            }
           };
         
      
@@ -720,7 +729,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     
     
       this.room = this.forma.value;
-      this.roomservice.update(this.room).subscribe(
+      this.roomservice.update(this.token,this.room).subscribe(
         response =>
          {
           
