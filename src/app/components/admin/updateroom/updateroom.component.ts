@@ -270,7 +270,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             //       console.log(error);
             //     }
             // );
-            this.roomservice.saveImg(this.room._id,this.room.image1).subscribe(
+            this.roomservice.saveImg(this.room._id,'image1',this.room.image1).subscribe(
             response =>
               {
                 //this.room.image1;
@@ -286,7 +286,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             }
             if(data.body.image2)
             {
-            this.roomservice.saveImg2(this.room._id,this.room.image2).subscribe(
+            this.roomservice.saveImg(this.room._id,'image2',this.room.image2).subscribe(
               response =>
                 {
                   //this.room.image1;
@@ -303,7 +303,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
               if(data.body.image3)
               {
-              this.roomservice.saveImg3(this.room._id,this.room.image3).subscribe(
+              this.roomservice.saveImg(this.room._id,'image3',this.room.image3).subscribe(
                 response =>
                   {
                     //this.room.image1;
@@ -319,7 +319,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
                 }
                 if(data.body.image4)
                 {
-                this.roomservice.saveImg4(this.room._id,this.room.image4).subscribe(
+                this.roomservice.saveImg(this.room._id,'image4',this.room.image4).subscribe(
                   response =>
                     {
                       //this.room.image1;
@@ -335,7 +335,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
                   }
                   if(data.body.image5)
                   {
-                  this.roomservice.saveImg5(this.room._id,this.room.image5).subscribe(
+                  this.roomservice.saveImg(this.room._id,'image5',this.room.image5).subscribe(
                     response =>
                       {
                         //this.room.image1;

@@ -76,55 +76,15 @@ export class RoomService {
     return this.http.put(this.url + 'updateimage1',{'id':id,  [property]: image}, {headers: headers});
   }
   
-  saveImg(id,image1):Observable<any>
+  saveImg(id, property,image):Observable<any>
   {
    // console.log(image1);
    
    //let params = JSON.stringify(image1);
     let headers = new HttpHeaders().set('Content-Type','application/json');
 
-    return this.http.post(this.url + 'saveimg/', {'id': id, 'image1': image1},{headers: headers});
+    return this.http.post(this.url + 'saveimg/', {'id': id, [property]: image},{headers: headers});
   }
-
-  saveImg2(id,image2):Observable<any>
-  {
-   // console.log(image1);
-   
-   //let params = JSON.stringify(image1);
-    let headers = new HttpHeaders().set('Content-Type','application/json');
-
-    return this.http.post(this.url + 'saveimg/', {'id': id, 'image2': image2},{headers: headers});
-  }
-  saveImg3(id,image3):Observable<any>
-  {
-   // console.log(image1);
-   
-   //let params = JSON.stringify(image1);
-    let headers = new HttpHeaders().set('Content-Type','application/json');
-
-    return this.http.post(this.url + 'saveimg/', {'id': id, 'image3': image3},{headers: headers});
-  }
-
-  saveImg4(id,image4):Observable<any>
-  {
-   // console.log(image1);
-   
-   //let params = JSON.stringify(image1);
-    let headers = new HttpHeaders().set('Content-Type','application/json');
-
-    return this.http.post(this.url + 'saveimg/', {'id': id, 'image4': image4},{headers: headers});
-  }
-
-  saveImg5(id,image5):Observable<any>
-  {
-   // console.log(image1);
-   
-   //let params = JSON.stringify(image1);
-    let headers = new HttpHeaders().set('Content-Type','application/json');
-
-    return this.http.post(this.url + 'saveimg/', {'id': id, 'image5': image5},{headers: headers});
-  }
- 
 
   deleteAvatar(image1):Observable<any>
   {
