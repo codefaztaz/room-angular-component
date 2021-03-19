@@ -39,7 +39,7 @@ exports.authenticated = function(req, res, next) {
         //   next();
 
         // Comprobar si el token ha expirado
-        if (payload.exp <= moment(15 * 60).unix()) {
+        if (payload.exp <= moment(1 * 1).unix()) {
             return res.status(404).send({
                 message: 'El token ha expirado'
             });

@@ -183,7 +183,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image2 && this.room.image2 != undefined)
+      else if(data.body.image2 && this.room.image2 != undefined  && this.room.image1 != 'no-image.png')
       {
         this.roomservice.deleteAvatar(this.room.image2).subscribe(
           response =>
@@ -197,7 +197,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image3 && this.room.image3 != undefined)
+      else if(data.body.image3 && this.room.image3 != undefined  && this.room.image1 != 'no-image.png')
       {
         this.roomservice.deleteAvatar(this.room.image3).subscribe(
           response =>
@@ -211,7 +211,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image4 && this.room.image4 != undefined)
+      else if(data.body.image4 && this.room.image4 != undefined  && this.room.image1 != 'no-image.png')
       {
         this.roomservice.deleteAvatar(this.room.image4).subscribe(
           response =>
@@ -225,7 +225,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   
         );
       }
-      else if(data.body.image5 && this.room.image5 != undefined)
+      else if(data.body.image5 && this.room.image5 != undefined  && this.room.image1 != 'no-image.png')
       {
         this.roomservice.deleteAvatar(this.room.image5).subscribe(
           response =>
@@ -414,10 +414,10 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               params: {
                 'image': '1'
               }
-              // headers:{
-              //'Authorization': this.token,
+              //  headers:{
+              // 'Authorization': this.token,
               
-              // }
+              //  },
               
             },
           
@@ -591,7 +591,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     {
       if(image == this.room.image1)
       {
-        this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
+        this.roomservice.updateImage(this.token,this.room._id, 'image1',this.room.image1).subscribe(
           response =>
           {
             this.getRoom();
@@ -618,7 +618,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       }
       if(image == this.room.image2)
       {
-        this.roomservice.updateImage2(this.room._id, this.room.image2).subscribe(
+        this.roomservice.updateImage(this.token,this.room._id,'image2', this.room.image2).subscribe(
           response =>
           {
             this.getRoom();
@@ -643,7 +643,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       }
       if(image == this.room.image3)
       {
-        this.roomservice.updateImage3(this.room._id, this.room.image3).subscribe(
+        this.roomservice.updateImage(this.token,this.room._id, 'image3',this.room.image3).subscribe(
           response =>
           {
             this.getRoom();
@@ -668,7 +668,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       }
       if(image == this.room.image4)
       {
-        this.roomservice.updateImage4(this.room._id, this.room.image4).subscribe(
+        this.roomservice.updateImage(this.token,this.room._id,'image4', this.room.image4).subscribe(
           response =>
           {
             this.getRoom();
@@ -693,7 +693,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       }
       if(image == this.room.image5)
       {
-        this.roomservice.updateImage5(this.room._id, this.room.image5).subscribe(
+        this.roomservice.updateImage(this.token,this.room._id, 'image5',this.room.image5).subscribe(
           response =>
           {
             this.getRoom();

@@ -122,7 +122,7 @@ onSubmit(form){
         this.status = 'error';
         console.log(error);
         console.log("no");
-        this.snackBar.open('password incorrect ', 'Close',{duration:3000});
+        this.snackBar.open('password or email incorrect ', 'Close',{duration:3000});
 
       }
     );
