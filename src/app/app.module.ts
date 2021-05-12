@@ -28,6 +28,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
+
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     RoomComponent,
     FilterPipe,
     ListroomsnotComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    SidebarComponent,
+
   ],
   imports: [
     AppRoutingModule,
