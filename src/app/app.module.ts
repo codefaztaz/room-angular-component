@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
+import { HeaderComponent } from './components/admin/header/header.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
     ListroomsnotComponent,
     SafeHtmlPipe,
     SidebarComponent,
+    HeaderComponent,
 
   ],
   imports: [
