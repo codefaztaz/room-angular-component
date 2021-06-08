@@ -7,6 +7,8 @@ import { ListroomsnotComponent } from './components/admin/listroomsnot/listrooms
 import { AddroomComponent } from './components/admin/addroom/addroom.component';
 import { UpdateroomComponent } from './components/admin/updateroom/updateroom.component';
 import { RoomComponent } from './components/room/room.component';
+import { RoomUnavailableComponent } from './components/room-unavailable/room-unavailable.component';
+
 
 // Services
 import { UserGuard } from './services/user.guard';
@@ -24,6 +26,7 @@ const routes: Routes = [
   { path: 'admin/addroom', canActivate: [UserGuard],component: AddroomComponent },
   { path: 'admin/updateroom/:id',canActivate: [UserGuard], component: UpdateroomComponent },
   { path: 'room/:id', component: RoomComponent },
+  { path: 'room-unavailable/:id', component: RoomUnavailableComponent },
   { path: 'logout/:sure', component: PanelComponent },
   { path: 'login', component: PanelComponent },
   

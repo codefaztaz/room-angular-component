@@ -1,36 +1,80 @@
-<div class="row">
-    <ul class="list-group">
-        <li class="list-group-item" *ngFor="let room of rooms">
-            <div class="row">
-                <div class="col-sm-2 col-md-3 col-lg-3">
-                    <div class="" *ngIf="!room.image1 || room.image1 == undefined; else noimage">
-                        <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="student">
-                    </div>
-                    <ng-template #noimage>
-                        <img class="img-list" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
-                    </ng-template>
-                </div>
-                <div class="col-sm-10 col-md-9 col-lg-9">
-                    <p class="title-room">Title {{ room.title }}</p>
-                    <p class="data-room"> {{ room.location }}</p>
-                    <p class="data-room"> {{ room.description | less:[150, '...'] }}</p>
-                    <p class="data-room"> Room type {{ room.roomtype }}</p>
-                    <p>&#163; {{ room.price }} pm</p>
-                    <a [routerLink]="['/room', room._id]" class="btn btn-danger pl-4 pr-4 pt-3 pb-3">View</a>
-                </div>
-            </div>
-        </li>
+<div class="container">
+    <div class="md-5">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Room Angular Component</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
 
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav  navbar-right">
+
+
+                </ul>
+                <!-- *ngIf="identity && identity.name"  -->
+                <!-- <ul class="navbar-nav  navbar-right">
+
+                <li class="nav-item dropdown" *ngIf="identity">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         {{ identity.name + ' ' + identity.surname }}
+      </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Mi perfil</a>
+                        <a class="dropdown-item" [routerLink]="'/ajustes'">Ajustes</a>
+                        <a class="dropdown-item" [routerLink]="['/logout/1']">logout</a>
+
+                    </div>
+                </li>
+            </ul> -->
+            </div>
+        </nav>
+
+
+
+    </div>
+    <div class="row">
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let room of rooms">
+                <div class="row">
+                    <div class="col-sm-2 col-md-3 col-lg-3">
+                        <div class="" *ngIf="!room.image1 || room.image1 == undefined; else noimage">
+                            <img class="img-list" src="{{ url + 'avatar/' + 'no-image.png'  }}" alt="student">
+                        </div>
+                        <ng-template #noimage>
+                            <img class="img-list" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
+                        </ng-template>
+                    </div>
+                    <div class="col-sm-10 col-md-9 col-lg-9">
+                        <p class="title-room">Title {{ room.title }}</p>
+                        <p class="data-room"> {{ room.location }}</p>
+                        <p class="data-room"> {{ room.description | less:[150, '...'] }}</p>
+                        <p class="data-room"> Room type {{ room.roomtype }}</p>
+                        <p>&#163; {{ room.price }} pm</p>
+                        <a [routerLink]="['/room', room._id]" class="btn btn-danger pl-4 pr-4 pt-3 pb-3">View</a>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <ul class="pagination mt-5">
+        <li class="page-item">
+            <a class="page-link" [routerLink]="['/admin/listrooms', prev_page]">&laquo;</a>
+        </li>
+        <li class="page-item" *ngFor="let num of number_pages">
+            <a class="page-link" [routerLink]="['/admin/listrooms', num]" href="">{{ num }}</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" [routerLink]="['/admin/listrooms', next_page]">&raquo;</a>
+        </li>
     </ul>
+
 </div>
-<ul class="pagination mt-5">
-    <li class="page-item">
-        <a class="page-link" [routerLink]="['/admin/listrooms', prev_page]">&laquo;</a>
-    </li>
-    <li class="page-item" *ngFor="let num of number_pages">
-        <a class="page-link" [routerLink]="['/admin/listrooms', num]" href="">{{ num }}</a>
-    </li>
-    <li class="page-item">
-        <a class="page-link" [routerLink]="['/admin/listrooms', next_page]">&raquo;</a>
-    </li>
-</ul>

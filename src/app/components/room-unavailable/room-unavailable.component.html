@@ -1,64 +1,32 @@
-<div class="container">
-    <div class="md-5">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#">Room Angular Component</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  <span class="navbar-toggler-icon"></span>
-</button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-
-
-                <ul class="navbar-nav  navbar-right">
-
-
-                </ul>
-                <!-- *ngIf="identity && identity.name"  -->
-                <!-- <ul class="navbar-nav  navbar-right">
-
-                <li class="nav-item dropdown" *ngIf="identity">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         {{ identity.name + ' ' + identity.surname }}
-      </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Mi perfil</a>
-                        <a class="dropdown-item" [routerLink]="'/ajustes'">Ajustes</a>
-                        <a class="dropdown-item" [routerLink]="['/logout/1']">logout</a>
-
-                    </div>
-                </li>
-            </ul> -->
-            </div>
-        </nav>
+<div class="main-wrapper">
+    <app-header></app-header>
+    <app-sidebar></app-sidebar>
+    <div class="page-wrapper">
+        <div class="container">
 
 
 
-    </div>
-    <div class="margin-carousel">
 
-        <h2> <a class="add-book" [routerLink]="['/home']">Back</a></h2>
-        <div class="row">
-            <div class="col-sm-7">
-                <h4>{{ room.title }}</h4>
-                <ul class="ul-room">
-                    <li class="li-room">{{ room.location }} </li>
-                    <li class="li-room float-right">&#163; {{ room.price }} pm</li>
-                </ul>
-                <!-- Tabs navs -->
-                <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="ex2-tab-1" (click)="showPictures();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
-                            <i class="fa fa-picture-o" aria-hidden="true"></i> Pictures
-                        </a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="ex2-tab-2" (click)="showMap();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i>
+        </div>
+        <div class="margin-carousel">
+
+            <h2> <a class="add-book" [routerLink]="['/admin/listroomsnot']">Back</a></h2>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h4>{{ room.title }}</h4>
+                    <ul class="ul-room">
+                        <li class="li-room">{{ room.location }} </li>
+                        <li class="li-room float-right">&#163; {{ room.price }} pm</li>
+                    </ul>
+                    <!-- Tabs navs -->
+                    <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link active" id="ex2-tab-1" (click)="showPictures();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">
+                                <i class="fa fa-picture-o" aria-hidden="true"></i> Pictures
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" id="ex2-tab-2" (click)="showMap();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-2" aria-selected="false"><i class="fa fa-map-marker" aria-hidden="true"></i>
                         google Maps</a
                 >
                 </li>
@@ -67,7 +35,7 @@
             <!-- Tabs navs -->
             
             <!-- Tabs content -->
-            <div class="tab-content">
+            <div class="tab-content size-carousel">
                 <div
                 class="tab-pane fade show active"
                 [ngClass]="{'hiden': flag, 'active': !flag}"
@@ -188,4 +156,5 @@
     </div>
 </div>
 
+</div>
 </div>

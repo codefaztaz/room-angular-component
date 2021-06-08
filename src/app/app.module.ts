@@ -30,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { HeaderComponent } from './components/admin/header/header.component';
+import { RoomUnavailableComponent } from './components/room-unavailable/room-unavailable.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { HeaderComponent } from './components/admin/header/header.component';
     SafeHtmlPipe,
     SidebarComponent,
     HeaderComponent,
+    RoomUnavailableComponent,
 
   ],
   imports: [
