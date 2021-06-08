@@ -31,6 +31,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 import { SidebarComponent } from './components/admin/sidebar/sidebar.component';
 import { HeaderComponent } from './components/admin/header/header.component';
 import { RoomUnavailableComponent } from './components/room-unavailable/room-unavailable.component';
+import { RoomAvailableComponent } from './components/room-available/room-available.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { RoomUnavailableComponent } from './components/room-unavailable/room-una
     SidebarComponent,
     HeaderComponent,
     RoomUnavailableComponent,
+    RoomAvailableComponent,
 
   ],
   imports: [

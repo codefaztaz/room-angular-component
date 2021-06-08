@@ -27,7 +27,7 @@
                             <p class="data-room"> Room type {{room.roomtype}}</p>
                             <p>&#163; {{ room.price }} pm</p>
                             <a [routerLink]="['/admin/updateroom', room._id]" class="btn btn-danger">Update</a>
-                            <a [routerLink]="['/room', room._id]" class="btn btn-primary ml-2">View</a>
+                            <a [routerLink]="['/room-available', room._id]" class="btn btn-primary ml-2">View</a>
                             <a (click)="delete(room._id)" class="btn btn-danger float-right">Delete</a>
                         </div>
                     </div>
