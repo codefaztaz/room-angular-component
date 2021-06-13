@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -9,7 +9,7 @@ describe('UpdateroomComponent', () => {
   let component: UpdateroomComponent;
   let fixture: ComponentFixture<UpdateroomComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ UpdateroomComponent ],
       imports: [FormsModule, ReactiveFormsModule,HttpClientTestingModule ]

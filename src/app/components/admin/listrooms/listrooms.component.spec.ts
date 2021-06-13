@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed, fakeAsync,tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, waitForAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { HomeComponent } from '../../../components/home/home.component';
@@ -26,10 +26,10 @@ const routes: Routes = [
   let component: ListroomsComponent;
   let fixture: ComponentFixture<ListroomsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ListroomsComponent ],
-      imports: [RouterModule.forRoot(routes),HttpClientTestingModule]
+      imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),HttpClientTestingModule]
     })
     .compileComponents();
   }));
