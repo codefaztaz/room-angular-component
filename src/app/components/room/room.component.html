@@ -15,7 +15,18 @@
 
 
                 <ul class="navbar-nav  navbar-right">
-
+                    <span class="form-inline">
+                        <select 
+                            class="form-control" 
+                            #selectedLang 
+                            (change)="switchLang(selectedLang.value)">
+                          <option *ngFor="let language of translate.getLangs()" 
+                            [value]="language"
+                            [selected]="language === translate.currentLang">
+                            {{ language }}
+                          </option>
+                        </select>
+                      </span>
 
                 </ul>
                 <!-- *ngIf="identity && identity.name"  -->
@@ -152,23 +163,23 @@
                     <p class="">{{ room.description }}</p>
         </div>
         <div class="col-sm-5">
-            <h4 class="">Contact Student</h4>
+            <h4 class="">{{ 'NameContact' | translate}}</h4>
             <p class="">07666666666</p>
             <p class="">info@student.com</p>
             <form autocomplete="off" [formGroup]="forma" (ngSubmit)="onSubmit()">
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">Name</label>
+                    <label class="col-2 col-form-label">{{'Name' | translate}}</label>
                     <div class="col">
-                        <input class="form-control" type="text" placeholder="name" formControlName="name" [class.is-invalid]="nameNoValido">
+                        <input class="form-control" type="text" placeholder="{{'Name' |translate}}" formControlName="name" [class.is-invalid]="nameNoValido">
                         <small *ngIf="nameNoValido" class="text-danger">
                       write the name
                     </small>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">Message</label>
+                    <label class="col-2 col-form-label">{{ 'Message' | translate}}</label>
                     <div class="col">
-                        <textarea class="form-control" rows="8" cols="80" placeholder="message" formControlName="message" [class.is-invalid]="messageNoValido">
+                        <textarea class="form-control" rows="8" cols="80" placeholder="{{ 'Message' | translate}}" formControlName="message" [class.is-invalid]="messageNoValido">
                            </textarea>
                         <small *ngIf="messageNoValido" class="text-danger">
                       write the message
@@ -179,7 +190,7 @@
                     <label class="col-2 col-form-label">&nbsp;</label>
                     <div class="input-group col">
                         <button type="submit " class="btn btn-outline-primary btn-block">
-                    Send
+                            {{ 'Send' | translate}}
                   </button>
                     </div>
                 </div>

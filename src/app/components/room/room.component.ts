@@ -1,7 +1,8 @@
 import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';  
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'; 
+import { TranslateService } from '@ngx-translate/core'; 
 
 
 
@@ -55,6 +56,7 @@ export class RoomComponent implements OnInit {
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    public translate: TranslateService,
     private config: NgbCarouselConfig
   ) {
     this.token = userservice.getToken();
@@ -75,6 +77,8 @@ export class RoomComponent implements OnInit {
     config.wrap = true;  
     config.keyboard = false;  
     config.pauseOnHover = false; 
+    translate.addLangs(['en', 'es']);
+    translate.setDefaultLang('en');
   }
 
   crearFormulario() 
@@ -150,7 +154,9 @@ export class RoomComponent implements OnInit {
   }
     
   
- 
+  switchLang(lang: string) {
+    this.translate.use(lang);
+  }
 
   ngOnInit(): void {
   }

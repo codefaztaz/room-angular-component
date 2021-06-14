@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/user.service';
 import { global } from './services/global';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent {
 
 
   constructor(
-    public userservice: UserService
+    public userservice: UserService,
+    public translate: TranslateService
 
   )
   {
@@ -23,6 +25,8 @@ export class AppComponent {
     this.loadUser();
     this.url = global.url;
     this.title;
+    translate.addLangs(['en', 'es']);
+    translate.setDefaultLang('en');
 
 
   }
@@ -50,5 +54,9 @@ test()
     this.identity = this.userservice.getIdentity();
   //  console.log(this.identity);
     this.token = this.userservice.getToken();
+  }
+
+  switchLang(lang: string) {
+    this.translate.use(lang);
   }
 }
