@@ -114,7 +114,7 @@ export class RoomComponent implements OnInit {
         {
           if(!response.room)
           {
-            this.router.navigate(['/admin/listrooms']);
+            this.router.navigate(['/home']);
           }
     
           else

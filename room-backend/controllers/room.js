@@ -883,7 +883,61 @@ var controller = {
         };
 
         // Find paginado
-        Room.paginate({ availability: true }, options, (err, rooms) => {
+        Room.paginate({ availability: true, language: 'english' }, options, (err, rooms) => {
+
+            if (err) {
+                return res.status(500).send({
+                    status: 'error',
+                    message: 'Error al hacer la consulta'
+                });
+            }
+
+            if (!rooms) {
+                return res.status(404).send({
+                    status: 'error',
+                    message: 'No hay libros'
+                });
+            }
+
+
+            // Devoler resultado (topics, total de topic, total de paginas)
+            return res.status(200).send({
+                status: 'success',
+                rooms: rooms.docs,
+                totalDocs: rooms.totalDocs,
+                totalPages: rooms.totalPages
+            });
+
+        });
+
+    },
+
+    getRoomsEs: function(req, res) {
+
+        // Recoger la pagina actual
+        if (!req.params.page || req.params.page == 0 || req.params.page == "0" || req.params.page == null || req.params.page == undefined) {
+            var page = 1;
+        } else {
+            var page = parseInt(req.params.page);
+        }
+
+        // Indicar las opciones de paginacion
+        var options = {
+            sort: { date: -1 },
+            populate: 'room',
+            limit: 5,
+            page: page,
+            read: {
+                tags: [{
+                        availability: 'true'
+                    }
+
+                ],
+            }
+        };
+
+        // Find paginado
+        Room.paginate({ availability: true, language: 'spanish' }, options, (err, rooms) => {
 
             if (err) {
                 return res.status(500).send({
@@ -967,8 +1021,10 @@ var controller = {
 
     getRoom: function(req, res) {
         var roomId = req.params.roomId;
+        console.log(roomId);
         var availability = true;
-
+        var language = 'spanish';
+        console.log(language);
         Room.findById(roomId).exec((err, room) => {
             // Room.find({ availability: true }).exec((err, room) => {
             if (err || !room) {
@@ -984,6 +1040,25 @@ var controller = {
             });
         });
     },
+    // getRoom: function(req, res) {
+    //     var roomId = req.params.roomId;
+    //     var availability = true;
+    //     var language = 'english';
+    //     Room.findById(roomId).exec((err, room) => {
+    //         // Room.find({ availability: true }).exec((err, room) => {
+    //         if (err || !room) {
+    //             return res.status(404).send({
+    //                 status: 'error',
+    //                 message: 'No existe la habitacion'
+    //             });
+    //         }
+
+    //         return res.status(200).send({
+    //             status: 'success',
+    //             room
+    //         });
+    //     });
+    // },
     search: function(req, res) {
 
         // Sacar string a buscar de la url

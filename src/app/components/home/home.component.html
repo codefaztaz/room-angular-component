@@ -15,7 +15,18 @@
 
 
                 <ul class="navbar-nav  navbar-right">
-
+                    <span class="form-inline">
+                        <select 
+                            class="form-control" 
+                            #selectedLang 
+                            (change)="switchLang(selectedLang.value)">
+                          <option *ngFor="let language of translate.getLangs()" 
+                            [value]="language"
+                            [selected]="language === translate.currentLang">
+                            {{ language }}
+                          </option>
+                        </select>
+                      </span>        
 
                 </ul>
                 <!-- *ngIf="identity && identity.name"  -->
