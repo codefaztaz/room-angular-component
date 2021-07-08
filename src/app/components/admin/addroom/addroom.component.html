@@ -8,6 +8,16 @@
 
         <form autocomplete="off" [formGroup]="forma" (ngSubmit)="create(room)">
             <div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">reference</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="reference" formControlName="reference" [class.is-invalid]="referenceNoValido">
+                        <small *ngIf="referenceNoValido" class="text-danger">
+                Write the phone number
+                </small>
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label class="col-2 col-form-label">title</label>
@@ -34,19 +44,39 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">language</label>
-                    <select class="form-control" formControlName="language" id="language">
-                <option>english</option>
-                <option>spanish</option>
+                    <label class="col-2 col-form-label">Available couples</label>
+                    <select class="form-control" formControlName="availablecouples" id="availablecouples">
+                <option>yes</option>
+                <option>no</option>
               
             </select>
+            <small *ngIf="availablecouplesNoValido" class="text-danger">
+                select yes or no
+        </small>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-2 col-form-label">roomtype</label>
-                    <select class="form-control" formControlName="roomtype" id="language">
+                    <select class="form-control" formControlName="roomtype" id="roomtype">
                 <option>double</option>
                 <option>single</option>
+              
+            </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">parking</label>
+                    <select class="form-control" formControlName="parking" id="parking">
+                <option>true</option>
+                <option>false</option>
+              
+            </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Length of stay</label>
+                    <select class="form-control" formControlName="length" id="length">
+                <option>4</option>
+                <option>3</option>
+                <option>6</option>
               
             </select>
                 </div>
@@ -57,6 +87,30 @@
 
                         <input class="form-control" type="text" placeholder="mapgoogle" formControlName="mapgoogle" [class.is-invalid]="mapgoogleNoValido">
                         <small *ngIf="mapgoogleNoValido" class="text-danger">
+                Write the google maps
+        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">bills</label>
+                    <div class="col">
+
+                        <select class="form-control" formControlName="bills" id="bills">
+                            <option>all included</option>
+                            <option>some included</option>
+                        <small *ngIf="billsNoValido" class="text-danger">
+                Write the bills
+        </small>
+
+        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">deposit</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="deposit" formControlName="deposit" [class.is-invalid]="depositNoValido">
+                        <small *ngIf="depositNoValido" class="text-danger">
                 Write the phone number
         </small>
                     </div>
@@ -78,16 +132,7 @@
                         <input class="form-control" type="text" placeholder="availability from" formControlName="availabilityfrom">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label class="col-2 col-form-label">reference</label>
-                    <div class="col">
-
-                        <input class="form-control" type="text" placeholder="reference" formControlName="reference" [class.is-invalid]="referenceNoValido">
-                        <small *ngIf="referenceNoValido" class="text-danger">
-                Write the phone number
-                </small>
-                    </div>
-                </div>
+      
                 <div class="form-group row">
                     <label class="col-2 col-form-label">location</label>
                     <div class="col">
@@ -109,7 +154,7 @@
                 <label class="col-2 col-form-label">&nbsp;</label>
                 <div class="input-group col">
                     <button type="submit" class="btn btn-outline-primary btn-block">
-        Send
+        Save
       </button>
                 </div>
             </div>

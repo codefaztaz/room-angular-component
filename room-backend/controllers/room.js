@@ -31,12 +31,15 @@ var controller = {
         try {
             var validate_title = !validator.isEmpty(params.title);
             var validate_description = !validator.isEmpty(params.description);
-            var validate_language = !validator.isEmpty(params.language);
             var validate_location = !validator.isEmpty(params.location);
             var validate_price = !validator.isEmpty(params.price);
             var validate_roomtype = !validator.isEmpty(params.roomtype);
             var validate_mapgoogle = !validator.isEmpty(params.mapgoogle);
             var validate_reference = !validator.isEmpty(params.reference);
+            var validate_availablecouples = !validator.isEmpty(params.availablecouples);
+            var validate_bills = !validator.isEmpty(params.bills);
+            var validate_deposit = !validator.isEmpty(params.deposit);
+            var validate_length = !validator.isEmpty(params.length);
 
             //console.log(validate_name, validate_surname, validate_email, validate_password);
         } catch (err) {
@@ -45,21 +48,25 @@ var controller = {
             });
         }
 
-        if (validate_title && validate_description && validate_language && validate_price && validate_roomtype && validate_mapgoogle && validate_reference && validate_location) {
+        if (validate_title && validate_description  && validate_price && validate_roomtype && validate_mapgoogle && validate_reference && validate_location && validate_availablecouples && validate_length && validate_bills && validate_deposit) {
             // Crear objeto de usuario
             var room = new Room();
 
             // Asignar valores al objeto
             room.title = params.title;
             room.description = params.description;
-            room.language = params.language;
             room.location = params.location;
             room.price = params.price;
             room.roomtype = params.roomtype;
+            room.length = params.length;
             room.mapgoogle = params.mapgoogle;
             room.reference = params.reference;
             room.availability = "false";
             room.availabilityfrom = params.availabilityfrom;
+            room.availablecouples = params.availablecouples;
+            room.bills = params.bills;
+            room.deposit = params.deposit;
+            room.parking = params.parking;
             room.image1 = null;
             room.image2 = null;
             room.image3 = null;
@@ -883,7 +890,7 @@ var controller = {
         };
 
         // Find paginado
-        Room.paginate({ availability: true, language: 'english' }, options, (err, rooms) => {
+        Room.paginate({ availability: true }, options, (err, rooms) => {
 
             if (err) {
                 return res.status(500).send({
@@ -937,7 +944,7 @@ var controller = {
         };
 
         // Find paginado
-        Room.paginate({ availability: true, language: 'spanish' }, options, (err, rooms) => {
+        Room.paginate({ availability: true }, options, (err, rooms) => {
 
             if (err) {
                 return res.status(500).send({

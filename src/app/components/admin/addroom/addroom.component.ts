@@ -52,9 +52,17 @@ get descriptionNoValido() {
   return this.forma.get('description').invalid && this.forma.get('description').touched
 }
 
-get languageNoValido() {
-return this.forma.get('language').invalid && this.forma.get('language').touched
+get availablecouplesNoValido() {
+return this.forma.get('availablecouples').invalid && this.forma.get('availablecouples').touched
 }
+
+get depositNoValido() {
+  return this.forma.get('deposit').invalid && this.forma.get('deposit').touched
+  }
+
+get billsNoValido() {
+    return this.forma.get('bills').invalid && this.forma.get('bills').touched
+    }
 
 get priceNoValido() {
   return this.forma.get('price').invalid && this.forma.get('price').touched
@@ -85,12 +93,16 @@ crearFormulario()
   this.forma = this.fb.group({
   title  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
   description : [ '', Validators.required ],
-  language : ['', Validators.required ],
   roomtype : [ '', Validators.required ],
   mapgoogle : [ '', Validators.required ],
   price : [ '', Validators.required ],
   reference : [ '', Validators.required ],
   location : ['', Validators.required ],
+  deposit : ['', Validators.required ],
+  bills : ['', Validators.required ],
+  length : ['', Validators.required ],
+  parking : ['', Validators.required ],
+  availablecouples : ['', Validators.required ],
   availabilityfrom : ['', Validators.required ],
   });
 

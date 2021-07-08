@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, ɵɵNgOnChangesFeature, SimpleChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { Room } from '../../models/room';
 import { TranslateService } from '@ngx-translate/core'; 
@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnChanges {
     public translate: TranslateService,
   ) {
      this.url = globalroom.url;
-     this.room = new Room('', '', '', '', 1,  '','', 1, '', '', '', '', '', '', '' );
+     this.room = new Room('', '', '','','','','', '', 1,  '', '', 1, '', '','','', '', '', '' );   
      this.loadUser();
      translate.addLangs(['en', 'es']);
      translate.setDefaultLang('en');
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges)
   {
-    this.switchLang(this.lang);
+    //changes.this.switchLang(this.lang);
   }
 
 
@@ -204,7 +204,7 @@ export class HomeComponent implements OnInit, OnChanges {
     {
       this.getRooms();
     }
-    else if(this.translate.use('es')) 
+    else(this.translate.use('es')) 
     {
       this.getRoomsEs();   
     }

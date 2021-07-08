@@ -113,9 +113,12 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       return this.forma.get('description').invalid && this.forma.get('description').touched
     }
     
-    get languageNoValido() {
-    return this.forma.get('language').invalid && this.forma.get('language').touched
+    get depositNoValido() {
+      return this.forma.get('deposit').invalid && this.forma.get('deposit').touched
     }
+
+    
+
     
     get priceNoValido() {
       return this.forma.get('price').invalid && this.forma.get('price').touched
@@ -147,14 +150,20 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       _id : [this.room ? this.room._id : '', Validators.required],  
       title  : [this.room ? this.room.title : '', [ Validators.required, Validators.minLength(4) ]  ],
       description : [this.room ? this.room.description : '', Validators.required ],
-      language : [this.room ? this.room.language : '', Validators.required ],
+     
       roomtype : [this.room ? this.room.roomtype : '', Validators.required ],
+      bills : [this.room ? this.room.bills : '', Validators.required ],
+      length : [this.room ? this.room.length : '', Validators.required ],
+
+      deposit : [this.room ? this.room.deposit : '', Validators.required ],
+      parking : [this.room ? this.room.parking : '', Validators.required ],
       mapgoogle : [this.room ? this.room.mapgoogle : '', Validators.required ],
       price : [this.room ? this.room.price : '', Validators.required ],
       availability : [this.room ? this.room.availability : '', Validators.required ],
       availabilityfrom : [this.room ? this.room.availabilityfrom  : '', Validators.required ],
       reference : [this.room ? this.room.reference : '', Validators.required ],
       location : [this.room ? this.room.location : '', Validators.required ],
+      availablecouples : [this.room ? this.room.availablecouples : '', Validators.required ],
       image1 : [this.room ? this.room.image1 : '', Validators.required ],
       image2 : [this.room ? this.room.image2 : '', Validators.required ],
       image3 : [this.room ? this.room.image3 : '', Validators.required ],
@@ -371,8 +380,12 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.forma.controls['_id'].setValue(response.room._id);
               this.forma.controls['title'].setValue(response.room.title);
               this.forma.controls['description'].setValue(response.room.description);
-              this.forma.controls['language'].setValue(response.room.language);
+              this.forma.controls['availablecouples'].setValue(response.room.availablecouples);
               this.forma.controls['roomtype'].setValue(response.room.roomtype);
+              this.forma.controls['deposit'].setValue(response.room.deposit);
+              this.forma.controls['bills'].setValue(response.room.bills);
+              this.forma.controls['length'].setValue(response.room.length);
+              this.forma.controls['parking'].setValue(response.room.parking);
               this.forma.controls['mapgoogle'].setValue(response.room.mapgoogle);
               this.forma.controls['price'].setValue(response.room.price);
               this.forma.controls['availability'].setValue(response.room.availability);
@@ -395,6 +408,9 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               console.log(this.imgURL2);
               console.log('imag3',this.imgURL3);
               console.log('img4',this.imgURL4);
+              console.log('length', this.room.length);
+              console.log('length', this.room.price);
+
             }
           }
         )

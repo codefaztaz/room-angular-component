@@ -3,7 +3,11 @@ export class Room{
     constructor(
       public title: string,
       public description: string,
-      public language: string,
+      public availablecouples: string,
+      public bills: string,
+      public deposit: string,
+      public parking: string,
+      public length: string,
       public roomtype: string,
       public mapgoogle: number,
       public availability: string,
