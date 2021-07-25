@@ -26,6 +26,7 @@ var controller = {
     save: function(req, res) {
         // Recoger los parametros de la petición
         var params = req.body;
+        console.log(params);
 
         // Validar los datos
         try {
@@ -34,21 +35,27 @@ var controller = {
             var validate_location = !validator.isEmpty(params.location);
             var validate_price = !validator.isEmpty(params.price);
             var validate_roomtype = !validator.isEmpty(params.roomtype);
+            var validate_length = !validator.isEmpty(params.length);
+            
+            
+          
             var validate_mapgoogle = !validator.isEmpty(params.mapgoogle);
             var validate_reference = !validator.isEmpty(params.reference);
+            var validate_availabilityfrom = !validator.isEmpty(params.availabilityfrom);
             var validate_availablecouples = !validator.isEmpty(params.availablecouples);
             var validate_bills = !validator.isEmpty(params.bills);
             var validate_deposit = !validator.isEmpty(params.deposit);
-            var validate_length = !validator.isEmpty(params.length);
+            var validate_parking = !validator.isEmpty(params.parking);
+        
 
             //console.log(validate_name, validate_surname, validate_email, validate_password);
         } catch (err) {
             return res.status(200).send({
                 message: "Faltan datos por enviar de la habitacion"
             });
-        }
+        } 
 
-        if (validate_title && validate_description  && validate_price && validate_roomtype && validate_mapgoogle && validate_reference && validate_location && validate_availablecouples && validate_length && validate_bills && validate_deposit) {
+        if (validate_title && validate_description  && validate_price&& validate_parking && validate_roomtype && validate_mapgoogle && validate_reference&& validate_availabilityfrom && validate_location && validate_availablecouples && validate_length && validate_bills && validate_deposit) {
             // Crear objeto de usuario
             var room = new Room();
 
@@ -989,7 +996,7 @@ var controller = {
             page: page,
             read: {
                 tags: [{
-                        availability: 'true'
+                        availability: 'false'
                     }
 
                 ],

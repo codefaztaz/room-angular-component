@@ -16,7 +16,7 @@ var RoomSchema = Schema({
     reference: String,
     location: String,
     deposit: Number,
-    parking: Boolean,
+    parking: String,
     bills: String,
     length: String,
     image1: String,
