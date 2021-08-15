@@ -56,9 +56,21 @@
         <h2> <a class="add-book" [routerLink]="['/home']">Back</a></h2>
         <div class="row">
             <div class="col-sm-7">
-                <h4>{{ room.title }}</h4>
+                <div *ngIf="translate.use('en'); else tituloEs">
+                    <h4>{{ room.title }}</h4>
+                </div>
+                <ng-template #tituloEs>
+                    <h4>{{ room.titleEs }}</h4>
+                </ng-template>
+               
                 <ul class="ul-room">
-                    <li class="li-room">{{ room.location }} </li>
+                    
+                    <div *ngIf="translate.use('en'); else translateES">
+                        <li class="li-room">{{ room.location }} </li>
+                    </div>
+                    <ng-template #translateES>
+                        <li class="li-room">{{ room.locationEs }} </li>
+                    </ng-template>
                     <li class="li-room float-right">&#163; {{ room.price }} pm</li>
                 </ul>
                 <!-- Tabs navs -->

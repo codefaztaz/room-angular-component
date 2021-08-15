@@ -18,12 +18,32 @@
                 </small>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">referencia</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="referencia" formControlName="referenceEs" [class.is-invalid]="referenceNoValido">
+                        <small *ngIf="referenceNoValido" class="text-danger">
+                Write the phone number
+                </small>
+                    </div>
+                </div>
 
                 <div class="form-group row">
                     <label class="col-2 col-form-label">title</label>
                     <div class="col">
 
                         <input class="form-control" type="text" placeholder="title" formControlName="title" [class.is-invalid]="titleNoValido">
+                        <small *ngIf="titleNoValido" class="text-danger">
+          write the name
+        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">titulo</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="titulo" formControlName="titleEs" [class.is-invalid]="titleNoValido">
                         <small *ngIf="titleNoValido" class="text-danger">
           write the name
         </small>
@@ -44,9 +64,33 @@
                 </div>
 
                 <div class="form-group row">
+                    <label class="col-2 col-form-label">descripcion</label>
+                    <div class="col">
+
+                        <textarea class="form-control" rows="8" cols="80" placeholder="descripcion" formControlName="descriptionEs" [class.is-invalid]="descriptionNoValido">
+               </textarea>
+
+                        <small *ngIf="descriptionNoValido" class="text-danger">
+          write the name
+        </small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label class="col-2 col-form-label">Available couples</label>
                     <select class="form-control" formControlName="availablecouples" id="availablecouples">
                 <option>yes</option>
+                <option>no</option>
+              
+            </select>
+            <small *ngIf="availablecouplesNoValido" class="text-danger">
+                select yes or no
+        </small>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">disponible para parejas</label>
+                    <select class="form-control" formControlName="availablecouplesEs" id="availablecouplesEs">
+                <option>si</option>
                 <option>no</option>
               
             </select>
@@ -64,6 +108,14 @@
             </select>
                 </div>
                 <div class="form-group row">
+                    <label class="col-2 col-form-label">tipo de habitación</label>
+                    <select class="form-control" formControlName="roomtypeEs" id="roomtype">
+                <option>doble</option>
+                <option>sencilla</option>
+              
+            </select>
+                </div>
+                <div class="form-group row">
                     <label class="col-2 col-form-label">parking</label>
                     <select class="form-control" formControlName="parking" id="parking">
                 <option>true</option>
@@ -72,11 +124,28 @@
             </select>
                 </div>
                 <div class="form-group row">
+                    <label class="col-2 col-form-label">parking</label>
+                    <select class="form-control" formControlName="parkingEs" id="parkingEs">
+                <option>true</option>
+                <option>false</option>
+              
+            </select>
+                </div>
+                <div class="form-group row">
                     <label class="col-2 col-form-label">Length of stay</label>
                     <select class="form-control" formControlName="length" id="length">
-                <option>4</option>
-                <option>3</option>
-                <option>6</option>
+                <option>4 weeks</option>
+                <option>3 months</option>
+                <option>6 months</option>
+              
+            </select>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">duración de Estancia</label>
+                    <select class="form-control" formControlName="lengthEs" id="lengthEs">
+                <option>4 semanas</option>
+                <option>3 meses</option>
+                <option>6 meses</option>
               
             </select>
                 </div>
@@ -92,7 +161,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">bills</label>
+                    <label class="col-2 col-form-label">mapgoogle</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="mapgoogle" formControlName="mapgoogleEs" [class.is-invalid]="mapgoogleNoValido">
+                        <small *ngIf="mapgoogleNoValido" class="text-danger">
+                Write the google maps
+        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Bills</label>
                     <div class="col">
 
                         <select class="form-control" formControlName="bills" id="bills">
@@ -106,7 +185,21 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">deposit</label>
+                    <label class="col-2 col-form-label">Facturas</label>
+                    <div class="col">
+
+                        <select class="form-control" formControlName="billsEs" id="billsEs">
+                            <option>Todas incluidas</option>
+                            <option>Algunas incluidas</option>
+                        <small *ngIf="billsNoValido" class="text-danger">
+                Write the bills
+        </small>
+
+        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Deposit</label>
                     <div class="col">
 
                         <input class="form-control" type="text" placeholder="deposit" formControlName="deposit" [class.is-invalid]="depositNoValido">
@@ -116,10 +209,30 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">price</label>
+                    <label class="col-2 col-form-label">Deposito</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="deposit" formControlName="depositEs" [class.is-invalid]="depositNoValido">
+                        <small *ngIf="depositNoValido" class="text-danger">
+                Write the phone number
+        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Price</label>
                     <div class="col">
 
                         <input class="form-control" type="text" placeholder="price" formControlName="price" [class.is-invalid]="priceNoValido">
+                        <small *ngIf="priceNoValido" class="text-danger">
+                Write the phone number
+        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Precio</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="Precio" formControlName="priceEs" [class.is-invalid]="priceNoValido">
                         <small *ngIf="priceNoValido" class="text-danger">
                 Write the phone number
         </small>
@@ -132,12 +245,29 @@
                         <input class="form-control" type="text" placeholder="availability from" formControlName="availabilityfrom">
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Disponible desde</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="Disponible desde" formControlName="availabilityfromEs">
+                    </div>
+                </div>
       
                 <div class="form-group row">
-                    <label class="col-2 col-form-label">location</label>
+                    <label class="col-2 col-form-label">Location</label>
                     <div class="col">
 
                         <input class="form-control" type="text" placeholder="location" formControlName="location" [class.is-invalid]="locationNoValido">
+                        <small *ngIf="locationNoValido" class="text-danger">
+                Write the phone number
+                </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Localización</label>
+                    <div class="col">
+
+                        <input class="form-control" type="text" placeholder="Localización" formControlName="locationEs" [class.is-invalid]="locationNoValido">
                         <small *ngIf="locationNoValido" class="text-danger">
                 Write the phone number
                 </small>

@@ -92,18 +92,31 @@ crearFormulario()
 {
   this.forma = this.fb.group({
   title  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
+  titleEs  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
   description : [ '', Validators.required ],
+  descriptionEs : [ '', Validators.required ],
   roomtype : [ '', Validators.required ],
+  roomtypeEs : [ '', Validators.required ],
   mapgoogle : [ '', Validators.required ],
+  mapgoogleEs : [ '', Validators.required ],
   price : [ '', Validators.required ],
+  priceEs : [ '', Validators.required ],
   reference : [ '', Validators.required ],
+  referenceEs : [ '', Validators.required ],
   location : ['', Validators.required ],
+  locationEs : ['', Validators.required ],
   deposit : ['', Validators.required ],
+  depositEs : ['', Validators.required ],
   bills : ['', Validators.required ],
+  billsEs : ['', Validators.required ],
   length : ['', Validators.required ],
+  lengthEs : ['', Validators.required ],
   parking : ['', Validators.required ],
+  parkingEs : ['', Validators.required ],
   availablecouples : ['', Validators.required ],
+  availablecouplesEs : ['', Validators.required ],
   availabilityfrom : ['', Validators.required ],
+  availabilityfromEs : ['', Validators.required ],
   });
 
 

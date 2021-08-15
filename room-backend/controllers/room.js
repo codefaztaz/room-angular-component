@@ -31,21 +31,34 @@ var controller = {
         // Validar los datos
         try {
             var validate_title = !validator.isEmpty(params.title);
+            var validate_titleEs = !validator.isEmpty(params.titleEs);
             var validate_description = !validator.isEmpty(params.description);
+            var validate_descriptionEs = !validator.isEmpty(params.descriptionEs);
             var validate_location = !validator.isEmpty(params.location);
+            var validate_locationEs = !validator.isEmpty(params.locationEs);
             var validate_price = !validator.isEmpty(params.price);
+            var validate_priceEs = !validator.isEmpty(params.priceEs);
             var validate_roomtype = !validator.isEmpty(params.roomtype);
+            var validate_roomtypeEs = !validator.isEmpty(params.roomtypeEs);
             var validate_length = !validator.isEmpty(params.length);
+            var validate_lengthEs = !validator.isEmpty(params.lengthEs);
             
             
           
             var validate_mapgoogle = !validator.isEmpty(params.mapgoogle);
+            var validate_mapgoogleEs = !validator.isEmpty(params.mapgoogleEs);
             var validate_reference = !validator.isEmpty(params.reference);
+            var validate_referenceEs = !validator.isEmpty(params.referenceEs);
             var validate_availabilityfrom = !validator.isEmpty(params.availabilityfrom);
+            var validate_availabilityfromEs = !validator.isEmpty(params.availabilityfromEs);
             var validate_availablecouples = !validator.isEmpty(params.availablecouples);
+            var validate_availablecouplesEs = !validator.isEmpty(params.availablecouplesEs);
             var validate_bills = !validator.isEmpty(params.bills);
+            var validate_billsEs = !validator.isEmpty(params.billsEs);
             var validate_deposit = !validator.isEmpty(params.deposit);
+            var validate_depositEs = !validator.isEmpty(params.depositEs);
             var validate_parking = !validator.isEmpty(params.parking);
+            var validate_parkingEs = !validator.isEmpty(params.parkingEs);
         
 
             //console.log(validate_name, validate_surname, validate_email, validate_password);
@@ -55,25 +68,41 @@ var controller = {
             });
         } 
 
-        if (validate_title && validate_description  && validate_price&& validate_parking && validate_roomtype && validate_mapgoogle && validate_reference&& validate_availabilityfrom && validate_location && validate_availablecouples && validate_length && validate_bills && validate_deposit) {
+        if (validate_title && validate_titleEs && validate_description  && validate_descriptionEs && validate_price && validate_priceEs &&  validate_parking && validate_parkingEs
+             &&  validate_roomtype &&  validate_roomtypeEs && validate_mapgoogle && validate_mapgoogleEs && validate_reference && validate_referenceEs &&  validate_availabilityfrom &&
+             validate_availabilityfromEs && validate_location &&  validate_locationEs && validate_availablecouples &&  validate_availablecouplesEs &&  validate_length
+              && validate_lengthEs && validate_bills && validate_billsEs && validate_deposit && validate_depositEs) {
             // Crear objeto de usuario
             var room = new Room();
 
             // Asignar valores al objeto
             room.title = params.title;
+            room.titleEs = params.titleEs;
             room.description = params.description;
+            room.descriptionEs = params.descriptionEs;
             room.location = params.location;
+            room.locationEs = params.locationEs;
             room.price = params.price;
+            room.priceEs = params.priceEs;
             room.roomtype = params.roomtype;
+            room.roomtypeEs = params.roomtypeEs;
             room.length = params.length;
+            room.lengthEs = params.lengthEs;
             room.mapgoogle = params.mapgoogle;
+            room.mapgoogleEs = params.mapgoogleEs;
             room.reference = params.reference;
+            room.referenceEs = params.referenceEs;
             room.availability = "false";
             room.availabilityfrom = params.availabilityfrom;
+            room.availabilityfromEs = params.availabilityfromEs;
             room.availablecouples = params.availablecouples;
+            room.availablecouplesEs = params.availablecouplesEs;
             room.bills = params.bills;
+            room.billsEs = params.billsEs;
             room.deposit = params.deposit;
+            room.depositEs = params.depositEs;
             room.parking = params.parking;
+            room.parkingEs = params.parkingEs;
             room.image1 = null;
             room.image2 = null;
             room.image3 = null;

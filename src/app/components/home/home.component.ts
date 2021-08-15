@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit, OnChanges {
     public translate: TranslateService,
   ) {
      this.url = globalroom.url;
-     this.room = new Room('', '', '','','','','', '', 1,  '', '', 1, '', '','','', '', '', '' );   
+     this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );    
      this.loadUser();
      translate.addLangs(['en', 'es']);
      translate.setDefaultLang('en');

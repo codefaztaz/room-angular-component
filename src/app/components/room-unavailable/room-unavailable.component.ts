@@ -70,7 +70,7 @@ export class RoomUnavailableComponent implements OnInit {
     this.crearFormulario();
 
 
-    this.room = new Room('', '', '','','','','', '', 1,  '', '', 1, '', '','','', '', '', '' );    
+    this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );     
     config.interval = 0;  
     config.wrap = true;  
     config.keyboard = false;  
