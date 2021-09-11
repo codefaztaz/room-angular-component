@@ -29,6 +29,23 @@
                       </span>
 
                 </ul>
+
+
+                <!-- <ul class="navbar-nav  navbar-right">
+                    <span class="form-inline">
+                        <select 
+                            class="form-control" 
+                            #selectedLang 
+                            (change)="switchLang(selectedLang.value)">
+                          <option *ngFor="let language of translate.getLangs()" 
+                            [value]="language"
+                            [selected]="language === translate.currentLang">
+                            {{ language }}
+                          </option>
+                        </select>
+                      </span>
+
+                </ul> -->
                 <!-- *ngIf="identity && identity.name"  -->
                 <!-- <ul class="navbar-nav  navbar-right">
 
@@ -56,24 +73,31 @@
         <h2> <a class="add-book" [routerLink]="['/home']">Back</a></h2>
         <div class="row">
             <div class="col-sm-7">
-                <div *ngIf="translate.use('en'); else tituloEs">
+                <!-- <div *ngIf="!translateEn; else tituloEs">
                     <h4>{{ room.title }}</h4>
                 </div>
                 <ng-template #tituloEs>
                     <h4>{{ room.titleEs }}</h4>
-                </ng-template>
+                </ng-template> -->
+
+                <div *ngIf="translateEn == true; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>     <h4>{{ room.title }}</h4></ng-template>
+<ng-template #elseBlock> <h4>{{ room.titleEs }}</h4></ng-template>
                
                 <ul class="ul-room">
+                    <div *ngIf="translateEn == true; then thenBlock2 else elseBlock2"></div>
+                    <ng-template #thenBlock2>     <h4>{{ room.location }}</h4></ng-template>
+                    <ng-template #elseBlock2> <h4>{{ room.locationEs }}</h4></ng-template>
                     
-                    <div *ngIf="translate.use('en'); else translateES">
+                    <!-- <div *ngIf="translateEn == true; else translateES">
                         <li class="li-room">{{ room.location }} </li>
                     </div>
                     <ng-template #translateES>
                         <li class="li-room">{{ room.locationEs }} </li>
-                    </ng-template>
+                    </ng-template>  -->
                     <li class="li-room float-right">&#163; {{ room.price }} pm</li>
                 </ul>
-                <!-- Tabs navs -->
+                <!-- Tabs navs
                 <ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" id="ex2-tab-1" (click)="showPictures();" data-mdb-toggle="tab" role="tab" aria-controls="ex2-tabs-1" aria-selected="true">

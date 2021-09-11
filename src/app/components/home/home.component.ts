@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnChanges {
   public _id;
   public takeId;
   public id;
-  public lang = 'en';
+  public translateEn:boolean = true;
 
   constructor(
     private router: Router,
@@ -55,8 +55,8 @@ export class HomeComponent implements OnInit, OnChanges {
       if (!page) {
         page = 1;
       }
-      this.switchLang(this.lang);
-      //this.getRooms(page);
+    
+      this.getRooms(page);
     });
 
 
@@ -198,16 +198,11 @@ export class HomeComponent implements OnInit, OnChanges {
     );
   }
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-    if(this.translate.use('en'))
-    {
-      this.getRooms();
-    }
-    else(this.translate.use('es')) 
-    {
-      this.getRoomsEs();   
-    }
+  switchLang(language: string) {
+    this.translate.use(language);
+    this.translateEn = language === 'en';
+    this.translate.currentLang;
+    console.log('current' ,this.translate.currentLang);
   }
 
 }

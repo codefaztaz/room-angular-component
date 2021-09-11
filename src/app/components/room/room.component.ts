@@ -1,8 +1,9 @@
-import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'; 
 import { TranslateService } from '@ngx-translate/core'; 
+
 
 
 
@@ -12,6 +13,8 @@ import { UserService } from '../../services/user.service';
 import { RoomService } from '../../services/room.service';
 import { HttpClient } from '@angular/common/http';
 import { Room } from '../../models/room';
+import { Observable } from 'rxjs';
+import { ObserversModule } from '@angular/cdk/observers';
 
 @Component({
   selector: 'app-room',
@@ -46,6 +49,11 @@ export class RoomComponent implements OnInit {
   public div1:boolean=true;
   public div2:boolean=true;
   public flag:boolean = false;
+  public translateEn:boolean = true;
+ // @Input() language:Observable< string>;
+  public lang: String;
+  // public lang : String;
+  //public translate;
 
   constructor(
     private fb: FormBuilder,
@@ -57,8 +65,9 @@ export class RoomComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     public translate: TranslateService,
-    private config: NgbCarouselConfig
-  ) {
+    private config: NgbCarouselConfig,
+  ) 
+  {
     this.token = userservice.getToken();
     console.log(this.token);
     // this.crearFormulario();
@@ -79,6 +88,7 @@ export class RoomComponent implements OnInit {
     config.pauseOnHover = false; 
     translate.addLangs(['en', 'es']);
     translate.setDefaultLang('en');
+
   }
 
   crearFormulario() 
@@ -102,6 +112,8 @@ export class RoomComponent implements OnInit {
   {
       return this.forma.get('message').invalid && this.forma.get('message').touched
   }  
+
+
 
 
   getRoom()
@@ -154,9 +166,14 @@ export class RoomComponent implements OnInit {
   }
     
   
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
+  switchLang(language: string) {
+
+    this.translate.use(language);
+    this.translateEn = language === 'en';
+    this.translate.currentLang;
+    console.log('current' ,this.translate.currentLang);
+
+}
 
   ngOnInit(): void {
   }
