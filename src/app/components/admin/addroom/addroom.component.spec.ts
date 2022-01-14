@@ -1,7 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { AddroomComponent } from './addroom.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { RouterTestingModule } from "@angular/router/testing";
 
 describe('AddroomComponent', () => {
   let component: AddroomComponent;
@@ -9,9 +12,13 @@ describe('AddroomComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddroomComponent ]
+      declarations: [ AddroomComponent ],
+      imports: [FormsModule,ReactiveFormsModule,HttpClientModule,    RouterTestingModule],
+      providers:[FormBuilder]
+   
     })
-    .compileComponents();
+
+
   }));
 
   beforeEach(() => {
@@ -20,8 +27,16 @@ describe('AddroomComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  xit('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('el titulo tiene que ser mayor de 4 caracteres', () =>{
+
+    const control = component.forma.get('title');
+    control.setValue('camaleon');
+    expect(control.valid).toBeTruthy();
+
   });
 
 

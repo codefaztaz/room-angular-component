@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'; 
@@ -49,11 +49,13 @@ export class RoomComponent implements OnInit {
   public div1:boolean=true;
   public div2:boolean=true;
   public flag:boolean = false;
-  public translateEn:boolean = true;
+ public translateEn:boolean = true;
  // @Input() language:Observable< string>;
-  public lang: String;
-  // public lang : String;
+  
+  public language:string;
+
   //public translate;
+  //@Output() translateEn: EventEmitter<boolean>;
 
   constructor(
     private fb: FormBuilder,
@@ -87,7 +89,8 @@ export class RoomComponent implements OnInit {
     config.keyboard = false;  
     config.pauseOnHover = false; 
     translate.addLangs(['en', 'es']);
-    translate.setDefaultLang('en');
+    //translate.setDefaultLang('en');
+ 
 
   }
 
@@ -169,6 +172,7 @@ export class RoomComponent implements OnInit {
   switchLang(language: string) {
 
     this.translate.use(language);
+ 
     this.translateEn = language === 'en';
     this.translate.currentLang;
     console.log('current' ,this.translate.currentLang);
@@ -176,6 +180,10 @@ export class RoomComponent implements OnInit {
 }
 
   ngOnInit(): void {
+ 
+    this.switchLang(this.language);
+   
+
   }
 
           

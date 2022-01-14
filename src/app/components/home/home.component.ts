@@ -8,6 +8,7 @@ import { globalroom } from '../../services/globalroom';
 
 import { RoomService } from '../../services/room.service';
 import { UserService } from '../../services/user.service';
+import { LanguageService } from '../../services/language.service';
 import { EventListenerFocusTrapInertStrategy } from '@angular/cdk/a11y';
 
 @Component({
@@ -31,6 +32,7 @@ export class HomeComponent implements OnInit, OnChanges {
   public takeId;
   public id;
   public translateEn:boolean = true;
+  public language:string = 'es';
 
   constructor(
     private router: Router,
@@ -38,6 +40,7 @@ export class HomeComponent implements OnInit, OnChanges {
     private userservice: UserService,
     private roomservice: RoomService,
     public translate: TranslateService,
+    public languageservice: LanguageService
   ) {
      this.url = globalroom.url;
      this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );    
@@ -57,6 +60,8 @@ export class HomeComponent implements OnInit, OnChanges {
       }
     
       this.getRooms(page);
+       
+  this.switchLang(this.language);
     });
 
 
@@ -143,6 +148,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
 
+
   getRoomsEs(page = 1)
   {
       //  console.log('error');
@@ -201,8 +207,11 @@ export class HomeComponent implements OnInit, OnChanges {
   switchLang(language: string) {
     this.translate.use(language);
     this.translateEn = language === 'en';
-    this.translate.currentLang;
-    console.log('current' ,this.translate.currentLang);
+   // this.translate.currentLang;
+    console.log('current2' ,this.translate.currentLang);
   }
+
+
+
 
 }

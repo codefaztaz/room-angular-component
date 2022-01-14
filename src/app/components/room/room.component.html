@@ -191,9 +191,12 @@
                 </div>
             
             </div>
-            
 
-                    <p class="margin-carousel"><span class="bold-data">{{'RoomType' | translate}}</span> {{ room.roomtype }}</p>
+
+            <div *ngIf="translateEn == true; then thenBlock3 else elseBlock3"></div>
+            <ng-template #thenBlock3>     <p><span class="bold-data">{{'RoomType' | translate}}</span> {{ room.roomtype }}</p></ng-template>
+            <ng-template #elseBlock3> <p><span class="bold-data">{{'RoomType' | translate}}</span>{{ room.roomtypeEs }}</p></ng-template>
+                    <!-- <p class="margin-carousel"><span class="bold-data">{{'RoomType' | translate}}</span> {{ room.roomtype }}</p> -->
                     <p class=""><span class="bold-data">{{'Reference' | translate}}</span> {{ room.reference }}</p>
                     <label class="bold-data" for="">{{'Description' | translate}}</label>
                     <p class="">{{ room.description }}</p>

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RoomAvailableComponent } from './room-available.component';
 
-describe('RoomAvailableComponent', () => {
+xdescribe('RoomAvailableComponent', () => {
   let component: RoomAvailableComponent;
   let fixture: ComponentFixture<RoomAvailableComponent>;
 

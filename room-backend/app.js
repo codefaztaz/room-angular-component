@@ -16,8 +16,12 @@ var topic_routes = require('./routes/topic');
 var comment_routes = require('./routes/comment');
 
 // Middlewares
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+//Middlewares deprecated
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
 
 // Configurar cabeceras y cors
 app.use((req, res, next) => {

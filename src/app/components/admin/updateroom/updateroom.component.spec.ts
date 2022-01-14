@@ -5,7 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 
 import { UpdateroomComponent } from './updateroom.component';
 
-describe('UpdateroomComponent', () => {
+xdescribe('UpdateroomComponent', () => {
   let component: UpdateroomComponent;
   let fixture: ComponentFixture<UpdateroomComponent>;
 

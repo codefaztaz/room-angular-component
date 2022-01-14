@@ -11,7 +11,7 @@ import { By } from '@angular/platform-browser';
 import { ListroomsComponent } from './listrooms.component';
 import { RouterModule, Routes } from '@angular/router'; 
 
-describe('ListroomsComponent', () => {
+xdescribe('ListroomsComponent', () => {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
