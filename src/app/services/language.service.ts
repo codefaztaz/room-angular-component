@@ -16,13 +16,15 @@ export class LanguageService {
     NgxTranslateService.use("en");
   }
 
-  set language(value: string) {
+  set languageSelected(value: string) {
     this._language.next(value);
     this.NgxTranslateService.use(value);
+    console.log(this._language);
   }
 
   public getLanguage$(): Observable<string> {
     return this._language.asObservable();
+    
   }
 
   public getCurrentLanguage(): string {

@@ -19,7 +19,7 @@
                         <select 
                             class="form-control" 
                             #selectedLang 
-                            (change)="switchLang(selectedLang.value)">
+                            (change)="switchLangChild(selectedLang.value)">
                           <option *ngFor="let language of translate.getLangs()" 
                             [value]="language"
                             [selected]="language === translate.currentLang">
@@ -191,8 +191,8 @@
                 </div>
             
             </div>
-
-
+            <!-- "language === 'en';
+            translateEn == true; -->
             <div *ngIf="translateEn == true; then thenBlock3 else elseBlock3"></div>
             <ng-template #thenBlock3>     <p><span class="bold-data">{{'RoomType' | translate}}</span> {{ room.roomtype }}</p></ng-template>
             <ng-template #elseBlock3> <p><span class="bold-data">{{'RoomType' | translate}}</span>{{ room.roomtypeEs }}</p></ng-template>

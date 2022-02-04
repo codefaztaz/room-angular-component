@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'; 
@@ -49,7 +49,7 @@ export class RoomComponent implements OnInit {
   public div1:boolean=true;
   public div2:boolean=true;
   public flag:boolean = false;
- public translateEn:boolean = true;
+  public translateEn:boolean;
  // @Input() language:Observable< string>;
   
   public language:string;
@@ -90,6 +90,7 @@ export class RoomComponent implements OnInit {
     config.pauseOnHover = false; 
     translate.addLangs(['en', 'es']);
     //translate.setDefaultLang('en');
+    //this.switchLang(this.language);
  
 
   }
@@ -169,21 +170,65 @@ export class RoomComponent implements OnInit {
   }
     
   
-  switchLang(language: string) {
 
-    this.translate.use(language);
+
+
+    // console.log('idioma', this.language);
+    
+    // if(language === 'en')
+    // {
+      
+    //   this.translate.currentLang;
+    //   this.translate.use(this.translate.currentLang);
+    //   console.log('current' ,this.translate.currentLang);
+
+
+    // }
+    // else if (language === 'es')
+    // {
+    //   this.translate.use(language);
+    //   this.translate.currentLang;
+    //   console.log('current' ,this.translate.currentLang);
+
+    // // }
+
+    // console.log('valor language',this.language);
+    // this.translate.use(language);
+    
+    // this.translate.currentLang;
+    // console.log('current2' ,this.translate.currentLang);
+   
+  
+    switchLangChild(language: string) 
+    {
+      console.log('valor language',this.language);
+      this.translate.use(language);
+      this.translateEn = !this.translateEn;
+     // this.translate.currentLang;
+      console.log('current2' ,this.translate.currentLang);
+    
+    
+    
+
  
-    this.translateEn = language === 'en';
-    this.translate.currentLang;
-    console.log('current' ,this.translate.currentLang);
+    //this.translateEn = language === 'en';
+   // console.log('translateEn',this.translateEn);
+    //this.translate.currentLang;
+    
 
-}
+  }
 
   ngOnInit(): void {
  
-    this.switchLang(this.language);
+    this.switchLangChild(this.language);
    
 
+  }
+
+  ngAfterViewInit()
+  {
+    //this.switchLang(this.language);
+    this.translate.currentLang;
   }
 
           
