@@ -605,7 +605,7 @@ var controller = {
     saveImg: function(req, res) {
         console.log("saveimage ejecutandose");
         var roomId = req.body.id;
-        console.log('id', roomId);
+       // console.log('id', roomId);
         var file_name = req.body.image1;
         var file_name2 = req.body.image2;
         var file_name3 = req.body.image3;
@@ -716,9 +716,10 @@ var controller = {
     uploadAvatar: function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
         // var fileName = req.params.fileName;
+       //  console.log(fileName);
         // var file = fileName.replace(/['"]+/g, '');
         // console.log('file', file);
-        // var path = './uploads/rooms/' + file;
+       //  var path = './uploads/rooms/' + file;
         // fs.unlink(path, (err) => {
         //     if (err) {
         //         console.error(err)
@@ -734,21 +735,22 @@ var controller = {
         var file_name = 'imagen no subida...';
 
 
-        if (!req.files) {
+      
+
+        // Conseguir el nombre y la extension del archivo
+       // var file = req.params.file0.path;
+        var file = req.files.file0.path;
+        console.log("error en file", file);
+
+        var identifier = req.params.image;
+        console.log('identifier', identifier);
+
+        if (!req.file) {
             return res.status(404).send({
                 status: 'error',
                 message: file_name
             });
         }
-
-        // Conseguir el nombre y la extension del archivo
-        // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-
-        var identifier = req.params.image;
-        console.log('identifier', identifier);
-
-
 
         console.log(file);
         // var path = file

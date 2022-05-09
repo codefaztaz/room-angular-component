@@ -33,33 +33,33 @@ export class RoomService {
   getRooms(page = 1):Observable<any>
   {
     return this.http.get(this.url + 'rooms/' + page);
-    console.log(page);
+  
   }
 
   getRoomsEs(page = 1):Observable<any>
   {
     return this.http.get(this.url + 'roomsEs/' + page);
-    console.log(page);
+
   }
 
   getRoomsFull(page = 1):Observable<any>
   {
     return this.http.get(this.url + 'roomsfull/' + page);
-    console.log(page);
+  
   }
 
 
   getRoom(roomId):Observable<any>
   {
     return this.http.get(this.url + 'room/' + roomId);
-    console.log(roomId);
+
   }
 
 
   getAvatar(image):Observable<any>
   {
     return this.http.get(this.url + 'avatar/' + image);
-    console.log(image);
+
   }
 
   update(token,room):Observable<any>

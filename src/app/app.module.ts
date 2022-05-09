@@ -17,7 +17,7 @@ import { NoIdentityGuard } from './services/no.identity.guard';
 import { UserService } from './services/user.service';
 import { RoomService } from './services/room.service';
 import { LanguageService } from './services/language.service';
-import { ComponentCanDeactivate } from './services/componentcandeactivate.guard';
+//import { ComponentCanDeactivate } from './services/componentcandeactivate.guard';
 
 //components
 import { AppComponent } from './app.component';
