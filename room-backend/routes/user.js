@@ -6,8 +6,8 @@ var UserController = require('../controllers/user');
 var router = express.Router();
 var md_auth = require('../middlewares/authenticated');
 
-var multipart = require('connect-multiparty');
-var md_upload = multipart({ uploadDir: './uploads/users' });
+// var multipart = require('connect-multiparty');
+// var md_upload = multipart({ uploadDir: './uploads/users' });
 
 // Rutas de prueba
 router.get('/probando', UserController.probando);

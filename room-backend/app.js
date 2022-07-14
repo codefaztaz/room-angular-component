@@ -9,19 +9,28 @@ var cors = require('cors');
 // Ejecutar express
 var app = express();
 
+// Middlewares
+
+app.use(express.json({ limit: "30mb", extended: true }));
+app.use(express.urlencoded({ limit: "30mb", extended: true }));
+
 // Cargar archivos de rutas
 var user_routes = require('./routes/user');
 var room_routes = require('./routes/room');
 var topic_routes = require('./routes/topic');
 var comment_routes = require('./routes/comment');
+//const fileupload = require("express-fileupload");
 
-// Middlewares
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+
+//app.use(fileupload());
 
 //Middlewares deprecated
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+//  app.use(bodyParser.urlencoded({ extended: false }));
+//  //app.use(bodyParser.json());
+//  app.use(bodyParser.json({ type: 'application/*+json' }));
+
+// const busboy = require('connect-busboy');
+// app.use(busboy());
 
 // Configurar cabeceras y cors
 app.use((req, res, next) => {

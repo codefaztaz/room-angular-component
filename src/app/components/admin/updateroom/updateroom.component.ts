@@ -68,7 +68,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     this.getRoom();
 
    // this.avatar();
-    
+
   }
 
   // @HostListener('window:beforeunload')
@@ -86,12 +86,12 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   //   {
   //     console.log(params);
   //     console.log(params.id);
-      
+
   //    let _id = params['id'];
   //    console.log(_id);
   //    return _id;
   //   });
-    
+
   // }
 
   ngOnInit(): void {
@@ -99,7 +99,7 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
 
   ngOnChanges():void
   {
-  
+
   }
   ngDoCheck():void
   {
@@ -108,35 +108,35 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
   get titleNoValido() {
     return this.forma.get('title').invalid && this.forma.get('title').touched
     }
-    
+
     get descriptionNoValido() {
       return this.forma.get('description').invalid && this.forma.get('description').touched
     }
-    
+
     get depositNoValido() {
       return this.forma.get('deposit').invalid && this.forma.get('deposit').touched
     }
 
-    
 
-    
+
+
     get priceNoValido() {
       return this.forma.get('price').invalid && this.forma.get('price').touched
     }
-    
+
     get roomtypeNoValido() {
       return this.forma.get('roomtype').invalid && this.forma.get('roomtype').touched
     }
-    
+
     get mapgoogleNoValido() {
       return this.forma.get('mapgoogle').invalid && this.forma.get('mapgoogle').touched
     }
-    
-    
+
+
     get referenceNoValido() {
       return this.forma.get('reference').invalid && this.forma.get('reference').touched
     }
-    
+
     get locationNoValido() {
       return this.forma.get('location').invalid && this.forma.get('location').touched
     }
@@ -144,23 +144,24 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     get availablecouplesNoValido() {
       return this.forma.get('availablecouples').invalid && this.forma.get('availablecouples').touched
       }
-    
+
 
       get billsNoValido() {
         return this.forma.get('bills').invalid && this.forma.get('bills').touched
         }
-    
-    
-    
-    crearFormulario() 
+
+
+
+    crearFormulario()
     {
       this.forma = this.fb.group({
-      _id : [this.room ? this.room._id : '', Validators.required], 
-      availability : [ '', Validators.required ], 
+      _id : [this.room ? this.room._id : '', Validators.required],
+      availability : [ '', Validators.required ],
       title  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
       titleEs  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
       description : [ '', Validators.required ],
       descriptionEs : [ '', Validators.required ],
+
       roomtype : [ '', Validators.required ],
       roomtypeEs : [ '', Validators.required ],
       mapgoogle : [ '', Validators.required ],
@@ -190,165 +191,86 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
       image5 : [this.room ? this.room.image5 : '', Validators.required ],
 
       });
-    
-    
+
+
     }
-
-
-    afuConfig: AngularFileUploaderConfig = {
-            
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png',
-      maxSize: 0.5 ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar',
-        
-        params: {
-          'image': '1'
-        }
-        //  headers:{
-        // 'Authorization': this.token,
-        
-        //  },
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      replaceTexts: {
-        selectFileBtn: 'Select Files',
-        resetBtn: 'Reset',
-        uploadBtn: 'Upload',
-        dragNDropBox: 'Drag N Drop',
-        attachPinBtn: 'Attach Files...',
-        afterUploadMsg_success: 'Successfully Uploaded !',
-        afterUploadMsg_error: 'Upload Failed !',
-        sizeLimit: 'Size Limit'
-      }
-    };
-  
-
-    afuConfig2: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-      maxSize: 0.5,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar',
-        params: {
-          'image': '2'
-        }
-        
-      
-        // headers:{
-        //'Authorization': this.token,
-        
-        // }
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      // attachPinText: ' Sube la imagen'
-    };
-
-    afuConfig3: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-      maxSize: 0.5 ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar',
-
-        params: {
-          'image': '3'
-        }
-        
-      
-        // headers:{
-        //'Authorization': this.token,
-        
-        // }
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      // attachPinText: ' Sube la imagen'
-    };
-
-    afuConfig4: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-      maxSize: 0.5 ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar',
-        params: {
-          'image': '4'
-        }
-        
-      
-        // headers:{
-        //'Authorization': this.token,
-        
-        // }
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      // attachPinText: ' Sube la imagen'
-    };
-
-    afuConfig5: AngularFileUploaderConfig = {
-      
-      multiple: false,
-      formatsAllowed: '.jpg, .jpeg, .png, .gif',
-      maxSize: 0.5 ,
-      uploadAPI:{
-        url: 'http://localhost:3999/admin/' + 'upload-avatar',
-        params: {
-          'image': '5'
-        }
-        
-      
-        // headers:{
-        //'Authorization': this.token,
-        
-        // }
-        
-      },
-    
-    
-      theme: 'attachPin',
-      hideProgressBar: false,
-      hideResetBtn: true,
-      hideSelectBtn: false,
-      replaceTexts: {
-        selectFileBtn: 'Select Files',
-      //  afterUploadMsg_success: 'Successfully Uploaded !',
-        afterUploadMsg_error: 'Upload Failed !',
-        sizeLimit: 'less 500 kb'
-      }
-      // attachPinText: ' Sube la imagen'
-    };
 
 
     upload1(data)
     {
+
+      if(data.body.image1 && this.room.image1 != undefined && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image1).subscribe(
+          response =>
+          {
+
+          },
+          error =>
+          {
+            console.log(error);
+          }
+
+        );
+      }
+      else if(data.body.image2 && this.room.image2 != undefined  && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image2).subscribe(
+          response =>
+          {
+
+          },
+          error =>
+          {
+            console.log(error);
+          }
+
+        );
+      }
+      else if(data.body.image3 && this.room.image3 != undefined  && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image3).subscribe(
+          response =>
+          {
+
+          },
+          error =>
+          {
+            console.log(error);
+          }
+
+        );
+      }
+      else if(data.body.image4 && this.room.image4 != undefined  && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image4).subscribe(
+          response =>
+          {
+
+          },
+          error =>
+          {
+            console.log(error);
+          }
+
+        );
+      }
+      else if(data.body.image5 && this.room.image5 != undefined  && this.room.image1 != 'no-image.png')
+      {
+        this.roomservice.deleteAvatar(this.room.image5).subscribe(
+          response =>
+          {
+
+          },
+          error =>
+          {
+            console.log(error);
+          }
+
+        );
+      }
+
+      console.log("estoy en el response");
       this.activatedRoute.params.subscribe( params =>
         {
           console.log(params);
@@ -357,13 +279,12 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.room._id = id;
           console.log(this.room._id);
           this.room.image1 =  data.body.image1;
-          console.log('valor image1', this.room.image1);
           this.room.image2 =  data.body.image2;
           this.room.image3 =  data.body.image3;
           this.room.image4 =  data.body.image4;
           this.room.image5 =  data.body.image5;
           console.log('import',this.room.image1);
-     
+
           if(data.body.image1)
           {
 
@@ -371,8 +292,8 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             //   response =>
             //     {
             //       //this.room.image1;
-            //       this.getRoom();    
-                  
+            //       this.getRoom();
+
             //     },
             //     error =>
             //     {
@@ -383,14 +304,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             response =>
               {
                 //this.room.image1;
-                this.getRoom();    
-                
+                this.getRoom();
+
               },
               error =>
               {
                 console.log(error);
               }
-      
+
           );
             }
             if(data.body.image2)
@@ -399,14 +320,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               response =>
                 {
                   //this.room.image1;
-                  this.getRoom();    
-                  
+                  this.getRoom();
+
                 },
                 error =>
                 {
                   console.log(error);
                 }
-        
+
             );
               }
 
@@ -416,14 +337,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
                 response =>
                   {
                     //this.room.image1;
-                    this.getRoom();    
-                    
+                    this.getRoom();
+
                   },
                   error =>
                   {
                     console.log(error);
                   }
-          
+
               );
                 }
                 if(data.body.image4)
@@ -432,14 +353,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
                   response =>
                     {
                       //this.room.image1;
-                      this.getRoom();    
-                      
+                      this.getRoom();
+
                     },
                     error =>
                     {
                       console.log(error);
                     }
-            
+
                 );
                   }
                   if(data.body.image5)
@@ -448,201 +369,19 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
                     response =>
                       {
                         //this.room.image1;
-                        this.getRoom();    
-                        
+                        this.getRoom();
+
                       },
                       error =>
                       {
                         console.log(error);
                       }
-              
+
                   );
                     }
-        }); 
+        });
 
-      // if(data.body.image1 && this.room.image1 != undefined && this.room.image1 != 'no-image.png')
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image1).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
-      // else if(data.body.image2 && this.room.image2 != undefined  && this.room.image1 != 'no-image.png')
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image2).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
-      // else if(data.body.image3 && this.room.image3 != undefined  && this.room.image1 != 'no-image.png')
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image3).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
-      // else if(data.body.image4 && this.room.image4 != undefined  && this.room.image1 != 'no-image.png')
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image4).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
-      // else if(data.body.image5 && this.room.image5 != undefined  && this.room.image1 != 'no-image.png')
-      // {
-      //   this.roomservice.deleteAvatar(this.room.image5).subscribe(
-      //     response =>
-      //     {
-              
-      //     },
-      //     error =>
-      //     {
-      //       console.log(error);
-      //     }
-  
-      //   );
-      // }
 
-      console.log("estoy en el response");
-      // this.activatedRoute.params.subscribe( params =>
-      //   {
-      //     console.log(params);
-      //     console.log(params.id);
-      //     let id = params['id'];
-      //     this.room._id = id;
-      //     console.log(this.room._id);
-      //     this.room.image1 =  data.body.image1;
-      //     this.room.image2 =  data.body.image2;
-      //     this.room.image3 =  data.body.image3;
-      //     this.room.image4 =  data.body.image4;
-      //     this.room.image5 =  data.body.image5;
-      //     console.log('import',this.room.image1);
-     
-      //     if(data.body.image1)
-      //     {
-
-      //       // this.roomservice.deleteAvatar(this.room.image1).subscribe(
-      //       //   response =>
-      //       //     {
-      //       //       //this.room.image1;
-      //       //       this.getRoom();    
-                  
-      //       //     },
-      //       //     error =>
-      //       //     {
-      //       //       console.log(error);
-      //       //     }
-      //       // );
-      //       this.roomservice.saveImg(this.room._id,'image1',this.room.image1).subscribe(
-      //       response =>
-      //         {
-      //           //this.room.image1;
-      //           this.getRoom();    
-                
-      //         },
-      //         error =>
-      //         {
-      //           console.log(error);
-      //         }
-      
-      //     );
-      //       }
-      //       if(data.body.image2)
-      //       {
-      //       this.roomservice.saveImg(this.room._id,'image2',this.room.image2).subscribe(
-      //         response =>
-      //           {
-      //             //this.room.image1;
-      //             this.getRoom();    
-                  
-      //           },
-      //           error =>
-      //           {
-      //             console.log(error);
-      //           }
-        
-      //       );
-      //         }
-
-      //         if(data.body.image3)
-      //         {
-      //         this.roomservice.saveImg(this.room._id,'image3',this.room.image3).subscribe(
-      //           response =>
-      //             {
-      //               //this.room.image1;
-      //               this.getRoom();    
-                    
-      //             },
-      //             error =>
-      //             {
-      //               console.log(error);
-      //             }
-          
-      //         );
-      //           }
-      //           if(data.body.image4)
-      //           {
-      //           this.roomservice.saveImg(this.room._id,'image4',this.room.image4).subscribe(
-      //             response =>
-      //               {
-      //                 //this.room.image1;
-      //                 this.getRoom();    
-                      
-      //               },
-      //               error =>
-      //               {
-      //                 console.log(error);
-      //               }
-            
-      //           );
-      //             }
-      //             if(data.body.image5)
-      //             {
-      //             this.roomservice.saveImg(this.room._id,'image5',this.room.image5).subscribe(
-      //               response =>
-      //                 {
-      //                   //this.room.image1;
-      //                   this.getRoom();    
-                        
-      //                 },
-      //                 error =>
-      //                 {
-      //                   console.log(error);
-      //                 }
-              
-      //             );
-      //               }
-      //   }); 
-      
-        
       }
     getRoom()
     {
@@ -655,38 +394,21 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
             {
               this.router.navigate(['/admin/listrooms']);
             }
-     
+
             else
             {
               this.room = response.room;
               this.forma.controls['_id'].setValue(response.room._id);
               this.forma.controls['title'].setValue(response.room.title);
-              this.forma.controls['titleEs'].setValue(response.room.titleEs);
               this.forma.controls['description'].setValue(response.room.description);
-              this.forma.controls['descriptionEs'].setValue(response.room.descriptionEs);
-              this.forma.controls['availablecouples'].setValue(response.room.availablecouples);
-              this.forma.controls['availablecouplesEs'].setValue(response.room.availablecouplesEs);
+             // this.forma.controls['language'].setValue(response.room.language);
               this.forma.controls['roomtype'].setValue(response.room.roomtype);
-              this.forma.controls['roomtypeEs'].setValue(response.room.roomtypeEs);
-              this.forma.controls['deposit'].setValue(response.room.deposit);
-              this.forma.controls['depositEs'].setValue(response.room.depositEs);
-              this.forma.controls['bills'].setValue(response.room.bills);
-              this.forma.controls['billsEs'].setValue(response.room.billsEs);
-              this.forma.controls['length'].setValue(response.room.length);
-              this.forma.controls['lengthEs'].setValue(response.room.lengthEs);
-              this.forma.controls['parking'].setValue(response.room.parking);
-              this.forma.controls['parkingEs'].setValue(response.room.parkingEs);
               this.forma.controls['mapgoogle'].setValue(response.room.mapgoogle);
-              this.forma.controls['mapgoogleEs'].setValue(response.room.mapgoogleEs);
               this.forma.controls['price'].setValue(response.room.price);
-              this.forma.controls['priceEs'].setValue(response.room.priceEs);
               this.forma.controls['availability'].setValue(response.room.availability);
               this.forma.controls['availabilityfrom'].setValue(response.room.availabilityfrom);
-              this.forma.controls['availabilityfromEs'].setValue(response.room.availabilityfromEs);
               this.forma.controls['reference'].setValue(response.room.reference);
-              this.forma.controls['referenceEs'].setValue(response.room.referenceEs);
               this.forma.controls['location'].setValue(response.room.location);
-              this.forma.controls['locationEs'].setValue(response.room.locationEs);
               this.forma.controls['image1'].setValue(response.room.image1);
               this.forma.controls['image2'].setValue(response.room.image2);
               this.forma.controls['image3'].setValue(response.room.image3);
@@ -697,178 +419,175 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
               this.imgURL3 = response.room.image3;
               this.imgURL4 = response.room.image4;
               this.imgURL5 = response.room.image5;
-              
+
               //console.log(this.imgURL);
               console.log(this.room);
               console.log(this.imgURL2);
               console.log('imag3',this.imgURL3);
               console.log('img4',this.imgURL4);
-              console.log('length', this.room.length);
-              console.log('length', this.room.price);
-
             }
           }
         )
       });
     }
-    
-  
- 
-          // afuConfig: AngularFileUploaderConfig = {
-            
-          //   multiple: false,
-          //   formatsAllowed: '.jpg, .jpeg, .png',
-          //   maxSize: 0.5 ,
-          //   uploadAPI:{
-          //     url: 'http://localhost:3999/admin/' + 'upload-avatar',
-              
-          //     params: {
-          //       'image': '1'
-          //     }
-          //     //  headers:{
-          //     // 'Authorization': this.token,
-              
-          //     //  },
-              
-          //   },
-          
-          
-          //   theme: 'attachPin',
-          //   hideProgressBar: false,
-          //   hideResetBtn: true,
-          //   hideSelectBtn: false,
-          //   replaceTexts: {
-          //     selectFileBtn: 'Select Files',
-          //     resetBtn: 'Reset',
-          //     uploadBtn: 'Upload',
-          //     dragNDropBox: 'Drag N Drop',
-          //     attachPinBtn: 'Attach Files...',
-          //     afterUploadMsg_success: 'Successfully Uploaded !',
-          //     afterUploadMsg_error: 'Upload Failed !',
-          //     sizeLimit: 'Size Limit'
-          //   }
-          // };
-        
-     
-          // afuConfig2: AngularFileUploaderConfig = {
-            
-          //   multiple: false,
-          //   formatsAllowed: '.jpg, .jpeg, .png, .gif',
-          //   maxSize: 0.5,
-          //   uploadAPI:{
-          //     url: 'http://localhost:3999/admin/' + 'upload-avatar',
-          //     params: {
-          //       'image': '2'
-          //     }
-              
-            
-          //     // headers:{
-          //     //'Authorization': this.token,
-              
-          //     // }
-              
-          //   },
-          
-          
-          //   theme: 'attachPin',
-          //   hideProgressBar: false,
-          //   hideResetBtn: true,
-          //   hideSelectBtn: false,
-          //   // attachPinText: ' Sube la imagen'
-          // };
 
-          // afuConfig3: AngularFileUploaderConfig = {
-            
-          //   multiple: false,
-          //   formatsAllowed: '.jpg, .jpeg, .png, .gif',
-          //   maxSize: 0.5 ,
-          //   uploadAPI:{
-          //     url: 'http://localhost:3999/admin/' + 'upload-avatar',
 
-          //     params: {
-          //       'image': '3'
-          //     }
-              
-            
-          //     // headers:{
-          //     //'Authorization': this.token,
-              
-          //     // }
-              
-          //   },
-          
-          
-          //   theme: 'attachPin',
-          //   hideProgressBar: false,
-          //   hideResetBtn: true,
-          //   hideSelectBtn: false,
-          //   // attachPinText: ' Sube la imagen'
-          // };
 
-          // afuConfig4: AngularFileUploaderConfig = {
-            
-          //   multiple: false,
-          //   formatsAllowed: '.jpg, .jpeg, .png, .gif',
-          //   maxSize: 0.5 ,
-          //   uploadAPI:{
-          //     url: 'http://localhost:3999/admin/' + 'upload-avatar',
-          //     params: {
-          //       'image': '4'
-          //     }
-              
-            
-          //     // headers:{
-          //     //'Authorization': this.token,
-              
-          //     // }
-              
-          //   },
-          
-          
-          //   theme: 'attachPin',
-          //   hideProgressBar: false,
-          //   hideResetBtn: true,
-          //   hideSelectBtn: false,
-          //   // attachPinText: ' Sube la imagen'
-          // };
+          afuConfig: AngularFileUploaderConfig = {
 
-          // afuConfig5: AngularFileUploaderConfig = {
-            
-          //   multiple: false,
-          //   formatsAllowed: '.jpg, .jpeg, .png, .gif',
-          //   maxSize: 0.5 ,
-          //   uploadAPI:{
-          //     url: 'http://localhost:3999/admin/' + 'upload-avatar',
-          //     params: {
-          //       'image': '5'
-          //     }
-              
-            
-          //     // headers:{
-          //     //'Authorization': this.token,
-              
-          //     // }
-              
-          //   },
-          
-          
-          //   theme: 'attachPin',
-          //   hideProgressBar: false,
-          //   hideResetBtn: true,
-          //   hideSelectBtn: false,
-          //   replaceTexts: {
-          //     selectFileBtn: 'Select Files',
-          //   //  afterUploadMsg_success: 'Successfully Uploaded !',
-          //     afterUploadMsg_error: 'Upload Failed !',
-          //     sizeLimit: 'less 500 kb'
-          //   }
-          //   // attachPinText: ' Sube la imagen'
-          // };
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png',
+            maxSize: 0.5 ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+
+              params: {
+                'image': '1'
+              }
+              //  headers:{
+              // 'Authorization': this.token,
+
+              //  },
+
+            },
+
+
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            replaceTexts: {
+              selectFileBtn: 'Select Files',
+              resetBtn: 'Reset',
+              uploadBtn: 'Upload',
+              dragNDropBox: 'Drag N Drop',
+              attachPinBtn: 'Attach Files...',
+              afterUploadMsg_success: 'Successfully Uploaded !',
+              afterUploadMsg_error: 'Upload Failed !',
+              sizeLimit: 'Size Limit'
+            }
+          };
+
+
+          afuConfig2: AngularFileUploaderConfig = {
+
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            maxSize: 0.5,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '2'
+              }
+
+
+              // headers:{
+              //'Authorization': this.token,
+
+              // }
+
+            },
+
+
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig3: AngularFileUploaderConfig = {
+
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            maxSize: 0.5 ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+
+              params: {
+                'image': '3'
+              }
+
+
+              // headers:{
+              //'Authorization': this.token,
+
+              // }
+
+            },
+
+
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig4: AngularFileUploaderConfig = {
+
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            maxSize: 0.5 ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '4'
+              }
+
+
+              // headers:{
+              //'Authorization': this.token,
+
+              // }
+
+            },
+
+
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            // attachPinText: ' Sube la imagen'
+          };
+
+          afuConfig5: AngularFileUploaderConfig = {
+
+            multiple: false,
+            formatsAllowed: '.jpg, .jpeg, .png, .gif',
+            maxSize: 0.5 ,
+            uploadAPI:{
+              url: 'http://localhost:3999/admin/' + 'upload-avatar',
+              params: {
+                'image': '5'
+              }
+
+
+              // headers:{
+              //'Authorization': this.token,
+
+              // }
+
+            },
+
+
+            theme: 'attachPin',
+            hideProgressBar: false,
+            hideResetBtn: true,
+            hideSelectBtn: false,
+            replaceTexts: {
+              selectFileBtn: 'Select Files',
+            //  afterUploadMsg_success: 'Successfully Uploaded !',
+              afterUploadMsg_error: 'Upload Failed !',
+              sizeLimit: 'less 500 kb'
+            }
+            // attachPinText: ' Sube la imagen'
+          };
 
 
     // deleteImage(image)
     // {
-   
+
     //   console.log('image1-delete',this.room.image1);
     //   this.roomservice.updateImage1(this.room._id, this.room.image1).subscribe(
     //     response =>
@@ -882,21 +601,21 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
     //       response =>
     //       {
     //         this.room.image1 = null;
-            
+
     //         console.log('img1a', this.room.image1);
-              
+
     //       },
     //       error =>
     //       {
     //         console.log(error);
     //       }
-  
+
     //     );
     //   }
 
 
-    // } 
-    
+    // }
+
 
     deleteImage(image)
     {
@@ -913,16 +632,16 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.roomservice.deleteAvatar(this.room.image1).subscribe(
             response =>
             {
-            
-              
-            
-                
+
+
+
+
             },
             error =>
             {
               console.log(error);
             }
-    
+
           );
         }
 
@@ -940,14 +659,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.roomservice.deleteAvatar(this.room.image2).subscribe(
             response =>
             {
-            
-                
+
+
             },
             error =>
             {
               console.log(error);
             }
-    
+
           );
         }
 
@@ -965,14 +684,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.roomservice.deleteAvatar(this.room.image3).subscribe(
             response =>
             {
-            
-                
+
+
             },
             error =>
             {
               console.log(error);
             }
-    
+
           );
         }
 
@@ -990,14 +709,14 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.roomservice.deleteAvatar(this.room.image4).subscribe(
             response =>
             {
-            
-                
+
+
             },
             error =>
             {
               console.log(error);
             }
-    
+
           );
         }
 
@@ -1015,47 +734,47 @@ export class UpdateroomComponent implements OnInit, OnChanges, DoCheck {
           this.roomservice.deleteAvatar(this.room.image5).subscribe(
             response =>
             {
-            
-                
+
+
             },
             error =>
             {
               console.log(error);
             }
-    
+
           );
         }
 
       }
-      
 
 
-    }       
-        
-     
-   
-        
+
+    }
+
+
+
+
     onSubmit()
     {
-    
-    
+
+
       this.room = this.forma.value;
       this.roomservice.update(this.token,this.room).subscribe(
         response =>
          {
-          
+
            console.log(this.room);
          //  this.save();
           // this.getBook();
-    
+
         },
         error =>
         {
           console.log(error);
         }
      );
-    
-    
+
+
     }
 
 }

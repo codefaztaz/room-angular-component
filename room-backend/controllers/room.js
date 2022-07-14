@@ -3,7 +3,12 @@
 var validator = require('validator');
 var bcrypt = require('bcrypt-nodejs');
 var fs = require('fs');
+
 var path = require('path');
+
+//const Busboy = require('connect-busboy');
+
+//const path = require('node:path');
 
 var User = require('../models/user');
 var jwt = require('../services/jwt');
@@ -42,9 +47,9 @@ var controller = {
             var validate_roomtypeEs = !validator.isEmpty(params.roomtypeEs);
             var validate_length = !validator.isEmpty(params.length);
             var validate_lengthEs = !validator.isEmpty(params.lengthEs);
-            
-            
-          
+
+
+
             var validate_mapgoogle = !validator.isEmpty(params.mapgoogle);
             var validate_mapgoogleEs = !validator.isEmpty(params.mapgoogleEs);
             var validate_reference = !validator.isEmpty(params.reference);
@@ -59,14 +64,14 @@ var controller = {
             var validate_depositEs = !validator.isEmpty(params.depositEs);
             var validate_parking = !validator.isEmpty(params.parking);
             var validate_parkingEs = !validator.isEmpty(params.parkingEs);
-        
+
 
             //console.log(validate_name, validate_surname, validate_email, validate_password);
         } catch (err) {
             return res.status(200).send({
                 message: "Faltan datos por enviar de la habitacion"
             });
-        } 
+        }
 
         if (validate_title && validate_titleEs && validate_description  && validate_descriptionEs && validate_price && validate_priceEs &&  validate_parking && validate_parkingEs
              &&  validate_roomtype &&  validate_roomtypeEs && validate_mapgoogle && validate_mapgoogleEs && validate_reference && validate_referenceEs &&  validate_availabilityfrom &&
@@ -713,13 +718,13 @@ var controller = {
 
     },
 
-    uploadAvatar: function(req, res) {
+    uploadAvatar:  function(req, res) {
         // Configurar el modulo multiparty (md) routes/user.js
         // var fileName = req.params.fileName;
        //  console.log(fileName);
         // var file = fileName.replace(/['"]+/g, '');
         // console.log('file', file);
-       //  var path = './uploads/rooms/' + file;
+        // var path = './uploads/rooms/' + file;
         // fs.unlink(path, (err) => {
         //     if (err) {
         //         console.error(err)
@@ -732,45 +737,58 @@ var controller = {
 
 
         // Recoger el fichero de la petición
-        var file_name = 'imagen no subida...';
+     //   var file_name = 'imagen no subida...';
 
 
-      
+     var file = req.files.file0.path;
+    //  console.log(Object.keys(req.files.file0.path));
+    //  console.log(files);
+
+
+
+
+
+
+
+
+
+
+
+    // console.log(file);
+    //  var postData = JSON.parse(req.files.file0.path);
+    //  console.log(postData);
+
 
         // Conseguir el nombre y la extension del archivo
-       // var file = req.params.file0.path;
-        var file = req.files.file0.path;
-        console.log("error en file", file);
+        console.log(JSON.stringify(req.files.file0.path));
+       //var file = req.params.file0.path;
 
-        var identifier = req.params.image;
+        // var file = req.files.file0.path;
+        // console.log("error en file", file);
+
+         var identifier = req.params.image;
         console.log('identifier', identifier);
 
-        if (!req.file) {
-            return res.status(404).send({
-                status: 'error',
-                message: file_name
-            });
-        }
 
-        console.log(file);
-        // var path = file
-        // var file_split = file_path.split('\\');
+        // console.log(file);
+         var path = file
+        // // var file_split = file_path.split('\\');
 
-        // ** Adventencia ** En linux o mac
-        var file_split = file.split('/');
+        // // ** Adventencia ** En linux o mac
+         var file_split = file.split('/');
 
-        // Nombre del archivo
-        var file_name = file_split[2];
-        console.log(file_name);
+        // // Nombre del archivo
+         var file_name = file_split[2];
+        // console.log(file_name);
 
-        // Extensión del archivo
+        // // Extensión del archivo
         var ext_split = file_name.split('\.');
         console.log(ext_split);
         var file_ext = ext_split[1];
         console.log(file_ext);
 
 
-        // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
+        // // Comprobar extension (solo imagenes), si no es valida borrar fichero subido
         if (file_ext != 'png' && file_ext != 'jpg' && file_ext != 'jpeg' && file_ext != 'gif') {
             fs.unlink(file, (err) => {
 
@@ -813,9 +831,9 @@ var controller = {
             }
 
 
-
-
         }
+
+
 
     },
 
@@ -825,7 +843,7 @@ var controller = {
         var roomId = req.params.roomid;
         console.log('roomdelete', roomId);
 
-        // Find and delete por topicID y por userID 
+        // Find and delete por topicID y por userID
         Room.findOneAndDelete({ _id: roomId }, (err, roomRemoved) => {
 
             if (err) {
