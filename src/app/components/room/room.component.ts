@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router, Params } from '@angular/router';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap'; 
-import { TranslateService } from '@ngx-translate/core'; 
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -51,7 +51,7 @@ export class RoomComponent implements OnInit {
   public flag:boolean = false;
   public translateEn:boolean;
  // @Input() language:Observable< string>;
-  
+
   public language:string;
 
   //public translate;
@@ -68,7 +68,7 @@ export class RoomComponent implements OnInit {
     private router: Router,
     public translate: TranslateService,
     private config: NgbCarouselConfig,
-  ) 
+  )
   {
     this.token = userservice.getToken();
     console.log(this.token);
@@ -83,39 +83,39 @@ export class RoomComponent implements OnInit {
     this.crearFormulario();
 
 
-    this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );   
-    config.interval = 0;  
-    config.wrap = true;  
-    config.keyboard = false;  
-    config.pauseOnHover = false; 
+    this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );
+    config.interval = 0;
+    config.wrap = true;
+    config.keyboard = false;
+    config.pauseOnHover = false;
     translate.addLangs(['en', 'es']);
     //translate.setDefaultLang('en');
     //this.switchLang(this.language);
- 
+
 
   }
 
-  crearFormulario() 
+  crearFormulario()
   {
-      this.forma = this.fb.group({ 
+      this.forma = this.fb.group({
       name  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
-      message : [ '', Validators.required], 
-      
+      message : [ '', Validators.required],
+
 
       });
-    
-    
+
+
   }
 
-  get nameNoValido() 
+  get nameNoValido()
   {
     return this.forma.get('name').invalid && this.forma.get('name').touched
   }
-    
-  get messageNoValido() 
+
+  get messageNoValido()
   {
       return this.forma.get('message').invalid && this.forma.get('message').touched
-  }  
+  }
 
 
 
@@ -132,14 +132,14 @@ export class RoomComponent implements OnInit {
           {
             this.router.navigate(['/home']);
           }
-    
+
           else
           {
             this.room = response.room;
             this.room._id =response.room._id;
             this.room.title = response.room.title;
             this.room.description = response.room.description;
-   
+
             this.room.roomtype = response.room.roomtype;
             this.room.mapgoogle = response.room.mapgoogle;
             this.room.price = response.room.price;
@@ -168,16 +168,16 @@ export class RoomComponent implements OnInit {
       )
     });
   }
-    
-  
+
+
 
 
 
     // console.log('idioma', this.language);
-    
+
     // if(language === 'en')
     // {
-      
+
     //   this.translate.currentLang;
     //   this.translate.use(this.translate.currentLang);
     //   console.log('current' ,this.translate.currentLang);
@@ -194,34 +194,33 @@ export class RoomComponent implements OnInit {
 
     // console.log('valor language',this.language);
     // this.translate.use(language);
-    
+
     // this.translate.currentLang;
     // console.log('current2' ,this.translate.currentLang);
-   
-  
-    switchLangChild(language: string) 
+
+
+    switchLang(language: string)
     {
       console.log('valor language',this.language);
       this.translate.use(language);
       this.translateEn = !this.translateEn;
      // this.translate.currentLang;
       console.log('current2' ,this.translate.currentLang);
-    
-    
-    
 
- 
+
+
+
+
     //this.translateEn = language === 'en';
    // console.log('translateEn',this.translateEn);
     //this.translate.currentLang;
-    
+
 
   }
 
   ngOnInit(): void {
- 
-    this.switchLangChild(this.language);
-   
+
+
 
   }
 
@@ -231,28 +230,28 @@ export class RoomComponent implements OnInit {
     this.translate.currentLang;
   }
 
-          
+
   onSubmit()
   {
-  
-  
+
+
     this.room = this.forma.value;
     this.roomservice.update(this.token,this.room).subscribe(
       response =>
        {
-        
+
          console.log(this.room);
        //  this.save();
         // this.getBook();
-  
+
       },
       error =>
       {
         console.log(error);
       }
    );
-  
-  
+
+
   }
 
 
@@ -261,7 +260,7 @@ export class RoomComponent implements OnInit {
   showPictures()
   {
      this.flag = false;
- 
+
 
   }
 
@@ -272,6 +271,6 @@ export class RoomComponent implements OnInit {
 
 
   }
-  
+
 
 }

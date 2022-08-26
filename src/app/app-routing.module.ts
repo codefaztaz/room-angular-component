@@ -9,11 +9,12 @@ import { UpdateroomComponent } from './components/admin/updateroom/updateroom.co
 import { RoomComponent } from './components/room/room.component';
 import { RoomUnavailableComponent } from './components/room-unavailable/room-unavailable.component';
 import { RoomAvailableComponent } from './components/room-available/room-available.component';
-
+import { NopagefoundComponent } from './components/nopagefound/nopagefound.component';
 
 // Services
 import { UserGuard } from './services/user.guard';
 import { NoIdentityGuard } from './services/no.identity.guard';
+
 
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'room-available/:id', component: RoomAvailableComponent },
   { path: 'logout/:sure', component: PanelComponent },
   { path: 'login', component: PanelComponent },
-  
+  { path: '**', component: NopagefoundComponent  },
+
 ];
 
 @NgModule({

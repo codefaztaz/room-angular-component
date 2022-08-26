@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, SimpleChanges, Input, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { Room } from '../../models/room';
-import { TranslateService } from '@ngx-translate/core'; 
+import { TranslateService } from '@ngx-translate/core';
 
 import { global } from '../../services/global';
 import { globalroom } from '../../services/globalroom';
@@ -18,7 +18,7 @@ import { RoomComponent } from '../room/room.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit, AfterViewInit {
   public identity;
   public token;
   public rooms: Room[];
@@ -33,9 +33,10 @@ export class HomeComponent implements OnInit, OnChanges {
   public _id;
   public takeId;
   public id;
-  @Input() translateEn:boolean = true;
+  public  translateEn:boolean = true;
   public language:string;
-  @ViewChild(RoomComponent) hijo: RoomComponent;
+
+
 
 
   constructor(
@@ -47,11 +48,11 @@ export class HomeComponent implements OnInit, OnChanges {
     public languageservice: LanguageService
   ) {
      this.url = globalroom.url;
-     this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );    
+     this.room = new Room('','','','','', '', '','','','','', '','','','','', 1,1,  '', '','', 1,1, '', '','','', '', '', '','','' );
      this.loadUser();
-     translate.addLangs(['en', 'es']);
-     translate.setDefaultLang('en');
- 
+     this.translate.addLangs(['en', 'es']);
+    this.translate.setDefaultLang('es');
+
 
 
 }
@@ -62,22 +63,24 @@ export class HomeComponent implements OnInit, OnChanges {
       if (!page) {
         page = 1;
       }
-    
+
       this.getRooms(page);
-       
+
   this.switchLang(this.language);
- 
+
     });
 
 
 
- 
+
   }
 
-  ngOnChanges(changes: SimpleChanges)
-  {
-    //changes.this.switchLang(this.lang);
+
+  ngAfterViewInit(): void {
+
+
   }
+
 
 
  getId(id)
@@ -107,7 +110,7 @@ export class HomeComponent implements OnInit, OnChanges {
         if(response.rooms)
         {
           this.rooms = response.rooms;
-    
+
 
           // navegacion de paginación
           this.totalPages = response.totalPages;
@@ -164,7 +167,7 @@ export class HomeComponent implements OnInit, OnChanges {
         if(response.rooms)
         {
           this.rooms = response.rooms;
-    
+
 
           // navegacion de paginación
           this.totalPages = response.totalPages;
@@ -209,14 +212,40 @@ export class HomeComponent implements OnInit, OnChanges {
     );
   }
 
-  switchLang(language: string) {
-    console.log('valor language',this.language);
+  // switchLang(language: string) {
+  //   console.log('valor language',this.language);
+  //   this.idioma = this.translate.use(language);
+  //   console.log('this.idioma',this.idioma);
+  //   //this.translateEn = language === 'en';
+  //  // this.translate.currentLang;
+  //   if(language == 'en')
+  //   {
+  //     this.translate.use(language);
+  //   }
+  //   console.log('current2' ,this.translate.currentLang);
+
+  // }
+
+
+  switchLang(language: string)
+  {
+
+
     this.translate.use(language);
-    this.translateEn = language === 'en';
-   // this.translate.currentLang;
-   this.hijo.switchLangChild(language = this.translate.currentLang);
-    console.log('current2' ,this.translate.currentLang);
-  
+    console.log('valor language',this.language);
+
+    //this.translateEn = language === 'en';
+    this.translate.currentLang;
+    console.log('this.translate.currentlang', this.translate.currentLang);
+    if(this.translate.use('en'))
+    {
+      this.translateEn = true;
+    }
+    else if(this.translate.use('es'))
+    {
+      this.translateEn = false;
+
+    }
   }
 
 
