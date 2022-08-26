@@ -251,6 +251,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
 
 
+
   // crear metodo que observe el cambio de idioma y hacer un console log de momento
 
 
