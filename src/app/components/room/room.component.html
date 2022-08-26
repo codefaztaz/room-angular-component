@@ -16,11 +16,11 @@
 
                 <ul class="navbar-nav  navbar-right">
                     <span class="form-inline">
-                        <select 
-                            class="form-control" 
-                            #selectedLang 
-                            (change)="switchLangChild(selectedLang.value)">
-                          <option *ngFor="let language of translate.getLangs()" 
+                        <select
+                            class="form-control"
+                            #selectedLang
+                            (change)="switchLang(selectedLang.value)">
+                          <option *ngFor="let language of translate.getLangs()"
                             [value]="language"
                             [selected]="language === translate.currentLang">
                             {{ language }}
@@ -33,11 +33,11 @@
 
                 <!-- <ul class="navbar-nav  navbar-right">
                     <span class="form-inline">
-                        <select 
-                            class="form-control" 
-                            #selectedLang 
+                        <select
+                            class="form-control"
+                            #selectedLang
                             (change)="switchLang(selectedLang.value)">
-                          <option *ngFor="let language of translate.getLangs()" 
+                          <option *ngFor="let language of translate.getLangs()"
                             [value]="language"
                             [selected]="language === translate.currentLang">
                             {{ language }}
@@ -83,12 +83,12 @@
                 <div *ngIf="translateEn == true; then thenBlock else elseBlock"></div>
 <ng-template #thenBlock>     <h4>{{ room.title }}</h4></ng-template>
 <ng-template #elseBlock> <h4>{{ room.titleEs }}</h4></ng-template>
-               
+
                 <ul class="ul-room">
                     <div *ngIf="translateEn == true; then thenBlock2 else elseBlock2"></div>
                     <ng-template #thenBlock2>     <h4>{{ room.location }}</h4></ng-template>
                     <ng-template #elseBlock2> <h4>{{ room.locationEs }}</h4></ng-template>
-                    
+
                     <!-- <div *ngIf="translateEn == true; else translateES">
                         <li class="li-room">{{ room.location }} </li>
                     </div>
@@ -109,10 +109,10 @@
                         google Maps</a
                 >
                 </li>
-            
+
             </ul>
             <!-- Tabs navs -->
-            
+
             <!-- Tabs content -->
             <div class="tab-content">
                 <div
@@ -131,7 +131,7 @@
                         <ng-template #noimage1>
                             <img class="carousel-img" src="{{ url + 'avatar/' + room.image1 }}" alt="student">
                         </ng-template>
-                       
+
 
                     </ng-template>
                     <ng-template ngbSlide>
@@ -141,7 +141,7 @@
                         <ng-template #noimage2>
                             <img class="carousel-img" src="{{ url + 'avatar/' + room.image2 }}" alt="student">
                         </ng-template>
-                      
+
 
                     </ng-template>
                     <ng-template ngbSlide>
@@ -151,7 +151,7 @@
                         <ng-template #noimage3>
                             <img class="carousel-img" src="{{ url + 'avatar/' + room.image3 }}" alt="student">
                         </ng-template>
-                    
+
 
                     </ng-template>
                     <ng-template ngbSlide>
@@ -161,7 +161,7 @@
                         <ng-template #noimage4>
                             <img class="carousel-img" src="{{ url + 'avatar/' + room.image4}}" alt="student">
                         </ng-template>
-                  
+
 
                     </ng-template>
                     <ng-template ngbSlide>
@@ -171,25 +171,25 @@
                         <ng-template #noimage5>
                             <img class="carousel-img" src="{{ url + 'avatar/' + room.image5 }}" alt="student">
                         </ng-template>
-                      
+
                     </ng-template>
                        <!-- [ngClass]="{'active':flag, 'hidden':!flag}" -->
                 </ngb-carousel>
                 </div>
                 <div
                 class="tab-pane fade show embed-responsive embed-responsive-4by3"
-             
+
                 [ngClass]="{'hiden': !flag, 'active': flag}"
                 *ngIf="div2"
                 role="tabpanel"
                 aria-labelledby="ex2-tab-1"
                 id="div2"
-                [innerHtml]="room.mapgoogle | safeHtml" 
+                [innerHtml]="room.mapgoogle | safeHtml"
                 >
-                
+
                 {{room.mapgoogle}}
                 </div>
-            
+
             </div>
             <!-- "language === 'en';
             translateEn == true; -->
