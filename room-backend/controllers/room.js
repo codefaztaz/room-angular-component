@@ -116,9 +116,14 @@ var controller = {
 
 
 
-            // Comprobar si el usuario existe
-            Room.findOne({ title: Room.reference }, (err, issetRoom) => {
+            // Comprobar si la referencia existe
+            Room.findOne({
+
+              reference: { $in: params.reference}
+
+               }, (err, issetRoom) => {
                 if (err) {
+                  console.log("la referencia existe");
                     return res.status(500).send({
                         message: "Error al comprobar duplicidad de la habitación"
                     });
@@ -126,7 +131,7 @@ var controller = {
 
                 if (!issetRoom) {
                     // Si no exite,
-
+                    console.log("a pasado la validacion");
                     //cifrar la contraseña
                     //	bcrypt.hash(params.password, null, null, (err, hash) => {
                     //		user.password = hash;
@@ -155,7 +160,7 @@ var controller = {
 
 
                 } else {
-                    return res.status(200).send({
+                    return res.status(400).send({
                         message: "La habitación ya está registrada"
                     });
                 }
@@ -164,7 +169,7 @@ var controller = {
 
 
         } else {
-            return res.status(200).send({
+            return res.status(400).send({
                 message: "Validación de los datos de la habitación incorrecta, intentalo de nuevo"
             });
         }
