@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Room } from '../../../models/room';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 // services
 import { UserService } from '../../../services/user.service';
 import { RoomService } from '../../../services/room.service';
@@ -24,16 +24,17 @@ export class AddroomComponent implements OnInit {
   public status;
   public id;
   public idBook;
+  durationInSeconds = 5;
 
   constructor(
   private fb: FormBuilder,
   private userservice: UserService,
   private roomservice: RoomService,
   private http: HttpClient,
-
   private route: ActivatedRoute,
-
   private router: Router,
+  private _snackBar: MatSnackBar
+
 ) {
   this.token = userservice.getToken();
   console.log(this.token);
@@ -41,7 +42,7 @@ export class AddroomComponent implements OnInit {
 
 
 
-  
+
 }
 
 get titleNoValido() {
@@ -88,7 +89,7 @@ get locationNoValido() {
 
 
 
-crearFormulario() 
+crearFormulario()
 {
   this.forma = this.fb.group({
   title  : [ '', [ Validators.required, Validators.minLength(4) ]  ],
@@ -128,9 +129,11 @@ ngOnInit(): void {
 
 
 
-
-
-
+openSnackBar() {
+  this._snackBar.openFromComponent(AddroomComponent, {
+    duration: this.durationInSeconds * 1000,
+  });
+}
 
 
 
@@ -175,7 +178,7 @@ ngOnInit(): void {
             }
             );
           }
-        
+
     }
 
 }

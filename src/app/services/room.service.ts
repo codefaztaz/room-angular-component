@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { globalroom } from './globalroom';
 import { UserService } from './user.service';
- 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,20 +20,20 @@ export class RoomService {
     }
 
 
-  create(book): Observable<any>
+  create(room): Observable<any>
   {
-    let params = JSON.stringify(book);
+    let params = JSON.stringify(room);
     console.log(params);
 
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post(this.url+'save', params, {headers: headers});
-    
-  }  
+
+  }
 
   getRooms(page = 1):Observable<any>
   {
     return this.http.get(this.url + 'rooms/' + page);
-  
+
   }
 
   getRoomsEs(page = 1):Observable<any>
@@ -45,7 +45,7 @@ export class RoomService {
   getRoomsFull(page = 1):Observable<any>
   {
     return this.http.get(this.url + 'roomsfull/' + page);
-  
+
   }
 
 
@@ -73,7 +73,7 @@ export class RoomService {
   }
   updateImage(token,id,property, image):Observable<any>
   {
-  
+
     let tokenid = JSON.stringify(token);
     let headers = new HttpHeaders().set('Content-Type','application/json')
     .set('Authorization', tokenid);
@@ -81,11 +81,11 @@ export class RoomService {
 
     return this.http.put(this.url + 'updateimage1',{'id':id,  [property]: image}, {headers: headers});
   }
-  
+
   saveImg(id, property,image):Observable<any>
   {
    // console.log(image1);
-   
+
    //let params = JSON.stringify(image1);
     let headers = new HttpHeaders().set('Content-Type','application/json');
 
@@ -97,7 +97,7 @@ export class RoomService {
     let params = JSON.stringify(image1);
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
                                  // .set('Authorization', token);
-   
+
      console.log(image1);
     return this.http.delete(this.url + 'delete-avatar/' + params, { headers: headers });
   }
@@ -114,7 +114,7 @@ export class RoomService {
   {
     let tokenid = JSON.stringify(token);
     //console.log(tokenid);
-   
+
        // console.log(token);
     let headers = new HttpHeaders().set('Content-Type', 'application/json')
                                    .set('Authorization', tokenid);

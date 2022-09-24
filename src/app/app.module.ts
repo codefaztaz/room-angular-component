@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
@@ -11,12 +11,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //guards
 import { UserGuard } from './services/user.guard';
-import { NoIdentityGuard } from './services/no.identity.guard'; 
+import { NoIdentityGuard } from './services/no.identity.guard';
 
 //services
 import { UserService } from './services/user.service';
 import { RoomService } from './services/room.service';
 import { LanguageService } from './services/language.service';
+import { HttperrorinterceptorService } from './services/httperrorinterceptor.service';
 //import { ComponentCanDeactivate } from './services/componentcandeactivate.guard';
 
 //components
@@ -80,16 +81,21 @@ import { NopagefoundComponent } from './components/nopagefound/nopagefound.compo
         deps: [HttpClient]
       }
     })
-  
+
   ],
   providers: [
     UserService,
     RoomService,
     UserGuard,
     NoIdentityGuard,
-    LanguageService
-   
-    
+    LanguageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttperrorinterceptorService,
+      multi: true
+    }
+
+
   ],
   bootstrap: [AppComponent]
 })

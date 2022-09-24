@@ -160,8 +160,8 @@ var controller = {
 
 
                 } else {
-                    return res.status(400).send({
-                        message: "La habitación ya está registrada"
+                    return res.status(403).send({
+                        message: "La referencia ya existe"
                     });
                 }
 

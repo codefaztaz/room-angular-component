@@ -14,8 +14,12 @@
 
                         <input class="form-control" type="text" placeholder="reference" formControlName="reference" [class.is-invalid]="referenceNoValido">
                         <small *ngIf="referenceNoValido" class="text-danger">
-                Write the phone number
-                </small>
+                            Write the reference
+                        </small>
+                        <span class="example-reference">
+                          Reference already exists!!!
+                        </span>
+
                     </div>
                 </div>
                 <div class="form-group row">
@@ -81,7 +85,7 @@
                     <select class="form-control" formControlName="availablecouples" id="availablecouples">
                 <option>yes</option>
                 <option>no</option>
-              
+
             </select>
             <small *ngIf="availablecouplesNoValido" class="text-danger">
                 select yes or no
@@ -92,7 +96,7 @@
                     <select class="form-control" formControlName="availablecouplesEs" id="availablecouplesEs">
                 <option>si</option>
                 <option>no</option>
-              
+
             </select>
             <small *ngIf="availablecouplesNoValido" class="text-danger">
                 select yes or no
@@ -104,7 +108,7 @@
                     <select class="form-control" formControlName="roomtype" id="roomtype">
                 <option>double</option>
                 <option>single</option>
-              
+
             </select>
                 </div>
                 <div class="form-group row">
@@ -112,7 +116,7 @@
                     <select class="form-control" formControlName="roomtypeEs" id="roomtype">
                 <option>doble</option>
                 <option>sencilla</option>
-              
+
             </select>
                 </div>
                 <div class="form-group row">
@@ -120,7 +124,7 @@
                     <select class="form-control" formControlName="parking" id="parking">
                 <option>true</option>
                 <option>false</option>
-              
+
             </select>
                 </div>
                 <div class="form-group row">
@@ -128,7 +132,7 @@
                     <select class="form-control" formControlName="parkingEs" id="parkingEs">
                 <option>true</option>
                 <option>false</option>
-              
+
             </select>
                 </div>
                 <div class="form-group row">
@@ -137,7 +141,7 @@
                 <option>4 weeks</option>
                 <option>3 months</option>
                 <option>6 months</option>
-              
+
             </select>
                 </div>
                 <div class="form-group row">
@@ -146,7 +150,7 @@
                 <option>4 semanas</option>
                 <option>3 meses</option>
                 <option>6 meses</option>
-              
+
             </select>
                 </div>
 
@@ -252,7 +256,7 @@
                         <input class="form-control" type="text" placeholder="Disponible desde" formControlName="availabilityfromEs">
                     </div>
                 </div>
-      
+
                 <div class="form-group row">
                     <label class="col-2 col-form-label">Location</label>
                     <div class="col">
