@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators,  } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+
 import { Room } from '../../../models/room';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpClient } from '@angular/common/http';
 // services
 import { UserService } from '../../../services/user.service';
 import { RoomService } from '../../../services/room.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-addroom',
   templateUrl: './addroom.component.html',
   styleUrls: ['./addroom.component.scss']
 })
-export class AddroomComponent implements OnInit {
+export class AddroomComponent implements OnInit, HttpInterceptor {
 
   forma   : FormGroup;
   public room: Room;
@@ -25,6 +27,7 @@ export class AddroomComponent implements OnInit {
   public id;
   public idBook;
   durationInSeconds = 5;
+  public referenceExists: boolean = false;
 
   constructor(
   private fb: FormBuilder,
@@ -33,7 +36,7 @@ export class AddroomComponent implements OnInit {
   private http: HttpClient,
   private route: ActivatedRoute,
   private router: Router,
-  private _snackBar: MatSnackBar
+  private snackBar: MatSnackBar
 
 ) {
   this.token = userservice.getToken();
@@ -44,6 +47,11 @@ export class AddroomComponent implements OnInit {
 
 
 }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    throw new Error('Method not implemented.');
+
+
+  }
 
 get titleNoValido() {
 return this.forma.get('title').invalid && this.forma.get('title').touched
@@ -89,6 +97,7 @@ get locationNoValido() {
 
 
 
+
 crearFormulario()
 {
   this.forma = this.fb.group({
@@ -129,11 +138,7 @@ ngOnInit(): void {
 
 
 
-openSnackBar() {
-  this._snackBar.openFromComponent(AddroomComponent, {
-    duration: this.durationInSeconds * 1000,
-  });
-}
+
 
 
 
@@ -169,12 +174,17 @@ openSnackBar() {
               response =>
               {
                 console.log(this.room);
+                this.referenceExists = false;
                 this.forma.reset();
                // this.snackBar.open('book created', 'Close',{duration:3000});
              },
             error =>
             {
             console.log(error);
+
+            this.snackBar.open('Reference already exists ', 'Close',{duration:3000});
+            this.referenceExists = true;
+
             }
             );
           }

@@ -16,7 +16,7 @@
                         <small *ngIf="referenceNoValido" class="text-danger">
                             Write the reference
                         </small>
-                        <span class="example-reference">
+                        <span *ngIf="referenceExists" class="text-danger">
                           Reference already exists!!!
                         </span>
 

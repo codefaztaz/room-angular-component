@@ -2,8 +2,10 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute  } from '@angular/router';
 import { UserService } from '../../services/user.service';
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { UserAdmin } from '../../models/useradmin';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './panel.component.html',
   styleUrls: ['./panel.component.scss']
 })
-export class PanelComponent implements OnInit {
+export class PanelComponent implements OnInit, HttpInterceptor {
   forma   : FormGroup;
   public useradmin: UserAdmin;
   public status: string;
@@ -28,13 +30,18 @@ export class PanelComponent implements OnInit {
     private userservice: UserService,
     private router: Router,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private http: HttpClient
   ) {
     this.crearFormulario();
 
     this.useradmin = new UserAdmin(1, '', '', 'ROLE_USER', '', '');
 
     }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    throw new Error('Method not implemented.');
+  }
 
   ngOnInit() {
     this.logout();
@@ -68,16 +75,16 @@ export class PanelComponent implements OnInit {
     this.capslockOn = false;
    }
   }
- 
+
  @HostListener('window:keydown', ['$event'])
  onKeyDown(event)
  {
- if(event.getModifierState && event.getModifierState('CapsLock')) 
+ if(event.getModifierState && event.getModifierState('CapsLock'))
  {
    this.capslockOn = true;
    console.log(this.capslockOn);
- } 
- else 
+ }
+ else
  {
     this.capslockOn = false;
  }
